@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="283" height="171"
+     viewBox="0 0 283 171">
+    <defs>
+        <path id="pmmea"
+              d="M669 391a12 12 0 0 1 12-12h259a12 12 0 0 1 12 12v147a12 12 0 0 1-12 12H681a12 12 0 0 1-12-12z"/>
+        <path id="pmmeb" d="M669 423v-23h283v23z"/>
+    </defs>
+    <g>
+        <g transform="translate(-669 -379)">
+            <g>
+                <use fill="#036da1" xlink:href="#pmmea"/>
+            </g>
+            <g>
+                <use fill="#183e7a" xlink:href="#pmmeb"/>
+            </g>
+        </g>
+    </g>
+</svg>

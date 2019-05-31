@@ -1,0 +1,119 @@
+<div class="cnt">
+    <div class="wrap">
+        <div class="tabs-page">
+            <h1 class="title title_mb">Choose Portfolio</h1>
+            <div class="tabs tabs-page__item">
+                <div class="tabs__header">
+                    <a
+                            href="javascript:void(0)"
+                            [ngClass]="{ active: tabStatus === ETabStatus.overview }"
+                            (click)="tabStatus = ETabStatus.overview"
+                            class="tabs__item"
+                    >Overview</a
+                    >
+                    <a
+                            href="javascript:void(0)"
+                            [ngClass]="{ active: tabStatus === ETabStatus.breakdown }"
+                            (click)="tabStatus = ETabStatus.breakdown"
+                            class="tabs__item"
+                    ><span class="hide-xs">Portfolio </span> Breakdown</a
+                    >
+                </div>
+                <div class="tabs__body">
+                    <app-panel-wrap
+                            class="panel_tab"
+                            [ngClass]="{ active: tabStatus === ETabStatus.overview }"
+                    >
+                        <h3 class="panel__label">Choose Portfolio</h3>
+                        <app-choose
+                                (selectedPortfolio)="setPortfolio($event)"
+                                [portfolio]="portfolio$ | async"
+                                [portfolioList]="portfolioList$ | async"
+                        ></app-choose>
+                        <h3 class="panel__label">Payment Method</h3>
+                        <app-payment
+                                (selectedPayment)="setPayment($event)"
+                                [payment]="payment$ | async"
+                                [paymentList]="paymentList$ | async"
+                        ></app-payment>
+                        <h3 class="panel__label">Amount</h3>
+                        <app-amount
+                                (settedAmount)="setAmount($event)"
+                                [amount]="amount$ | async"
+                        ></app-amount>
+                        <button
+                                mat-raised-button
+                                [color]="'accent'"
+                                class="form__btn btn btn_full mat-elevation-z0"
+                                [disabled]="isErr$ | async"
+                                (click)="investPortfolio()"
+                        >
+                            Confirm Portfolio
+                        </button>
+                    </app-panel-wrap>
+                    <app-panel-wrap
+                            class="panel_tab"
+                            [classes]="{ body: 'panel__body panel__body_without' }"
+                            [ngClass]="{ active: tabStatus === ETabStatus.breakdown }"
+                    >
+                        <h2 class="panel__title panel__title_padding">
+                            {{ (portfolio$ | async)?.package_name }}
+                        </h2>
+                        <div class="coin-list">
+                            <div
+                                    class="coin-list__item"
+                                    *ngFor="let opt of (portfolio$ | async)?.options"
+                            >
+                                <div class="coin-list__img">
+                                    <img [src]="opt.icon" alt=""/>
+                                </div>
+                                <div class="coin-list__name">{{ opt.name }}</div>
+                                <div class="coin-list__val">
+                                    {{ opt.currency?.value }} {{ opt.currency?.symbol }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel_portfolio">
+                            <div class="panel__header panel__header_ico">
+                                <div class="filters">
+                                    <div class="graph__title">
+                                        <p class="graph__title-text">Portfolio History</p>
+                                        <div class="graph__title-underline"></div>
+                                    </div>
+                                    <app-period-filter
+                                            [filter]="filter$ | async"
+                                            (changedFilter)="setFilter($event)"
+                                    ></app-period-filter>
+                                </div>
+                            </div>
+                            <div class="panel__body panel__body_performance">
+                                <app-portfolio-performance
+                                        [curve]="curve"
+                                        [yAxisTicks]="undefined"
+                                        [isMax]="true"
+                                        [isFull]="true"
+                                        [filterName]="filterName"
+                                ></app-portfolio-performance>
+                                <div class="dont-work">
+                                    <img class="flower-img" src="/assets/images/flower.png"
+                                         srcset="/assets/images/flower@2x.png 2x, /assets/images/flower@3x.png 3x">
+                                </div>
+                            </div>
+                        </div>
+                    </app-panel-wrap>
+                </div>
+            </div>
+
+            <app-panel-wrap
+                    class="tabs-page__item panel_adapt"
+                    [classes]="{ body: 'panel__body panel__body_stats' }"
+            >
+                <app-statistic-portfolio
+                        [currency]="currency$ | async"
+                        [portfolio]="portfolio$ | async"
+                        [total]="total$ | async"
+                ></app-statistic-portfolio>
+            </app-panel-wrap>
+        </div>
+    </div>
+</div>

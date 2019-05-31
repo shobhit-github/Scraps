@@ -1,0 +1,37 @@
+:host(:not(.inherit-color)) {
+  .value {
+    color: #058939;
+  }
+
+  .value_down {
+    color: #eb0000;
+  }
+}
+
+.value {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+
+  .mat-icon {
+    font-size: 7px;
+    margin-right: 3px;
+    transform: translateY(-1px);
+    color: #058939;
+  }
+}
+
+.value_down {
+  .mat-icon {
+    transform: rotate(180deg);
+    color: #eb0000;
+  }
+}
+
+:host(.small) {
+  .value {
+    .mat-icon {
+      font-size: 6px;
+    }
+  }
+}

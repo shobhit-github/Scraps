@@ -1,0 +1,93 @@
+<svg id="SVGDoc" width="163" height="122" xmlns="http://www.w3.org/2000/svg" version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 163 122">
+    <defs>
+        <path d="M650.64,395.4c0,-19.26921 31.18337,-34.89 69.65,-34.89c38.46663,0 69.65,15.62079 69.65,34.89c0,19.26921 -31.18337,34.89 -69.65,34.89c-38.46663,0 -69.65,-15.62079 -69.65,-34.89z"
+              id="Path-0"/>
+        <path d="M692,424.665c0,-15.83124 12.83376,-28.665 28.665,-28.665c15.83124,0 28.665,12.83376 28.665,28.665c0,15.83124 -12.83376,28.665 -28.665,28.665c-15.83124,0 -28.665,-12.83376 -28.665,-28.665z"
+              id="Path-1"/>
+        <path d="M781.92,413.73c0,-9.08508 1.75728,-16.45 3.925,-16.45c2.16772,0 3.925,7.36492 3.925,16.45c0,9.08508 -1.75728,16.45 -3.925,16.45c-2.16772,0 -3.925,-7.36492 -3.925,-16.45z"
+              id="Path-2"/>
+        <path d="M673.54855,402.27236l-27.54855,-20.05236" id="Path-3"/>
+        <path d="M704.99157,380.5227l-19.04157,-28.2827" id="Path-4"/>
+        <path d="M740.2,377.26312l13.30513,-31.40312" id="Path-5"/>
+        <path d="M793.73044,387.07l-30.34044,15.48793" id="Path-6"/>
+        <path d="M733.72352,415.26827c-1.31654,1.06611 -2.38202,2.49048 -2.99782,4.15178c-1.62043,4.35722 -0.93054,8.04578 2.11879,11.27108c3.22897,3.42784 8.41919,4.31838 12.07434,2.07823c6.5753,-4.02748 13.00995,-8.34441 19.82172,-12.91929c0.9576,-0.641 1.90662,-1.28295 2.8814,-1.92204c-1.13356,-0.21307 -2.25079,-0.41564 -3.3633,-0.62203c-8.16844,-1.50012 -15.89376,-2.91618 -23.62053,-4.05422c-2.45509,-0.36884 -4.96104,0.43452 -6.9146,2.01648"
+              id="Path-7"/>
+        <mask id="Mask1169" x="-1" y="-1" width="2" height="2">
+            <rect width="140" height="71" x="650" y="360" fill="#ffffff"></rect>
+            <use xlink:href="#Path-0" fill="#000000"/>
+        </mask>
+        <filter id="Filter1173" width="168" height="101" x="636" y="346" filterUnits="userSpaceOnUse">
+            <feOffset dx="0" dy="2" result="FeOffset1174Out" in="SourceGraphic"></feOffset>
+            <feGaussianBlur stdDeviation="1.6 1.6" result="FeGaussianBlur1175Out" in="FeOffset1174Out"></feGaussianBlur>
+        </filter>
+        <mask id="Mask1217" x="-1" y="-1" width="2" height="2">
+            <rect width="58" height="58" x="692" y="396" fill="#ffffff"></rect>
+            <use xlink:href="#Path-1" fill="#000000"/>
+        </mask>
+        <filter id="Filter1221" width="94" height="96" x="674" y="378" filterUnits="userSpaceOnUse">
+            <feOffset dx="0" dy="2" result="FeOffset1222Out" in="SourceGraphic"></feOffset>
+            <feGaussianBlur stdDeviation="3.2 3.2" result="FeGaussianBlur1223Out" in="FeOffset1222Out"></feGaussianBlur>
+        </filter>
+    </defs>
+    <desc>Generated with Avocode.</desc>
+    <g transform="matrix(1,0,0,1,-639,-340)">
+        <g>
+            <title>Group 2</title>
+            <g>
+                <title>Combined Shape Copy</title>
+                <g filter="url(#Filter1173)">
+                    <use xlink:href="#Path-0" fill="none" stroke-opacity="0.39" stroke-width="0"
+                         mask="url(&quot;#Mask1169&quot;)"/>
+                    <use xlink:href="#Path-0" fill="#e7effb" fill-opacity="0.39"/>
+                </g>
+                <use xlink:href="#Path-0" fill="#ffffff" fill-opacity="1"/>
+                <use xlink:href="#Path-0" fill-opacity="0" fill="#ffffff" stroke-linejoin="miter" stroke-linecap="butt"
+                     stroke-opacity="0.29" stroke="#adc9f0" stroke-miterlimit="50" stroke-width="16.9884"/>
+            </g>
+            <g>
+                <title>Combined Shape Copy 2</title>
+                <use xlink:href="#Path-2" fill="#1dc5bf" fill-opacity="1"/>
+                <use xlink:href="#Path-2" fill-opacity="0" fill="#ffffff" stroke-linejoin="miter" stroke-linecap="butt"
+                     stroke-opacity="1" stroke="#1dc5bf" stroke-miterlimit="50" stroke-width="16.9884"/>
+            </g>
+            <g>
+                <title>Line Copy 2</title>
+                <use xlink:href="#Path-3" fill-opacity="0" fill="#ffffff" stroke-linejoin="miter"
+                     stroke-linecap="square" stroke-opacity="1" stroke="#ffffff" stroke-miterlimit="50"
+                     stroke-width="7.722000000000002"/>
+            </g>
+            <g>
+                <title>Line Copy 3</title>
+                <use xlink:href="#Path-4" fill-opacity="0" fill="#ffffff" stroke-linejoin="miter"
+                     stroke-linecap="square" stroke-opacity="1" stroke="#ffffff" stroke-miterlimit="50"
+                     stroke-width="7.722000000000002"/>
+            </g>
+            <g>
+                <title>Line Copy 4</title>
+                <use xlink:href="#Path-5" fill-opacity="0" fill="#ffffff" stroke-linejoin="miter"
+                     stroke-linecap="square" stroke-opacity="1" stroke="#ffffff" stroke-miterlimit="50"
+                     stroke-width="7.722000000000002"/>
+            </g>
+            <g>
+                <title>Line Copy 5</title>
+                <use xlink:href="#Path-6" fill-opacity="0" fill="#ffffff" stroke-linejoin="miter"
+                     stroke-linecap="square" stroke-opacity="1" stroke="#ffffff" stroke-miterlimit="50"
+                     stroke-width="7.722000000000002"/>
+            </g>
+        </g>
+        <g>
+            <title>Fill 1</title>
+            <use xlink:href="#Path-7" fill="#183e7a" fill-opacity="1"/>
+        </g>
+        <g>
+            <title>Oval</title>
+            <g filter="url(#Filter1221)">
+                <use xlink:href="#Path-1" fill="none" stroke-opacity="0.23" stroke-width="0"
+                     mask="url(&quot;#Mask1217&quot;)"/>
+                <use xlink:href="#Path-1" fill="#036da1" fill-opacity="0.23"/>
+            </g>
+            <use xlink:href="#Path-1" fill="#036da1" fill-opacity="1"/>
+        </g>
+    </g>
+</svg>

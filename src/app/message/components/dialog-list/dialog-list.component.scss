@@ -1,0 +1,10 @@
+:host() {
+  display: block;
+  height: 75vh;
+}
+
+@media screen and (max-width: 991px) {
+  :host() {
+    height: 79.8vh;
+  }
+}

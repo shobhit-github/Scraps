@@ -1,0 +1,29 @@
+{
+  "/authenticate/*": {
+    "target": "https://node.developer.yodlee.com/authenticate/",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/authenticate": ""
+    }
+  },
+  "/connect-bank/get-yodlee-info": {
+    "target": "https://api.skraps.io/",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "http://192.168.88.183": {
+    "target": "http://116.203.24.202/api",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "*": {
+    "target": "http://116.203.24.202/api",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

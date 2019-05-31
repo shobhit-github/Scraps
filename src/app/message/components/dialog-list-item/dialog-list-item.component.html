@@ -1,0 +1,15 @@
+<a (click)="OnSelect.emit(item)" class="dialog" [ngClass]="{'dialog_unread': !item.is_seen, 'dialog_active': isActive}">
+    <div class="dialog__avatar">
+        <div class="dialog__status" [ngClass]="{'dialog__status_active': item.user.is_online}"></div>
+        <app-avatar [bigger]="true" [user]="item.user"></app-avatar>
+    </div>
+    <div class="dialog__content">
+        <div class="dialog__name">{{item.user.name}}</div>
+        <div class="dialog__text" *ngIf="item.message && !search">{{item.message}}</div>
+        <div class="dialog__text" *ngIf="item.message && search"
+             innerHTML="{{ item.message | highlight : search}}"></div>
+        <div class="dialog__text" *ngIf="item.file">{{item.file}}</div>
+        <div class="dialog__text" *ngIf="item.voice">{{item.voice}}</div>
+    </div>
+    <div class="dialog__date">{{item.updated_at | timeFrom:true}}</div>
+</a>

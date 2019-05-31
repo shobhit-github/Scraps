@@ -1,0 +1,24 @@
+.cnt {
+  background-color: #f8fafb;
+  min-height: calc(100vh - 245px);
+  padding-top: 37px;
+  overflow: hidden;
+
+  &__wrap {
+    width: 1090px;
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+
+    &:last-child {
+      margin-bottom: 100px;
+    }
+
+    &_small-mb {
+      margin-bottom: 20px;
+    }
+  }
+}

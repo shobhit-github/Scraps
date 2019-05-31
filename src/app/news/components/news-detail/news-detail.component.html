@@ -1,0 +1,13 @@
+<div class="detail" *ngIf="article">
+    <div class="detail__wrap">
+        <h1 class="detail__title" *ngIf="article.title && display.title">{{article.title}}</h1>
+        <div class="detail__meta">
+            <a [routerLink]="['/news', article.type]" class="detail__cat">{{article.category}}</a>
+            <div class="detail__date">{{article.pub_date | displayDate:'Do MMMM YYYY'}}</div>
+        </div>
+        <!-- <div class="detail__image" *ngIf="article.img_src && display.image">
+          <img [src]="article.img_src" alt="">
+        </div> -->
+        <div class="detail__content" [innerHTML]="article.content"></div>
+    </div>
+</div>

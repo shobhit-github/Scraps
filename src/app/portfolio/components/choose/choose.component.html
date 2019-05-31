@@ -1,0 +1,46 @@
+<div class="form__row form__row_fs" *ngIf="portfolio">
+    <div
+            class="panel__item panel__item_settings"
+            [ngClass]="{ panel__item_small: size === 'small' }"
+    >
+        <div class="panel__item-logo">
+            <img src="/assets/svg/skraps-logo.svg" alt=""/>
+        </div>
+        <div class="panel__item-content">
+            <div class="panel__item-title">{{ portfolio.package_name }}</div>
+        </div>
+        <div
+                class="panel__item-action"
+                *ngIf="!sub && portfolioList && portfolioList.length > 0"
+        >
+            <button
+                    type="button"
+                    [matMenuTriggerFor]="porfolio"
+                    mat-icon-button
+                    class="btn btn_custom-icon-arrow mat-elevation-z0"
+            >
+                <mat-icon
+                        [inline]="true"
+                        [fontIcon]="'icon-simple-arrow'"
+                        [fontSet]="'si'"
+                ></mat-icon>
+                <mat-icon
+                        [inline]="true"
+                        [fontIcon]="'icon-simple-arrow'"
+                        [fontSet]="'si'"
+                ></mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+<mat-menu #porfolio="matMenu" [classList]="'porfolio'">
+    <div class="list" matMenuContent>
+        <app-choose
+                [portfolio]="item"
+                (click)="selectedPortfolio.emit(item)"
+                matMenuItem
+                *ngFor="let item of portfolioList"
+                [sub]="true"
+        ></app-choose>
+    </div>
+</mat-menu>

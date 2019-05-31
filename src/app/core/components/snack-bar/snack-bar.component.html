@@ -1,0 +1,7 @@
+<div class="snackbar">
+    <mat-icon>{{ data.isError ? 'error' : 'done' }}</mat-icon>
+    {{ data.isError ? 'Error' : data.text ? data.text : 'Successfully Saved!' }}
+    <a href="javascript:void(0)" (click)="dismiss()">
+        <mat-icon>close</mat-icon>
+    </a>
+</div>

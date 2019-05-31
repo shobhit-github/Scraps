@@ -1,0 +1,25 @@
+@import '../../../../assets/styles/variables';
+
+.voice-icon {
+  color: $gray-medium;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+audio {
+  height: 20px;
+  margin-left: 10px;
+}
+
+:host() {
+  display: flex;
+
+  .error {
+    display: block;
+    margin-right: 5px;
+  }
+}
+
+.voice-icon {
+  margin-right: 4px;
+}

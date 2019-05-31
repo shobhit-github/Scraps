@@ -1,0 +1,10 @@
+.main-menu {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media screen and (max-width: 991px) {
+  :host() {
+    display: none;
+  }
+}

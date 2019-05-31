@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  flex-shrink: 0;
+}
+
+.rotate {
+  transform: rotate(90deg);
+  margin-left: -5px;
+}

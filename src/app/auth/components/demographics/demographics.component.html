@@ -1,0 +1,55 @@
+<form [formGroup]="form" class="form" (ngSubmit)="onSubmit(form)">
+    <div class="form__cnt">
+        <h1 class="form__title">Demographics Info</h1>
+
+        <div class="form__row form__row_sb">
+            <mat-form-field [appearance]="'standard'" class="">
+                <mat-label>Employment</mat-label>
+                <mat-select [formControlName]="'employment_id'" [value]="form.get('employment_id').value"
+                            [placeholder]="'employment_id'">
+                    <mat-option [title]="employment" *ngFor="let employment of employmentOptList"
+                                [value]="employment.id">{{employment.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field [appearance]="'standard'" class="">
+                <mat-label>Income</mat-label>
+                <mat-select [formControlName]="'income_id'" [value]="form.get('income_id').value"
+                            [placeholder]="'income_id'">
+                    <mat-option [title]="income" *ngFor="let income of incomeOptList"
+                                [value]="income.id">{{income.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form__row form__row_sb">
+            <mat-label>Date of Birth</mat-label>
+        </div>
+        <div class="form__row form__row_sb">
+            <mat-form-field [appearance]="'standard'" class="form__select form__select_big">
+                <mat-select [formControlName]="'month'" [value]="form.get('month').value" [placeholder]="'Month'">
+                    <mat-option *ngFor="let month of monthList"
+                                [value]="month | displayDate: 'MM': 'MMMM'">{{month}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field [appearance]="'standard'" class="form__select">
+                <mat-select [formControlName]="'year'" [value]="form.get('year').value" [placeholder]="'Year'">
+                    <mat-option *ngFor="let year of yearList" [value]="year">{{year}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field [appearance]="'standard'" class="form__select">
+                <mat-select [formControlName]="'day'" [value]="form.get('day').value" [placeholder]="'Day'">
+                    <mat-option *ngFor="let day of dayList" [value]="day">{{day}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="form__row">
+            <button *ngIf="!isPending" mat-raised-button [color]="'accent'"
+                    class="form__btn btn btn_full mat-elevation-z0" [disabled]="form.invalid || isPending">Save
+            </button>
+            <button mat-raised-button type="button" (click)="OnSkip.emit()" [color]="'warn'"
+                    class="form__btn btn btn_gray btn_full mat-elevation-z0">Skip
+                Demographics
+            </button>
+        </div>
+    </div>
+</form>

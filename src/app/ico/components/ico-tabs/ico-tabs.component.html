@@ -1,0 +1,9 @@
+<div mat-tab-nav-bar [disableRipple]="true" [color]="'accent'" class="main-menu main-menu_ico">
+    <ng-container *ngFor="let item of links">
+        <a mat-tab-link *ngIf="item.link" [active]="item.link === activeCat"
+           [routerLink]="[cat + '/list', item.link, 1]">
+            {{ item.hint }} </a>
+        <a mat-tab-link *ngIf="!item.link" (click)="activeLink.emit(item.hint)" [active]="item.hint === activeCat">
+            {{ item.hint }} </a>
+    </ng-container>
+</div>

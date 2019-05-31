@@ -1,0 +1,87 @@
+<ng-template [ngIf]="isPanel" [ngIfElse]="isMainPortfolio ? chartOnly : without">
+    <div class="panel">
+        <ng-container *ngTemplateOutlet="isOwner ? ownerTpl : titleTpl"></ng-container>
+
+        <div class="panel__body panel__body_ico">
+            <ng-container *ngTemplateOutlet="chart"></ng-container>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #chart>
+    <app-doughnut-chart
+            [ngClass]="{'is-panel': isPanel}"
+            [isAdd]="isAdd"
+            [isLock]="isLock"
+            (OnDeactivate)="onDeactivate($event)"
+            (OnActivate)="onActivate($event)"
+            [results]="options"
+            [colorScheme]="colorScheme"
+    ></app-doughnut-chart>
+    <app-doughnut-legend [risk]="risk_value" *ngIf="!isLock" [activeIndex]="activeIndex"
+                         [results]="options"></app-doughnut-legend>
+    <div class="btn-cnt" *ngIf="!isCurrent">
+        <button mat-raised-button [color]="isLock ? 'accent' : 'warn'" (click)="usePortfolio.emit(id)"
+                [ngClass]="{'btn_gray': !isLock || isOwner}"
+                class="btn  mat-elevation-z0 form__btn btn_full">Copy
+            Portfolio
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #chartOnly>
+    <div class="chart-only">
+        <div class="chart-only__cnt">
+            <app-doughnut-chart
+                    [ngClass]="{'is-panel': isPanel, 'is-rich': true}"
+                    [isAdd]="isAdd"
+                    [isLock]="isLock"
+                    (OnDeactivate)="onDeactivate($event)"
+                    (OnActivate)="onActivate($event)"
+                    [results]="portfolio"
+                    [activeIndex]="activeIndex"
+            ></app-doughnut-chart>
+            <app-doughnut-legend
+                    [isRich]="true"
+                    [risk]="risk_value"
+                    *ngIf="!isLock"
+                    [activeIndex]="activeIndex"
+                    [results]="portfolio"
+                    (OnDeactivate)="onDeactivate()"
+                    (OnActivate)="onActivate($event)"
+            ></app-doughnut-legend>
+        </div>
+        <div class="btn-cnt" *ngIf="!isCurrent">
+            <button
+                    (click)="usePortfolio.emit(id)"
+                    mat-raised-button
+                    [color]="'accent'"
+                    class="btn mat-elevation-z0 form__btn btn_full"
+            >
+                Use Portfolio
+            </button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #without>
+    <h4 class="title-aside">Portfolio Breakdown</h4>
+    <ng-container *ngTemplateOutlet="chart"></ng-container>
+</ng-template>
+
+<ng-template #ownerTpl>
+    <div class="panel__header panel__header_without owner" *ngIf="owner">
+        <app-avatar [user]="owner" [big]="true"></app-avatar>
+        <div class="owner__text">
+            <h3 class="panel__title panel__title_owner">{{owner.name}}</h3>
+            <p class="panel__text panel__text_owner">ROI: {{owner.roi}}%</p>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #titleTpl>
+    <div class="panel__header panel__header_center">
+        <h2 class="panel__title panel__title_portfolio">{{package_name}}</h2>
+        <p class="panel__text">{{risk_name}}</p>
+    </div>
+</ng-template>

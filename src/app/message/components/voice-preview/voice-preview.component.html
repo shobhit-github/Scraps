@@ -1,0 +1,7 @@
+<div class="preview">
+    <!-- <mat-spinner class="preview__loader" [color]="'accent'" [diameter]="20" *ngIf="fileStatusList && fileStatusList[index] === 'pending'"></mat-spinner> -->
+    <audio [src]="preview" controls></audio>
+    <a class="preview__remove" href="javascript:void(0)" (click)="OnRemove.emit(index)">
+        <mat-icon class="mat-18" [inline]="true">close</mat-icon>
+    </a>
+</div>

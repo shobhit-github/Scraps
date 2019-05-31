@@ -1,0 +1,15 @@
+.docs {
+  max-height: 90vh;
+  overflow: auto;
+
+  &__item {
+    margin-bottom: 10px;
+
+    img {
+      display: block;
+      max-width: 100%;
+      object-fit: contain;
+      margin: auto;
+    }
+  }
+}

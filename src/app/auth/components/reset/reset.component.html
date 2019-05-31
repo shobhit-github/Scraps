@@ -1,0 +1,115 @@
+<div class="form">
+    <form
+            class="form__cnt"
+            (ngSubmit)="onSubmit()"
+            [formGroup]="form"
+            *ngIf="
+      isTokenValid && !pending;
+      else: pending ? pendingTpl : invalidTokenTpl
+    "
+    >
+        <h1 class="form__title">Reset your Password</h1>
+        <mat-form-field>
+            <input
+                    autocomplete="off"
+                    type="password"
+                    matInput
+                    placeholder="Password"
+                    [formControlName]="'password'"
+                    [errorStateMatcher]="matcher"
+            />
+            <mat-error
+                    *ngIf="
+          (form.controls['password'].hasError('pattern') ||
+            form.controls['password'].hasError('minlength')) &&
+          !form.controls['password'].hasError('required')
+        "
+            >
+                Minimum 8 characters, at least one small and large letters, a digit and
+                one of the characters ($, @, #, !, %, *, ?, &)
+            </mat-error>
+            <!--
+              <mat-hint>Minimum eight characters, at least one letter and one number</mat-hint>
+            -->
+            <mat-error *ngIf="form.controls['password'].hasError('required')">
+                Password is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input
+                    autocomplete="off"
+                    type="password"
+                    matInput
+                    placeholder="Confirm Password"
+                    [formControlName]="'password_confirmation'"
+                    [errorStateMatcher]="matcher"
+            />
+            <mat-error
+                    *ngIf="
+          (form.controls['password_confirmation'].hasError('pattern') ||
+            form.controls['password_confirmation'].hasError('minlength')) &&
+          !form.controls['password_confirmation'].hasError('required')
+        "
+            >
+                Minimum 8 characters, at least one small and large letters, a digit and
+                one of the characters ($, @, #, !, %, *, ?, &)
+            </mat-error>
+            <!--
+              <mat-hint>Minimum eight characters, at least one letter and one number</mat-hint>
+            -->
+            <mat-error
+                    *ngIf="form.controls['password_confirmation'].hasError('required')"
+            >
+                Confirm Password is required
+            </mat-error>
+            <mat-error
+                    *ngIf="form.controls['password_confirmation'].hasError('matchOther')"
+            >
+                Passwords do not match
+            </mat-error>
+        </mat-form-field>
+        <div class="form__row form__row_mb-more">
+            <button
+                    *ngIf="!form.hasError('invalid')"
+                    mat-raised-button
+                    [color]="'accent'"
+                    class="form__btn btn btn_full mat-elevation-z0"
+                    [disabled]="form.invalid"
+            >
+                Reset Password
+            </button>
+            <button
+                    *ngIf="form.hasError('invalid')"
+                    mat-raised-button
+                    [color]="'accent'"
+                    class="form__btn btn btn_full mat-elevation-z0"
+                    [disabled]="form.invalid"
+            >
+                Password invalid
+            </button>
+        </div>
+    </form>
+</div>
+<ng-template #invalidTokenTpl>
+    <div class="form__cnt">
+        <h1 class="form__title">Incorrect reset link!</h1>
+        <div class="form__row">
+            <p class="form__text form__text_center">
+                Link is incorrect, outdated or already in use.
+            </p>
+        </div>
+        <div class="form__row form__row_mb-more">
+            <button
+                    mat-raised-button
+                    [color]="'accent'"
+                    class="form__btn btn btn_full mat-elevation-z0"
+                    [routerLink]="['/auth', 'forgot']"
+            >
+                Try again
+            </button>
+        </div>
+    </div>
+</ng-template>
+<ng-template #pendingTpl>
+    <div class="form__cnt"><h1 class="form__title">Please wait a moment</h1></div>
+</ng-template>

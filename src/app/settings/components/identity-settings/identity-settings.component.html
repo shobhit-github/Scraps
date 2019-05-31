@@ -1,0 +1,22 @@
+<div class="panel">
+    <div class="panel__header">
+        <h2 class="panel__title">Identity Settings</h2>
+    </div>
+    <form class="panel__body panel__body_single panel__body_search form">
+        <div class="form__row" style="max-height: 47vh; overflow: hidden">
+            <div class="identity-list">
+                <ng-scrollbar [autoHide]="true" style="width: 100%">
+                    <div class="identity-list__item" *ngFor="let item of fileList">
+                        <img [src]="item.url" [alt]="item.name">
+                        <!-- <img [src]="'/assets/images/mock-driver-license-1.jpg'" [alt]="item.name"> -->
+                    </div>
+                </ng-scrollbar>
+            </div>
+        </div>
+        <div class="form__row form__row_mb-more">
+            <button mat-raised-button [color]="'accent'" (click)="OnUpload.emit()" type="button"
+                    class="form__btn form__btn_multiple btn mat-elevation-z0">Upload Documents
+            </button>
+        </div>
+    </form>
+</div>

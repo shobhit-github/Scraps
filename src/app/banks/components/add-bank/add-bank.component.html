@@ -1,0 +1,51 @@
+<div class="panel panel_bank">
+    <div class="panel__header">
+        <h2 class="panel__title">Connect Your Bank</h2>
+    </div>
+    <form [formGroup]="formBank" class="panel__body panel__body_single form" *ngIf="formBank" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="standard">
+            <button mat-button matPrefix mat-icon-button aria-label="Submit">
+                <mat-icon matPrefix [color]="'accent'">search</mat-icon>
+            </button>
+            <input (click)="bank && OnBack.emit()" type="text" matInput placeholder="Please Enter User Name"
+                   [formControlName]="'query'" [value]="formBank.get('query').value.name || ''"
+                   [matAutocomplete]="auto" (input)="onSubmit()" [errorStateMatcher]="matcher"/>
+            <mat-label>Bank</mat-label>
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onBankChange($event)">
+                <mat-option *ngFor="let bank of bankList" [value]="bank">
+                    {{ bank.name }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+    <form [formGroup]="form" class="panel__body panel__body_single form" *ngIf="step === 2 && bank"
+          (ngSubmit)="onConnect(bank)">
+        <div class="form__cnt">
+            <div class="form__img" *ngIf="bank.logo; else bankTitle">
+                <img [src]="'data:image/png;base64,' + bank.logo" alt="bank.name">
+            </div>
+            <ng-template #bankTitle>
+                <h2 class="form__subtitle">{{bank.name}}</h2>
+            </ng-template>
+            <mat-form-field appearance="standard">
+                <mat-label>Account Number</mat-label>
+                <input type="text" matInput [formControlName]="'client'" [errorStateMatcher]="matcher"/>
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput [formControlName]="'password'" [errorStateMatcher]="matcher"/>
+                <mat-error *ngIf="form.hasError('invalid')">Client or Password invalid</mat-error>
+            </mat-form-field>
+            <div class="form__row form__row_mb-more">
+                <button mat-raised-button [color]="'accent'" class="form__btn form__btn_multiple btn mat-elevation-z0"
+                        [disabled]="form.invalid || pending">{{pending ? 'Loading...' : 'Connect Bank'}}</button>
+            </div>
+        </div>
+    </form>
+    <div class="panel__footer">
+        <div class="form__row">
+            <p class="form__message">Skraps doesn’t save your bank login.
+                <br> We use 256 bit encryption.</p>
+        </div>
+    </div>
+</div>

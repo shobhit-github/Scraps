@@ -1,0 +1,28 @@
+<div class="cnt">
+    <div class="wrap">
+        <div class="ico-page">
+            <!-- <h1 class="ico-page__title">ICO List</h1> -->
+            <div class="panel">
+                <div class="panel__body panel__body_ico-detail" *ngIf="ico$ | async">
+                    <app-ico-header [ico]="ico$ | async"></app-ico-header>
+                    <div class="ico-page__content">
+                        <app-ico-content [ico]="ico$ | async" class="ico-page__mine"></app-ico-content>
+                        <app-ico-info class="ico-page__aside" [ico]="ico$ | async"></app-ico-info>
+                    </div>
+                </div>
+            </div>
+            <h2 class="ico-page__title">Top ICO Picks</h2>
+            <div class="panel">
+                <div class="panel__body panel__body_ico" *ngIf="(icoList$ | async).length">
+                    <app-ico-list [icoList]="icoList$ | async"></app-ico-list>
+                    <div class="ico-page__btns">
+                        <button mat-raised-button type="button" [routerLink]="['/ico', 'list', 'top', '1']"
+                                [color]="'warn'" class="btn btn_gray form__btn mat-elevation-z0 ico__btn">Full
+                            List
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

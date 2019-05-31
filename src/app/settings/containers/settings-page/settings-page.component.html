@@ -1,0 +1,10 @@
+<div class="wrap">
+    <h1 class="title">Settings</h1>
+</div>
+<div class="wrap wrap_mobile">
+    <app-mobile-menu [color]="'#183e7a'" [links]="menuLinks" class="xs"></app-mobile-menu>
+</div>
+<div class="wrap wrap_flex">
+    <app-settings-menu [links]="menuLinks" [activeUrl]="activeUrl$ | async"></app-settings-menu>
+    <router-outlet></router-outlet>
+</div>

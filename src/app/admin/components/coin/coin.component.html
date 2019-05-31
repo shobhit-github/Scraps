@@ -1,0 +1,94 @@
+<div [ngClass]="{'mat-elevation-z2': shadow, 'table': true, 'table_shadow': shadow}">
+    <mat-paginator (page)="OnPage.emit($event)" #paginator [length]="totalRows" [pageIndex]="0" [pageSize]="100"
+                   [pageSizeOptions]="[100]"></mat-paginator>
+
+    <mat-accordion displayMode="flat" multi class="mat-table mat-table_center">
+        <section matSort class="mat-elevation-z2 mat-header-row">
+            <span class="mat-header-cell" mat-sort-header="icon">Icon</span>
+            <span class="mat-header-cell" mat-sort-header="name">Name</span>
+            <span class="mat-header-cell" mat-sort-header="color">Color</span>
+        </section>
+
+        <mat-expansion-panel *ngFor="let coin of list; trackBy: byId">
+            <mat-expansion-panel-header class="mat-row">
+        <span class="mat-cell">
+          <img [src]="coin.icon" class="coin-img" [default]="'/assets/images/mock-ico.png'" alt=""></span>
+                <span class="mat-cell" [title]="coin.name">{{coin.name}}</span>
+                <span class="mat-cell mat-cell_color" [title]="coin.color" [style.background]="coin.color"
+                      [style.color]="invert(coin.color, true)">{{coin.color}}</span>
+            </mat-expansion-panel-header>
+            <div class="coin-data">
+                <form [formGroup]="forms[coin.id]" class="form" *ngIf="forms[coin.id]"
+                      (ngSubmit)="onSubmit(forms[coin.id], coin.id)">
+                    <!-- <div> -->
+                    <div class="form__row form__row_fs">
+                        <ng-container *ngFor="let field of fieldsConfig; trackBy: byName(coin)">
+                            <ng-container [ngSwitch]="field.type">
+                                <ng-template
+                                        [ngSwitchCase]="field.type === 'text' || field.type === 'email' ? field.type : ''">
+                                    <mat-form-field [appearance]="'standard'" class="coin-field">
+                                        <mat-label>{{field.label}}</mat-label>
+                                        <input [required]="field.required" matInput [formControlName]="field.name"
+                                               [type]="field.type"
+                                               [placeholder]="field.placeholder">
+                                    </mat-form-field>
+                                </ng-template>
+                                <ng-template [ngSwitchCase]="'file'">
+                                    <div class="coin-field coin-field_col">
+                                        <mat-label>{{field.label}}</mat-label>
+                                        <div class="coin-cnt">
+                                            <img [src]="filePreviewList[coin.id] || coin.icon" class="coin-img"
+                                                 [default]="'/assets/images/mock-ico.png'"
+                                                 alt="">
+                                            <button mat-raised-button type="button" class="form__btn" [color]="'accent'"
+                                                    (click)="addFile(fileInput)">Upload
+                                            </button>
+                                            <input style="display: none" type="file"
+                                                   (change)="fileChange($event, coin.id)"
+                                                   accept=".bmp, .jpg, .jpeg, .png, .gif" #fileInput>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template [ngSwitchCase]="'color'">
+                                    <mat-form-field [appearance]="'standard'" class="coin-field">
+                                        <mat-label>{{field.label}}</mat-label>
+                                        <input matInput [required]="field.required" [formControlName]="field.name"
+                                               [cpOutputFormat]="'hex'"
+                                               [colorPicker]="forms[coin.id].get(field.name).value"
+                                               [cpPosition]="'left'"
+                                               (colorPickerChange)="setColor($event, field.name, forms[coin.id])"
+                                               [style.background]="forms[coin.id].get(field.name).value"
+                                               [style.color]="invert(forms[coin.id].get(field.name).value, true)">
+                                        <!-- <mat-color-picker></mat-color-picker> -->
+                                    </mat-form-field>
+                                </ng-template>
+                                <ng-template ngSwitchDefault>
+                                    <mat-form-field [appearance]="'standard'" class="coin-field">
+                                        <mat-label>{{field.label}}</mat-label>
+                                        <input matInput [required]="field.required" [formControlName]="field.name"
+                                               type="text"
+                                               [placeholder]="field.placeholder">
+                                    </mat-form-field>
+                                </ng-template>
+                            </ng-container>
+                        </ng-container>
+                        <!-- </div> -->
+                        <div class="form__row form__row_fs">
+                            <button mat-raised-button type="submit" class="form__btn" [color]="'accent'"
+                                    [disabled]="forms[coin.id].invalid">Save
+                            </button>
+                            <button mat-raised-button (click)="OnDelete.emit(coin)" type="button" class="form__btn gray"
+                                    [color]="'warn'">Delete
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+    <div class="actions">
+        <button mat-raised-button type="button" (click)="OnAdd.emit()" class="form__btn" [color]="'accent'">Add coin
+        </button>
+    </div>
+</div>

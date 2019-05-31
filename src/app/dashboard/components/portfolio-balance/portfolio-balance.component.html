@@ -1,0 +1,42 @@
+<app-panel-wrap
+        [title]="balance ? 'Portfolio Balance' : 'Take the Risk Quiz'"
+        [classes]="{ main: 'panel asset', body: 'panel__body balance' }"
+>
+    <ng-container *ngIf="balance; else: empty">
+        <div class="balance__total">
+            {{ balance.symbol }}{{ balance.total | number }}
+        </div>
+        <app-up-or-down [value]="balance.changeTo.percent">
+            <div class="balance__change-to">
+                {{ balance.changeTo.percent }}% ({{ balance.symbol
+                }}{{ balance.changeTo.currency | number }})
+            </div>
+        </app-up-or-down>
+        <div class="btn-cnt">
+            <button
+                    [routerLink]="['/invest', 'buy']"
+                    mat-raised-button
+                    [color]="'accent'"
+                    class="form__btn balance__btn btn mat-elevation-z0"
+            >
+                Top Up
+            </button>
+        </div>
+    </ng-container>
+</app-panel-wrap>
+<ng-template #empty>
+    <div class="balance__img"><img src="/assets/images/test.png" alt=""/></div>
+    <div class="balance__text">
+        Take the quiz to work out which Skraps Portfolio is best suited for you
+    </div>
+    <div class="btn-cnt">
+        <button
+                [routerLink]="['/quiz', 'start']"
+                mat-raised-button
+                [color]="'accent'"
+                class="form__btn balance__btn btn mat-elevation-z0"
+        >
+            Take the Quiz
+        </button>
+    </div>
+</ng-template>

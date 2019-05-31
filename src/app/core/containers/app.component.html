@@ -1,0 +1,3 @@
+<app-header-container *ngIf="(user$ | async) && !(hide$ | async)"></app-header-container>
+<router-outlet></router-outlet>
+<app-footer *ngIf="(user$ | async) && !(hide$ | async)"></app-footer>

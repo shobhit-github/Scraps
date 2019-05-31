@@ -1,0 +1,12 @@
+@media screen and (max-width: 767px) {
+  .main-menu {
+    margin-left: -34px;
+    margin-right: -6px;
+  }
+  .main-menu.mat-tab-nav-bar.main-menu_ico .mat-tab-link,
+  .main-menu .mat-tab-header.main-menu_ico .mat-tab-link {
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}

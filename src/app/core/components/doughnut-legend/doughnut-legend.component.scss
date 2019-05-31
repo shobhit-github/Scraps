@@ -1,0 +1,159 @@
+@import '../../../../assets/styles/variables';
+
+:host {
+  display: block;
+  position: relative;
+  max-width: 100%;
+  flex-grow: 1;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.legend {
+  display: block;
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+
+  &.is-rich {
+    display: flex;
+    align-items: center;
+
+    .legend__item {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      padding-right: 3.65vw;
+      margin-bottom: 0;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #f2f2f2;
+      }
+    }
+
+    .legend__list {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      transition: .2s;
+      @media screen and (max-width: 767px) {
+        position: static;
+      }
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    height: max-content;
+    overflow: visible;
+  }
+}
+
+.legend__title {
+  color: #036da1;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  text-align: center;
+  margin-bottom: 17px;
+}
+
+.legend__list {
+  overflow: hidden;
+  max-width: 100%;
+
+  &.contains-active {
+    .legend__item:not(.active) {
+      filter: grayscale(100%);
+      opacity: .5;
+    }
+  }
+}
+
+.legend__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    align-items: normal;
+  };
+}
+
+.legend__col {
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+
+  &:nth-child(2n - 1) {
+    flex-grow: 1;
+    overflow: hidden;
+  }
+
+  &:nth-child(2n) {
+    flex-shrink: 0;
+  }
+}
+
+.legend__col_rich {
+  align-items: flex-end;
+
+  .legend__name {
+    color: $gray;
+  }
+
+  .legend__value {
+    &:not(:first-child) {
+      color: $primary;
+      margin-left: 16px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    margin-top: 15px;
+  }
+}
+
+.legend__icon {
+  margin-right: 9px;
+}
+
+.legend__name {
+  color: $gray;
+  font-size: 16px;
+  font-weight: 600;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.legend__value {
+  color: $gray-medium;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  &_currency-real {
+    min-width: 100px;
+    text-align: right;
+    margin-left: 20px;
+    color: $primary;
+    @media screen and (max-width: 767px) {
+      margin-top: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .legend {
+    &.is-rich {
+      min-width: 0;
+    }
+  }
+}

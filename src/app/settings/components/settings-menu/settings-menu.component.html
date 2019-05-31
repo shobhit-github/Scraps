@@ -1,0 +1,5 @@
+<nav mat-tab-nav-bar [disableRipple]="true" [color]="'accent'" class="main-menu main-menu_vertical">
+    <a mat-tab-link [active]="item.link === activeUrl" *ngFor="let item of links" [routerLink]="item.link">
+        <mat-icon inline="true" fontSet="skraps-icons" fontIcon="icon-{{item.icon}}"></mat-icon>
+        {{ item.hint }} </a>
+</nav>

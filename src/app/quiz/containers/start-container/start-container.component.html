@@ -1,0 +1,34 @@
+<app-preloader [height]="'455px'" *ngIf="!(riskLoaded$ | async); else loaded"></app-preloader>
+<ng-template #loaded>
+
+    <div *ngIf="!isQuizStart || (count$ | async) <= 0; else finish" class="start">
+        <a href="javascript:void(0)" class="start__icon">
+            <img src="/assets/svg/question.svg" alt="">
+        </a>
+        <div class="start__img">
+            <img src="/assets/images/test.png" height="168" alt="">
+        </div>
+        <div class="start__text">
+            This quiz will help you understand your risk tolerance in investing. For each question, use the sliding
+            scale to
+            what best
+            describes you. We will suggest the best Skraps Portfolio that matches your Risk Score.
+        </div>
+        <div class="start__btn-cnt">
+            <button mat-raised-button [disabled]="(quizLength$ | async) === 0" [color]="'accent'"
+                    href="javascript:void(0)" (click)="begin()" class="btn btn_full">
+                Let’s
+                Begin!
+            </button>
+            <button *ngIf="!isQuizStart" mat-raised-button type="button" (click)="onSkip()" [color]="'warn'"
+                    class="form__btn btn btn_gray btn_full mat-elevation-z0">Skip
+                Quiz
+            </button>
+        </div>
+    </div>
+
+    <ng-template #finish>
+        <app-finish [count]="count$ | async"></app-finish>
+    </ng-template>
+
+</ng-template>

@@ -1,0 +1,30 @@
+<div class="news" infinite-scroll (scrolled)="onScrollDown()" *ngIf="!root; else notRoot">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+</div>
+<ng-template #notRoot>
+    <div class="news">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+    </div>
+</ng-template>
+<ng-template #content>
+    <h1 class="news__maintitle">{{title}}</h1>
+    <div class="news__list" *ngFor="let itemList of lists">
+        <div class="news__item" [ngClass]="{'news__item_subpage': subpage}"
+             *ngFor="let item of itemList; let i = index">
+            <a [routerLink]="['/news', item.type, item.slug]" class="news__img news__link">
+                <img [src]="item.img_src" alt="item.title" *ngIf="item.img_src">
+            </a>
+            <div class="news__content">
+                <div class="news__meta">
+                    <a [routerLink]="['/news', item.type]" class="news__cat news__link">{{item.category}}</a>
+                    <div class="news__date">{{item.pub_date | displayDate:'D MMMM'}}</div>
+                </div>
+                <h3 class="news__title">
+                    <a class="news__link" [routerLink]="['/news', item.type, item.slug]">{{item.title}}</a>
+                </h3>
+                <div class="news__text" *ngIf="i === 0 && !subpage"
+                     [innerHTML]="item.description | substring: {limit: 207}"></div>
+            </div>
+        </div>
+    </div>
+</ng-template>

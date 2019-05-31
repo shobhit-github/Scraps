@@ -1,0 +1,31 @@
+<div class="panel">
+    <div class="panel__header">
+        <h2 class="panel__title">Linked Accounts</h2>
+    </div>
+    <div class="panel__body form">
+        <ng-template ngFor [ngForOf]="banks" let-banklist>
+            <div class="form__row form__row_fs" *ngFor="let account of banklist.accounts">
+                <div class="panel__item">
+                    <div class="panel__item-logo">
+                        <img src="data:image/png;base64,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"
+                             alt="">
+                    </div>
+                    <div class="panel__item-content">
+                        <div class="panel__item-title">{{account.name}}</div>
+                        <div class="panel__item-text">{{account.type | titlecase}} {{account.mask}}</div>
+                    </div>
+                    <div class="panel__item-action">
+                        <button type="button" (click)="OnRemoveBank.emit(account)" disabled="true" mat-raised-button
+                                class="btn btn_gray mat-elevation-z0">Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <div class="form__row form__row_fs form__row_mb-more">
+            <button type="button" [routerLink]="['/banks', 'add', 'bank']" color="accent" mat-raised-button
+                    class="form__btn form__btn_multiple btn mat-elevation-z0">Link New Account
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="form" *ngIf="!forgotSuccess">
+    <form class="form__cnt" (ngSubmit)="onSubmit()" [formGroup]="forgot">
+        <h1 class="form__title">Forgot Password?</h1>
+        <h2 class="form__subtitle form__subtitle_small">Enter the Email Address used during sign up and an email will be
+            sent to reset your password.</h2>
+        <mat-form-field>
+            <input autocomplete="off" matInput placeholder="Your Email" [formControlName]="'email'"
+                   [errorStateMatcher]="matcher">
+            <mat-error
+                    *ngIf="forgot.controls['email'].hasError('email') && !forgot.controls['email'].hasError('required')">
+                Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="forgot.controls['email'].hasError('required')">
+                Email is required
+            </mat-error>
+        </mat-form-field>
+        <div class="form__row form__row_mb-more">
+            <button *ngIf="forgot.hasError('invalid')" mat-raised-button [color]="'accent'"
+                    class="form__btn btn btn_full mat-elevation-z0"
+                    [disabled]="forgot.invalid">Email not found
+            </button>
+            <button *ngIf="!forgot.hasError('invalid')" mat-raised-button [color]="'accent'"
+                    class="form__btn btn btn_full mat-elevation-z0"
+                    [disabled]="forgot.invalid">Reset Password
+            </button>
+        </div>
+        <div class="form__row">
+      <span class="form__text">
+        Already have an account?
+      </span>
+            <a class="form__ref form__ref_big form__ref_accent form__ref_ml" [routerLink]="['/auth', 'login']">Sign
+                In</a>
+        </div>
+    </form>
+</div>
+<div class="form" *ngIf="forgotSuccess">
+    <div class="form__cnt form__cnt_forgot">
+        <div class="form__row form__row_mb-big">
+            <h1 class="form__title form__title_without">We resent the email!</h1>
+        </div>
+        <div class="form__row form__row_mb-more form__row_mih">
+            <img [src]="step > 1 ? '/assets/svg/email-resend.svg' : '/assets/svg/email.svg'" alt="">
+        </div>
+        <h2 class="form__subtitle form__subtitle_small">For security, we’ve sent an email to {{email}}. Click the link
+            in the email to reset your password.</h2>
+        <div class="form__row form__row_mb-more">
+      <span class="form__text">
+        Didn’t get the email?
+      </span>
+            <a class="form__ref form__ref_big form__ref_accent form__ref_ml" href="javascript:void(0)"
+               (click)="onNext()">Resend Email</a>
+        </div>
+        <div class="form__row" *ngIf="step > 1">
+      <span class="form__text">
+        Having issues?
+      </span>
+            <a href="https://skraps.io/#contact" class="form__ref form__ref_big form__ref_accent form__ref_ml">Contact
+                Us</a>
+        </div>
+    </div>
+</div>

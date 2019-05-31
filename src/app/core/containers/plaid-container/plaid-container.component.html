@@ -1,0 +1,16 @@
+<app-plaid-wrap *ngIf="!isRegister" [plaidStatus]="plaidStatus$ | async">
+    <form class="form" [formGroup]="form">
+        <div class="form__cnt">
+            <mat-form-field [appearance]="'standard'" class="field-system">
+                <mat-select [formControlName]="'system'" [value]="'plaid'">
+                    <mat-option [value]="'plaid'">Plaid</mat-option>
+                    <mat-option [value]="'yodlee'">Yodlee</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <app-yodlee-container *ngIf="form.get('system').value === 'yodlee'" [isReady]="isReady" [isRegister]="true"
+                                  class="from-register-page"></app-yodlee-container>
+            <app-plaid [ready]="ready" *ngIf="form.get('system').value === 'plaid'"></app-plaid>
+        </div>
+    </form>
+</app-plaid-wrap>
+<app-plaid [ready]="ready" *ngIf="isRegister" [isRegister]="isRegister"></app-plaid>

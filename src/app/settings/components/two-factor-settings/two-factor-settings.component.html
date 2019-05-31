@@ -1,0 +1,21 @@
+<div class="panel">
+    <div class="panel__header">
+        <h2 class="panel__title">Two Factor Authentication</h2>
+    </div>
+    <div class="panel__body form">
+        <div class="">
+            <div *ngIf="data.two_factor_auth" class="panel__text">You have Two-Factor Authentication enabled</div>
+            <div *ngIf="!data.two_factor_auth" class="panel__text">You have not set up Two-Factor <em>Authentication
+                (Mobile number required)</em></div>
+            <div *ngIf="data.two_factor_auth" class="panel__text panel__text_badge panel__text_badge-yes">SECURE</div>
+            <div *ngIf="!data.two_factor_auth" class="panel__text panel__text_badge panel__text_badge-no">NOT SECURE
+            </div>
+        </div>
+        <div class="form__row form__row_fs form__row_mb-more">
+            <button type="button" (click)="OnToggleTFA.emit(data.two_factor_auth ? 0 : 1)" mat-raised-button
+                    class="form__btn form__btn_multiple btn btn_gray mat-elevation-z0">{{data.two_factor_auth ? 'Disable' :
+                'Enable'}} Authentication
+            </button>
+        </div>
+    </div>
+</div>

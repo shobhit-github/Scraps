@@ -1,0 +1,4 @@
+<app-portfolio [coinList]="coinList$ | async" (OnPage)="getPage($event)" [list]="portfolioList$ | async"
+               [totalRows]="totalRows$ | async" (OnAdd)="addLocalPortfolio()"
+               (OnSubmit)="savePortfolio($event)" (OnDelete)="deletePortfolio($event)" (removeOpt)="removeOpt($event)"
+               (addOpt)="addOpt($event)"></app-portfolio>

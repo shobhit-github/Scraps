@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="127" height="107"
+     viewBox="0 0 127 107">
+    <defs>
+        <path id="22evc" d="M712.04 378.9l-52.24 31.3"/>
+        <path id="22evd" d="M728.28 378.94l52.03 32.17"/>
+        <path id="22eve"
+              d="M661.99 329.94h116.58c1.28 0 1.9 1.57.95 2.45l-57.67 53.28c-.98.9-2.48.9-3.46 0l-57.44-53.07a1.53 1.53 0 0 1 1.04-2.66"/>
+        <path id="22evf"
+              d="M777.17 411.76h-114.1a5 5 0 0 1-5-5v-72.73a5 5 0 0 1 5-4.99h114.1a5 5 0 0 1 5 5v72.72a5 5 0 0 1-5 5z"/>
+        <path id="22eva"
+              d="M702.06 323.97c0 9.92 8.05 17.96 17.99 17.96 9.93 0 17.98-8.04 17.98-17.96a17.98 17.98 0 1 0-35.97 0z"/>
+        <path id="22evh" d="M697.57 346.43h44.96V301.5h-44.96z"/>
+        <path id="22evb"
+              d="M714.72 323.28l4.12 8.33-8.62-8.33zm10.1 0l-.25.48-4.35 8.81-.03-.06-4.57-9.23zm5.4 0l-8.6 8.3 4.1-8.3zm-10-5.4l1.97 2.11 2.35 2.52h-8.65l1.34-1.44zm-.91-.2l-.42.45-4.1 4.38h-4.63l4.56-4.83zm6.4 0l4.57 4.83h-4.63l-4.52-4.83z"/>
+        <path id="22evj" d="M705.66 337.06h29.11V313.2h-29.11z"/>
+        <clipPath id="22evg">
+            <use xlink:href="#22eva"/>
+        </clipPath>
+        <clipPath id="22evi">
+            <use xlink:href="#22evb"/>
+        </clipPath>
+    </defs>
+    <g>
+        <g transform="translate(-657 -306)">
+            <g>
+                <use fill="#fff" fill-opacity="0" stroke="#adc9ef" stroke-miterlimit="50" stroke-width="1.8"
+                     xlink:href="#22evc"/>
+            </g>
+            <g>
+                <use fill="#fff" fill-opacity="0" stroke="#adc9ef" stroke-miterlimit="50" stroke-width="1.8"
+                     xlink:href="#22evd"/>
+            </g>
+            <g>
+                <g>
+                    <use fill="#183e7a" xlink:href="#22eve"/>
+                </g>
+                <g>
+                    <use fill="#fff" fill-opacity="0" stroke="#adc9ef" stroke-miterlimit="50" stroke-width="1.8"
+                         xlink:href="#22evf"/>
+                </g>
+            </g>
+            <g>
+                <g/>
+                <g clip-path="url(#22evg)">
+                    <use fill="#1dc5bf" xlink:href="#22evh"/>
+                </g>
+            </g>
+            <g>
+                <g/>
+                <g clip-path="url(#22evi)">
+                    <use fill="#183e7a" xlink:href="#22evj"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

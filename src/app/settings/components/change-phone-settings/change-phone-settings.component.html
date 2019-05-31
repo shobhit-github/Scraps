@@ -1,0 +1,80 @@
+<form [formGroup]="formPhone" class="panel" *ngIf="step === 1" (ngSubmit)="onSendPhone(formPhone)">
+    <div class="panel__header">
+        <h2 class="panel__title">Change Mobile Number</h2>
+        <a href="javascript:void(0)" (click)="dialogRef.close()" class="panel__close">
+            <mat-icon class="icon-small" [fontSet]="'skraps-icons'" [fontIcon]="'icon-cross'"></mat-icon>
+        </a>
+    </div>
+    <div class="panel__body panel__body_single panel__body_phone form panel__body_phone-hack" #hack>
+        <div class="form__row">
+            <mat-form-field [appearance]="'standard'">
+                <mat-label>Country</mat-label>
+                <input type="tel" matInput [formControlName]="'countryControl'"
+                       [value]="formPhone.get('countryControl').value.name || ''"
+                       [matAutocomplete]="auto"/>
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let country of countryList$ | async" [value]="country">
+                        {{ country.name }}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="panel__body panel__body_phone form">
+        <div class="form__row form__row_sb">
+            <mat-form-field class="phone phone_code">
+                <mat-select autofocus [formControlName]="'countryControl'"
+                            [value]="formPhone.get('countryControl').value || ''" required>
+                    <mat-option *ngFor="let country of countryList" [value]="country">+{{country.dialCode}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="phone phone_number">
+                <input matInput placeholder="Mobile Number" formControlName="number" [errorStateMatcher]="matcher"
+                       [textMask]="decimalMask">
+                <mat-error *ngIf="formPhone.controls['number'].hasError('exist')">
+                    Phone number is exist
+                </mat-error>
+                <mat-error *ngIf="formPhone.controls['number'].hasError('required')">
+                    Phone number is required
+                </mat-error>
+                <mat-error
+                        *ngIf="formPhone.controls['number'].hasError('pattern') || formPhone.controls['number'].hasError('minlength')">
+                    Phone number is invalid
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form__row">
+            <button *ngIf="!pending" mat-raised-button [color]="'accent'"
+                    class="form__btn btn btn_full mat-elevation-z0" [disabled]="formPhone.invalid || pending">Send Code
+            </button>
+            <button *ngIf="pending" mat-raised-button [color]="'accent'" class="form__btn btn btn_full mat-elevation-z0"
+                    [disabled]="true">Loading...
+            </button>
+        </div>
+    </div>
+</form>
+<form [formGroup]="formCode" class="panel" *ngIf="step === 2" (ngSubmit)="onSendCode(formCode)">
+    <div class="panel__header">
+        <h2 class="panel__title">Change Mobile Number</h2>
+    </div>
+    <div class="panel__body panel__body_single panel__body_gray form">
+        <div class="form__row">
+            <h3 class="panel__title panel__title_mb">Enter the code sent to your mobile to verify your number. </h3>
+        </div>
+        <div class="form__row">
+            <mat-form-field [appearance]="'standard'">
+                <mat-label>Verification Code</mat-label>
+                <input [textMask]="codeMask" autocomplete="off" matInput [formControlName]="'code'"
+                       [errorStateMatcher]="matcher">
+                <mat-error *ngIf="formCode.get('code').hasError('pattern') || formCode.get('code').hasError('invalid')">
+                    Invalid code
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="panel__footer panel__footer_big">
+        <button mat-raised-button [color]="'accent'" cdkFocusInitial class="btn mat-elevation-z0"
+                [disabled]="formCode.invalid">Verify
+        </button>
+    </div>
+</form>

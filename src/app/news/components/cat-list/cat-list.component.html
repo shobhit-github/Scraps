@@ -1,0 +1,8 @@
+<div class="cat">
+    <h1 class="cat__maintitle">{{title}}</h1>
+    <div class="cat__list">
+        <a [routerLink]="['/news', item.slug]" class="cat__item" *ngFor="let item of list; let i = index">
+            <img [src]="item.image" alt="item.slug" *ngIf="item.image">
+        </a>
+    </div>
+</div>

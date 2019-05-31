@@ -1,0 +1,20 @@
+<div class="panel">
+    <div class="panel__header">
+        <h2 class="panel__title">Notifications</h2>
+    </div>
+    <form *ngIf="form" class="panel__body form" (ngSubmit)="onSubmit(form)" [formGroup]="form">
+        <div class="form__row form__row_fs">
+            <mat-checkbox *ngFor="let item of list" [formControlName]="item.notification.id"
+                          [checked]="item.status">{{item.notification.label}}</mat-checkbox>
+        </div>
+        <div class="form__row form__row_fs form__row_mb-more">
+            <button mat-raised-button [color]="'accent'" class="form__btn form__btn_multiple btn mat-elevation-z0"
+                    [disabled]="form.invalid">Save
+            </button>
+            <button (click)="toggleDesktop()" type="button" mat-raised-button
+                    class="form__btn form__btn_multiple btn btn_gray mat-elevation-z0"
+                    [disabled]="form.invalid">{{isDesktop ? 'Disable' : 'Enable'}} Desktop Notifications
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,11 @@
+:host() {
+  display: block;
+  width: 100%;
+  margin-bottom: 40px;
+
+  .video {
+    width: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+}

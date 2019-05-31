@@ -1,0 +1,13 @@
+<div class="cnt">
+    <div class="cnt__row">
+        <div class="cnt__col">
+            <app-register [registerFailed]="registerFailed$ | async" [isAuth]="(isAuth$ | async)"
+                          [pending]="(pending$ | async)" [registerSuccess]="(registerSuccess$ | async)"
+                          (OnLogouted)="onLogout()" (OnSubmited)="onRegister($event)" (OnReset)="onReset()"
+                          (OnNext)="onNext()"></app-register>
+        </div>
+        <div class="cnt__col cnt__col_big cnt__col_img">
+            <app-mobile-app></app-mobile-app>
+        </div>
+    </div>
+</div>

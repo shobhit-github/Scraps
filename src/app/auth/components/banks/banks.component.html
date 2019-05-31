@@ -1,0 +1,29 @@
+<a class="back" href="javascript:void(0)" (click)="onBack()" [ngClass]="activeClass" *ngIf="step === 2">
+    <img src="/assets/svg/icon-back.svg" alt="go back">
+</a>
+
+<div class="form" *ngIf="form">
+    <form class="form__cnt" [formGroup]="form">
+        <h1 class="form__title">Connect your Bank</h1>
+        <h2 class="form__subtitle form__subtitle_small">Skraps connects to your bank, so it can invest the change from
+            your
+            purchases.</h2>
+        <div class="form__row">
+            <mat-form-field [appearance]="'standard'" class="portfolio-field">
+                <mat-select [formControlName]="'system'" [value]="'plaid'">
+                    <mat-option [value]="'plaid'">Plaid</mat-option>
+                    <mat-option [value]="'yodlee'">Yodlee</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <app-plaid-container *ngIf="form.get('system').value === 'plaid'" (OnConnected)="OnSkip.emit()"
+                                 [isReady]="isReady" [isRegister]="true"
+                                 class="from-register-page"></app-plaid-container>
+            <app-yodlee-container *ngIf="form.get('system').value === 'yodlee'" (opened)="mbConnected = true"
+                                  (OnConnected)="OnSkip.emit()" [isReady]="isReady" [isRegister]="true"
+                                  class="from-register-page"></app-yodlee-container>
+            <button mat-raised-button type="button" (click)="OnSkip.emit()" [color]="mbConnected ? 'accent' : 'warn'"
+                    class="form__btn btn btn_gray btn_full mat-elevation-z0">{{mbConnected ? 'Done' : 'Skip
+                Connect'}}</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,17 @@
+<div class="cnt">
+    <app-login
+            (loginFailed)="onLogin($event)"
+            (OnLogouted)="onLogouted()"
+            (OnResend)="onResend()"
+            (OnReset)="onReset()"
+            (OnNext)="onNext($event)"
+            (OnLogin)="onLogin($event)"
+            [pending]="pending$ | async"
+            [loginSuccess]="loginSuccess$ | async"
+            [loginFailed]="loginFailed$ | async"
+            [codeSuccess]="codeSuccess$ | async"
+            [codeFailed]="codeFailed$ | async"
+            [timer]="timer$ | async"
+            [isAuth]="isAuth$ | async"
+            [isTFA]="isTFA$ | async"></app-login>
+</div>

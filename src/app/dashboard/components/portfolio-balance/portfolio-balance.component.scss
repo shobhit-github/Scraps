@@ -1,0 +1,24 @@
+:host {
+  width: 30%;
+  max-width: 100%;
+  display: block;
+  flex-shrink: 0;
+}
+
+app-panel-wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 991px) {
+  :host {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .btn-cnt {
+    width: 100%;
+  }
+}

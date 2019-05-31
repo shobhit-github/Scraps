@@ -1,0 +1,25 @@
+<form class="type" [formGroup]="form" (ngSubmit)="onSend()">
+    <div [formControlName]="'message'" class="type__field" contenteditable="true" [propValueAccessor]="'innerText'"
+         cdkFocusInitial
+         #textField (focus)="displayPlaceholder = false" (blur)="focus($event)" (keydown)="sendByEnter($event)"
+         (blur)="(form.get('message').value === '' || form.get('message').value === null) && displayPlaceholder = true">
+    </div>
+    <span class="type__placeholder" *ngIf="displayPlaceholder" [@enterAnimation]>Type your message</span>
+    <div class="type__footer">
+        <div class="type__controls">
+            <div class="type__control">
+                <ng-content select="[file-template]"></ng-content>
+                <ng-content select="[voice-template]"></ng-content>
+                <ng-content select="[emoji-template]"></ng-content>
+            </div>
+        </div>
+        <div class="type__file-preview">
+            <ng-content select="[preview-template]"></ng-content>
+        </div>
+        <div class="type__send">
+            <button mat-raised-button class="btn btn_full btn_gray mat-elevation-z0"
+                    [disabled]="pending || form.invalid">Send
+            </button>
+        </div>
+    </div>
+</form>

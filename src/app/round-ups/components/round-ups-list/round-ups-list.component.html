@@ -1,0 +1,58 @@
+<div class="panel">
+    <div class="panel__header panel__header_round-ups">
+        <div
+                mat-tab-nav-bar
+                [disableRipple]="true"
+                [color]="'accent'"
+                class="main-menu main-menu_ico"
+        >
+            <a
+                    (click)="select(item.type)"
+                    mat-tab-link
+                    [active]="item.type === ERoundUpFilter[activeType]"
+                    *ngFor="let item of links"
+            >
+                {{ item.hint }}
+            </a>
+        </div>
+    </div>
+    <div
+            class="panel__body panel__body_without"
+            *ngIf="list.length > 0; else: empty"
+    >
+        <div class="rups">
+            <div class="rups__item" *ngFor="let item of list">
+                <div class="rups__value">+${{ item.round }}</div>
+                <div class="rups__content">
+                    <div class="rups__name">${{ item.amount }} {{ item.name }}</div>
+                    <div class="rups__date">{{ item.date }}</div>
+                </div>
+                <div class="rups__icon">
+                    <mat-icon fontSet="skraps-icons" fontIcon="icon-diamond"></mat-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel__footer panel__footer_round-ups" *ngIf="meta">
+        <app-download-report></app-download-report>
+        <app-pager
+                (toPage)="toPage.emit({ page: $event, type: activeType })"
+                [activePage]="meta.current_page"
+                [count]="meta.total"
+        ></app-pager>
+    </div>
+</div>
+
+<ng-template #empty>
+    <div class="round-ups-empty">
+        <img
+                src="/assets/images/flower.png"
+                srcset="/assets/images/flower@2x.png 2x, /assets/images/flower@3x.png 3x"
+                class="flower-img"
+        />
+        <div class="panel__text panel__text_center panel__text_round-ups">
+            Your Round-Ups will show here once you connect your cards and start
+            investing spare change.
+        </div>
+    </div>
+</ng-template>

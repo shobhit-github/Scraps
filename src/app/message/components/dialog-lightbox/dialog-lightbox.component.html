@@ -1,0 +1,15 @@
+<div class="panel">
+    <div class="panel__header">
+        <h2 class="panel__title">{{attachedDoc.name}}</h2>
+        <a href="javascript:void(0)" (click)="dialogRef.close()" class="panel__close">
+            <mat-icon class="icon-small" [fontSet]="'skraps-icons'" [fontIcon]="'icon-cross'"></mat-icon>
+        </a>
+    </div>
+    <div class="panel__body panel__body_single form">
+        <div class="docs">
+            <div class="docs__item">
+                <img [src]="attachedDoc.url" [alt]="attachedDoc.name">
+            </div>
+        </div>
+    </div>
+</div>

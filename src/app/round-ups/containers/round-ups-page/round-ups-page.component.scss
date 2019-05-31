@@ -1,0 +1,41 @@
+.wrap {
+  // padding-left: 10px;
+  // padding-right: 10px;
+  width: 1060px;
+}
+
+.round-ups {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  flex-wrap: wrap;
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-top: 37px;
+
+  &__col {
+    width: 50%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  &__title {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.cnt {
+  display: block;
+  background-color: #f8fafb;
+  padding-bottom: 50px;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 991px) {
+  .round-ups {
+    &__col {
+      width: 100%;
+    }
+  }
+}

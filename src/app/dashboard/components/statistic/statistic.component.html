@@ -1,0 +1,17 @@
+<div class="stats">
+    <ng-container *ngFor="let stat of stats | keyvalue; let i = index">
+        <div class="stats__item {{stat.key}}" *ngIf="i">
+            <div class="stats__name">{{ statsTitle[i] }}</div>
+            <ng-container *ngIf="stat.value.increase !== undefined; else noIncrease">
+                <app-up-or-down [value]="stat.value.increase" class="inherit-color stats__sum">
+                    <div>${{ stat.value.value | number }}</div>
+                </app-up-or-down>
+            </ng-container>
+            <ng-template #noIncrease>
+                <div class="stats__sum" [ngClass]="{ stats__sum_minus: stat.value.value > 0 }">
+                    ${{ stat.value.value | number }}
+                </div>
+            </ng-template>
+        </div>
+    </ng-container>
+</div>

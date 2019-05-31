@@ -1,0 +1,36 @@
+<div class="form">
+    <form class="form__cnt" (ngSubmit)="onSubmit()" [formGroup]="form">
+        <h1 class="form__title">Sign in to
+            <br> Skraps Admin Panel</h1>
+        <mat-form-field>
+            <input autocomplete="off" matInput placeholder="Your Email" [formControlName]="'email'"
+                   [errorStateMatcher]="matcher">
+            <mat-error *ngIf="form.controls['email'].hasError('email') && !form.controls['email'].hasError('required')">
+                Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="form.controls['email'].hasError('required')">
+                Email is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input autocomplete="off" type="password" matInput placeholder="Password" [formControlName]="'password'"
+                   [errorStateMatcher]="matcher">
+            <!-- <mat-error *ngIf="(form.controls['password'].hasError('pattern') || form.controls['password'].hasError('minlength')) && !form.controls['password'].hasError('required')">
+              Minimum 8 characters, at least one small and large letters, a digit and one of the characters ($, @, #, !, %, *, ?, &)
+            </mat-error> -->
+            <mat-error *ngIf="form.controls['password'].hasError('required')">
+                Password is required
+            </mat-error>
+        </mat-form-field>
+        <div class="form__row form__row_mb-more">
+            <button *ngIf="!form.hasError('invalid')" mat-raised-button [color]="'accent'"
+                    class="form__btn btn btn_full mat-elevation-z0"
+                    [disabled]="form.invalid">Sign In
+            </button>
+            <button *ngIf="form.hasError('invalid')" mat-raised-button [color]="'accent'"
+                    class="form__btn btn btn_full mat-elevation-z0"
+                    [disabled]="form.invalid">Login or password invalid
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,43 @@
+<div class="panel">
+    <div class="panel__header">
+        <h2 class="panel__title">Address</h2>
+    </div>
+    <form class="panel__body form" (ngSubmit)="onSubmit(form)" [formGroup]="form">
+        <div class="form__row form__row_sb">
+            <mat-form-field [appearance]="'standard'">
+                <mat-label>Street Address</mat-label>
+                <input autocomplete="off" matInput [formControlName]="'street'" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="form.get('street').hasError('maxlength')">
+                    Street Address is very long
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field [appearance]="'standard'">
+                <mat-label>City</mat-label>
+                <input autocomplete="off" matInput [formControlName]="'city'" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="form.get('city').hasError('maxlength')">
+                    City is very long
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field [appearance]="'standard'">
+                <mat-label>Country</mat-label>
+                <input autocomplete="off" matInput [formControlName]="'country'" [errorStateMatcher]="matcher">
+                <mat-icon matSuffix class="icon-small" [fontSet]="'skraps-icons'" [fontIcon]="'icon-lock'"></mat-icon>
+                <mat-error *ngIf="form.get('country').hasError('maxlength')">
+                    Country is very long
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field [appearance]="'standard'">
+                <mat-label>Postal Code/ ZIP Code</mat-label>
+                <input autocomplete="off" matInput [formControlName]="'code'" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="form.get('code').hasError('maxlength')">
+                    Postal Code/ ZIP Code is very long
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form__row form__row_fs form__row_mb-more">
+            <button mat-raised-button [color]="'accent'" class="form__btn form__btn_multiple btn mat-elevation-z0"
+                    [disabled]="form.invalid">Save
+            </button>
+        </div>
+    </form>
+</div>

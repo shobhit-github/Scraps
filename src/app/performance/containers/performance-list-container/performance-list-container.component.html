@@ -1,0 +1,87 @@
+<div class="cnt">
+    <div class="wrap">
+        <div class="portfolio-page">
+            <h1 class="title title_mb">Performance</h1>
+            <div class="tabs portfolio-page__item">
+                <div class="tabs__header">
+                    <a href="javascript:void" [ngClass]="{active: tabStatus === ETabStatus.overview}"
+                       (click)="tabStatus = ETabStatus.overview"
+                       class="tabs__item">Past</a>
+                    <!--<a href="javascript:void" [ngClass]="{active: tabStatus === ETabStatus.breakdown}"-->
+                    <!--(click)="tabStatus = ETabStatus.breakdown"-->
+                    <!--class="tabs__item">Potential</a>-->
+                </div>
+                <div class="tabs__body">
+                    <div class="panel">
+                        <div class="panel__header panel__header_ico">
+                            <app-statistic [stats]="stats$ | async"></app-statistic>
+                            <div class="filters">
+                                <div class="graph__title">
+                                    <p class="graph__title-text">Portfolio History</p>
+                                    <div class="graph__title-underline"></div>
+                                </div>
+                                <app-period-filter
+                                        [filter]="filter$ | async"
+                                        (changedFilter)="setFilter($event)"
+                                ></app-period-filter>
+                            </div>
+                        </div>
+                        <div class="panel__body panel__body_performance">
+                            <app-portfolio-performance
+                                    [curve]="curve"
+                                    [yAxisTicks]="undefined"
+                                    [isMax]="true"
+                                    [isFull]="true"
+                                    [filterName]="filterName"
+                            ></app-portfolio-performance>
+                            <div class="dont-work">
+                                <img class="flower-img" src="/assets/images/flower.png"
+                                     srcset="/assets/images/flower@2x.png 2x, /assets/images/flower@3x.png 3x">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <app-performance-stat [performanceList]="performanceList$ | async"></app-performance-stat>
+
+        <div class="perform-page">
+            <h1 class="perform-page__title">Recent Activity</h1>
+            <div class="panel">
+                <div class="panel__header panel__header_perform">
+                    <app-ico-tabs class="performance-tabs" [activeCat]="activeCateg"
+                                  [links]="categTabs" (activeLink)="setActiveLink($event)"></app-ico-tabs>
+                </div>
+                <app-recent-table
+                        [recentActivity]="(recentActivity$ | async).recentActivityData.data"></app-recent-table>
+                <div class="panel__body panel__body_perform"
+                     *ngIf="(recentActivity$ | async).recentActivityData.data.length > 0; else: empty">
+                    <div class="perform-page__pager">
+                        <app-pager [type]="activeCateg" [activePage]="activePage"
+                                   [count]="(recentActivity$ | async).recentActivityData.meta.last_page"
+                                   (toPage)="setActivePage($event)"></app-pager>
+                    </div>
+                </div>
+                <ng-template #empty>
+                    <div class="recent-activity-empty">
+                        <img
+                                src="/assets/images/flower.png"
+                                srcset="/assets/images/flower@2x.png 2x, /assets/images/flower@3x.png 3x"
+                                class="flower-img recent-activity-empty__img"
+                        />
+                        <div class="panel__text panel__text_center panel__text_round-ups">
+                            Your
+                            <span *ngIf="activeCateg === 'All'">Recent Activity</span>
+                            <span *ngIf="activeCateg === 'Round-Ups'">Round-Ups</span>
+                            <span *ngIf="activeCateg === 'Invested'">Invested</span>
+                            will show here once you
+                            <br>
+                            complete your first transaction.
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

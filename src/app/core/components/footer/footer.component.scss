@@ -1,0 +1,37 @@
+@import '../../../../assets/styles/variables';
+
+.footer {
+  display: flex;
+  background-color: #f8fafb;
+  align-items: center;
+  height: 44px;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  &__text {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    color: $gray-medium;
+    display: block;
+    margin-right: 8px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    display: block;
+    color: $primary;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    text-decoration: underline;
+    margin-right: 8px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

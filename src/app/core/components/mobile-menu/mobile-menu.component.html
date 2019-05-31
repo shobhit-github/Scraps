@@ -1,0 +1,8 @@
+<button mat-button [mat-menu-trigger-for]="menu" class="menu-toggler" [ngStyle]="{color: color}">
+    <mat-icon>menu</mat-icon>
+</button>
+<mat-menu x-position="before" #menu="matMenu" class="main-menu">
+    <a mat-menu-item *ngFor="let item of links" [routerLink]="item.link">
+        <mat-icon *ngIf="item.icon" inline="true" fontSet="skraps-icons" fontIcon="icon-{{item.icon}}"></mat-icon>
+        {{ item.hint }} </a>
+</mat-menu>

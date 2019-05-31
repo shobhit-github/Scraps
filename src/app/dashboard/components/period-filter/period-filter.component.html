@@ -1,0 +1,5 @@
+<div mat-tab-nav-bar [disableRipple]="true" [color]="'accent'" class="main-menu main-menu_ico">
+    <a mat-tab-link [active]="item.text === filter.period" *ngFor="let item of links" href="javascript:void(0)"
+       (click)="changeFilter(item.text)">
+        {{ item.text }} </a>
+</div>

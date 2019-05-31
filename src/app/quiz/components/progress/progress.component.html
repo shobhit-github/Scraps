@@ -1,0 +1,27 @@
+<app-preloader [height]="'400px'" *ngIf="!question; else questionTpl"></app-preloader>
+<ng-template #questionTpl>
+    <div class="progress">
+        <div class="progress__actions">
+            <a class="back active" href="javascript:void(0)" *ngIf="prevId" (click)="OnChage.emit(prevId)">
+                <img src="/assets/svg/icon-back.svg" alt="go back">
+            </a>
+            <a class="back active back_revert" href="javascript:void(0)" *ngIf="nextId" (click)="OnChage.emit(nextId)">
+                <img src="/assets/svg/icon-back.svg" alt="go forward">
+            </a>
+        </div>
+        <div class="progress__status" [ngStyle]="{width: percentStyle}"></div>
+        <div class="progress__text">{{question?.text}}</div>
+        <div class="progress__question">
+            <ul class="progress__variants">
+                <li class="progress__variant" *ngFor="let variant of question?.options">
+                    <a href="javascript:void(0)" [ngClass]="{'active': variant.id === activeId}"
+                       (click)="score = variant.score; activeId = variant.id"
+                       class="progress__variant-radio">{{variant.text}}</a>
+                </li>
+            </ul>
+            <button mat-raised-button [color]="'accent'" class="btn btn_full" (click)="answer()"
+                    [disabled]="score === -1">Continue
+            </button>
+        </div>
+    </div>
+</ng-template>

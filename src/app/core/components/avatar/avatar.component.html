@@ -1,0 +1,6 @@
+<div class="avatar" [ngClass]="{'avatar_big': big, 'avatar_bigger': bigger, 'avatar_biggest': biggest}">
+    <img [src]="user.avatar" alt="user.name" *ngIf="user.avatar">
+    <div class="avatar__text" *ngIf="!user.avatar">
+        {{user.name | avatarByName}}
+    </div>
+</div>

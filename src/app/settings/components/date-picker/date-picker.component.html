@@ -1,0 +1,16 @@
+<div class="form__row form__row_fs">
+    <div class="panel__item panel__item_settings panel__item_small">
+        <div class="panel__item-content">
+            <div class="panel__item-title">{{dateTime | displayDate: 'Do MMMM YYYY'}}</div>
+        </div>
+        <div class="panel__item-action">
+            <button type="button" (click)="date.open()" mat-icon-button
+                    class="btn btn_custom-icon-arrow mat-elevation-z0">
+                <mat-icon [inline]="true" [fontIcon]="'icon-simple-arrow'" [fontSet]="'si'"></mat-icon>
+                <mat-icon [inline]="true" [fontIcon]="'icon-simple-arrow'" [fontSet]="'si'"></mat-icon>
+            </button>
+            <input matInput (dateChange)="changedDate.emit($event.value)" [matDatepicker]="date" class="hidden-input">
+            <mat-datepicker #date [dir]="'left'"></mat-datepicker>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<app-panel-wrap
+        [title]="'Wallet Settings'"
+        [classes]="{body: 'panel__body panel__body_fw'}"
+>
+    <form class="form" [formGroup]="form">
+        <div class="form__row">
+            <mat-form-field>
+                <mat-label>Public Key</mat-label>
+                <input autocomplete="off"
+                       matInput maxlength="255"
+                       [formControlName]="'public_key'"
+                >
+            </mat-form-field>
+        </div>
+        <div class="form__row">
+            <mat-form-field>
+                <mat-label>Private Key</mat-label>
+                <input autocomplete="off"
+                       matInput maxlength="255"
+                       [formControlName]="'private_key'"
+                >
+            </mat-form-field>
+        </div>
+        <div class="form__row form__row_fs">
+            <button mat-raised-button
+                    [color]="'accent'"
+                    class="form__btn form__btn_multiple btn mat-elevation-z0"
+                    (click)="clickSaveWalletKeys()"
+            >
+                Save
+            </button>
+        </div>
+    </form>
+</app-panel-wrap>

@@ -1,0 +1,3 @@
+<app-coin (OnPage)="getPage($event)" [list]="coinList$ | async" [totalRows]="totalRows$ | async"
+          (OnAdd)="addLocalCoin()"
+          (OnSubmit)="saveCoin($event)" (OnDelete)="deleteCoin($event)"></app-coin>

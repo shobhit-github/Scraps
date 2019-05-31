@@ -1,0 +1,50 @@
+@import '../../../../assets/styles/variables';
+
+.menu-btn {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 58px;
+  outline: none;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    transform: rotate(45deg);
+    border: 2px solid #ffffff;
+    border-top: 0;
+    border-left: 0;
+  }
+}
+
+.user-card {
+  padding-top: 18px;
+  padding-bottom: 22px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  app-avatar {
+    display: block;
+    margin-bottom: 9px;
+  }
+
+  &__name {
+    color: $primary;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  &__email {
+    color: $gray;
+    font-size: 16px;
+    font-weight: 400;
+  }
+}

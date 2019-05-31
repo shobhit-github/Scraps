@@ -1,0 +1,92 @@
+.link-card {
+  margin: auto;
+
+  &__img {
+    width: 133px;
+    max-width: 100%;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #4c4b61;
+    @media screen and (min-width: 1200px) {
+      white-space: pre-line;
+    }
+  }
+}
+
+app-panel-wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.link-card__btn {
+  width: 184px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+:host {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.btn-cnt {
+  display: flex;
+}
+
+.justify-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wallet-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  &__text {
+    margin: 0 15px;
+    font-size: 16px;
+    color: #6f6e8d;
+    font-weight: 600;
+  }
+}
+
+.icon-wallet {
+  color: #c8cdd7;
+}
+
+.icon-link-icon {
+  color: #eb003e;
+}
+
+@media screen and (max-width: 991px) {
+  :host {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .btn-cnt {
+    width: 100%;
+  }
+}

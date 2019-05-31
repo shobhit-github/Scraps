@@ -1,0 +1,3 @@
+<app-notifications-settings [list]="notificationsList$ | async" [isDesktop]="isDesktop$ | async"
+                            (OnToggleDesktop)="toggleDesktop($event)"
+                            (OnSubmit)="saveNotifications($event)"></app-notifications-settings>

@@ -1,0 +1,45 @@
+<div class="dashboard-page">
+    <div class="wrap wrap_sm">
+        <h2 class="title title_mb">Overview</h2>
+        <div class="dashboard-head">
+            <app-portfolio-balance
+                    [balance]="balance$ | async"
+            ></app-portfolio-balance>
+            <app-asset-balance
+                    [assetBalance]="assetBalance$ | async"
+            ></app-asset-balance>
+        </div>
+        <h2 class="title title_mb">Performance</h2>
+        <app-performance-stat
+                [performanceList]="performanceList$ | async"
+        ></app-performance-stat>
+        <div class="panel">
+            <div class="panel__header panel__header_ico">
+                <app-statistic [stats]="stats$ | async"></app-statistic>
+                <div class="filters">
+                    <div class="graph__title">
+                        <p class="graph__title-text">Portfolio History</p>
+                        <div class="graph__title-underline"></div>
+                    </div>
+                    <app-period-filter
+                            [filter]="filter$ | async"
+                            (changedFilter)="setFilter($event)"
+                    ></app-period-filter>
+                </div>
+            </div>
+            <div class="panel__body panel__body_performance">
+                <app-portfolio-performance
+                        [curve]="curve"
+                        [yAxisTicks]="undefined"
+                        [isMax]="true"
+                        [isFull]="true"
+                        [filterName]="filterName"
+                ></app-portfolio-performance>
+                <div class="dont-work">
+                    <img class="flower-img" src="/assets/images/flower.png"
+                         srcset="/assets/images/flower@2x.png 2x, /assets/images/flower@3x.png 3x">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

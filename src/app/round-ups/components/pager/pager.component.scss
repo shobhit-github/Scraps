@@ -1,0 +1,35 @@
+@import '../../../../assets/styles/variables';
+
+:host {
+  width: 100%;
+  display: block;
+}
+
+.pager {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+
+  &__item {
+    text-decoration: none;
+    display: block;
+    margin-right: 14px;
+    color: $gray-medium;
+    font-size: 14px;
+    font-weight: 400;
+
+    &.active {
+      color: $primary;
+      font-weight: 700;
+    }
+
+    &_red {
+      color: $accent;
+    }
+
+    &_left {
+      transform: rotate(180deg);
+    }
+  }
+}

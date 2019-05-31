@@ -1,0 +1,21 @@
+@import '../../../../assets/styles/variables';
+
+.preview {
+  position: relative;
+}
+
+.preview__remove {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #fff;
+  display: flex;
+  line-height: 1;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: $accent;
+  font-size: 14px;
+  text-decoration: none;
+  padding: 2px;
+}

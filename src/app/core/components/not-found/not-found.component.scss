@@ -1,0 +1,15 @@
+.cnt {
+  display: flex;
+  background-color: #f8fafb;
+  min-height: calc(100vh - 181px);
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  text-align: center;
+}
+
+@media screen and (max-width: 991px) {
+  .cnt {
+    height: calc(100vh - 96px);
+  }
+}

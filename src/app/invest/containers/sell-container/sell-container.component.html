@@ -1,0 +1,65 @@
+<div class="cnt">
+    <div class="wrap">
+        <div class="tabs-page">
+            <h1 class="title title_mb">Buy/Sell</h1>
+            <div class="tabs tabs-page__item">
+                <div class="tabs__header">
+                    <a [routerLink]="['/invest', 'buy']" class="tabs__item">Buy</a>
+                    <a [routerLink]="['/invest', 'sell']" class="tabs__item active"
+                    >Sell</a
+                    >
+                </div>
+                <div class="tabs__body">
+                    <!-- sell -->
+                    <app-panel-wrap class="panel_tab active">
+                        <!-- Amount -->
+                        <h3 class="panel__label">Amount</h3>
+                        <app-amount
+                                [amount]="amount$ | async"
+                                (settedAmount)="setAmount($event)"
+                                [size]="'small'"
+                        ></app-amount>
+                        <div class="hr hr_sell"></div>
+                        <!-- Sell From -->
+                        <h3 class="panel__label">Sell From</h3>
+                        <app-choose
+                                (selectedPortfolio)="setPortfolio($event)"
+                                [portfolio]="portfolio$ | async"
+                                [portfolioList]="portfolioList$ | async"
+                                [size]="'small'"
+                        ></app-choose>
+                        <!-- Deposit To -->
+                        <h3 class="panel__label">Deposit To</h3>
+                        <app-payment
+                                (selectedPayment)="setPayment($event)"
+                                [payment]="payment$ | async"
+                                [paymentList]="paymentList$ | async"
+                                [size]="'small'"
+                        ></app-payment>
+                        <button
+                                mat-raised-button
+                                [color]="'accent'"
+                                class="form__btn btn btn_full mat-elevation-z0"
+                                [disabled]="isErr$ | async"
+                                (click)="onSubmit()"
+                        >
+                            Sell Now
+                        </button>
+                    </app-panel-wrap>
+                    <!-- /sell -->
+                </div>
+            </div>
+
+            <app-panel-wrap
+                    class="tabs-page__item panel_adapt"
+                    [classes]="{ body: 'panel__body panel__body_stats' }"
+            >
+                <app-statistic-portfolio
+                        [currency]="currency$ | async"
+                        [total]="total$ | async"
+                        [content]="content"
+                ></app-statistic-portfolio>
+            </app-panel-wrap>
+        </div>
+    </div>
+</div>

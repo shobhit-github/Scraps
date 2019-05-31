@@ -1,0 +1,3 @@
+<button (click)="openModal()" [disabled]="!creds?.TOKEN" mat-raised-button [color]="'accent'"
+        class="form__btn btn btn_full mat-elevation-z0">
+    {{!!creds?.TOKEN ? 'Connect Bank' : 'Loading...'}}</button>

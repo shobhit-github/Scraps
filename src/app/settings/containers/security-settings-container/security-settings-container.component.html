@@ -1,0 +1,6 @@
+<app-phone-settings [step]="step$ | async" [data]="securitySettings$ | async"
+                    (OnChangePhone)="initChangePhone()"></app-phone-settings>
+<app-two-factor-settings [data]="securitySettings$ | async" (OnToggleTFA)="toggleTFA($event)"></app-two-factor-settings>
+<app-bank-accounts-settings [banks]="(securitySettings$ | async).plaidContent"
+                            (OnRemoveBank)="removeBank($event)"></app-bank-accounts-settings>
+<!--<app-close-account-settings (OnCloseAccount)="onCloseAccount()"></app-close-account-settings>-->

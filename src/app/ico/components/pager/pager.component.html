@@ -1,0 +1,35 @@
+<div class="pager">
+    <a *ngFor="let page of pageList" [routerLink]="['/ico', 'list', type, page]" class="pager__item"
+       [ngClass]="{active: page === activePage}">{{page}}</a>
+    <a *ngIf="dots" [routerLink]="['/ico', 'list', type, dots]" class="pager__item">
+        <svg id="SVGDoc" width="15" height="3" xmlns="http://www.w3.org/2000/svg" version="1.1"
+             xmlns:xlink="http://www.w3.org/1999/xlink"
+             xmlns:avocode="https://avocode.com/" viewBox="0 0 15 3">
+            <defs>
+                <path d="M1164,1242.5c0,-0.82843 0.67157,-1.5 1.5,-1.5c0.82843,0 1.5,0.67157 1.5,1.5c0,0.82843 -0.67157,1.5 -1.5,1.5c-0.82843,0 -1.5,-0.67157 -1.5,-1.5z"
+                      id="Path-0"/>
+                <path d="M1158,1242.5c0,-0.82843 0.67157,-1.5 1.5,-1.5c0.82843,0 1.5,0.67157 1.5,1.5c0,0.82843 -0.67157,1.5 -1.5,1.5c-0.82843,0 -1.5,-0.67157 -1.5,-1.5z"
+                      id="Path-1"/>
+                <path d="M1152,1242.5c0,-0.82843 0.67157,-1.5 1.5,-1.5c0.82843,0 1.5,0.67157 1.5,1.5c0,0.82843 -0.67157,1.5 -1.5,1.5c-0.82843,0 -1.5,-0.67157 -1.5,-1.5z"
+                      id="Path-2"/>
+            </defs>
+            <g transform="matrix(1,0,0,1,-1152,-1241)">
+                <g>
+                    <use xlink:href="#Path-0" fill="#6f6e8d" fill-opacity="1"/>
+                </g>
+                <g>
+                    <use xlink:href="#Path-1" fill="#6f6e8d" fill-opacity="1"/>
+                </g>
+                <g>
+                    <title>Oval</title>
+                    <use xlink:href="#Path-2" fill="#6f6e8d" fill-opacity="1"/>
+                </g>
+            </g>
+        </svg>
+    </a>
+    <a *ngIf="activePage < pageList[pageList.length - 1]" [routerLink]="['/ico', 'list', type, activePage + 1]"
+       class="pager__item pager__item_red"
+       [ngClass]="{active: page === activePage}">
+        <mat-icon fontSet="skraps-icons" fontIcon="icon-simple-arrow" [inline]="true"></mat-icon>
+    </a>
+</div>

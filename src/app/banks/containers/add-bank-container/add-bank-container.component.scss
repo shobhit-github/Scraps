@@ -1,0 +1,12 @@
+:host() {
+  display: block;
+  width: calc(50% - 10px);
+  height: 727px;
+}
+
+@media screen and (max-width: 991px) {
+  :host() {
+    width: 100%;
+    height: auto;
+  }
+}

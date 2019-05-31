@@ -1,0 +1,3 @@
+<app-progress [alreadyAnswer]="activeQuestionAnswer$ | async" [nextId]="nextId$ | async" [prevId]="prevId$ | async"
+              (OnChage)="onChange($event)" (OnAnswer)="answer($event)"
+              [percents]="percents$ | async" [question]="activeQuestion$ | async"></app-progress>

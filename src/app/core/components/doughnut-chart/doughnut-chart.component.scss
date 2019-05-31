@@ -1,0 +1,89 @@
+:host {
+  display: block;
+  max-width: 100%;
+  width: 170px;
+  height: 170px;
+  position: relative;
+  margin-top: 23px;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+:host(.is-panel) {
+  margin-top: -30px;
+  @media screen and (max-width: 991px) {
+    margin-top: 0;
+  }
+}
+
+:host(.is-round-ups) {
+  margin-top: 0;
+  width: 190px;
+  height: 190px;
+  transform: rotate(180deg);
+}
+
+:host(.is-rich) {
+  margin-top: 0;
+  width: 190px;
+  height: 190px;
+  margin-right: 20px;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fadein 2s;
+}
+
+.add {
+  position: absolute;
+  animation: fadein 2s;
+  top: 25px;
+  right: 31px;
+}
+
+.skraps-icon {
+  flex-shrink: 0;
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  background-color: #1dc5bf;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .mat-icon {
+    width: 60%;
+    height: auto;
+  }
+
+  &__percent {
+    background-color: #036da1;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+
+    &-value {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    &.show {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

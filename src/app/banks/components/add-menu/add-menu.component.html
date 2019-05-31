@@ -1,0 +1,26 @@
+<div class="panel">
+    <div class="panel__header">
+        <h2 class="panel__title">Accounts</h2>
+    </div>
+    <div class="panel__body form">
+        <div class="panel__banks">
+            <a href="javascript:void(0)" [routerLink]="['/banks', 'add', 'card']" routerLinkActive="active"
+               class="panel__banks-item">
+                <img src="/assets/images/card-small.png" alt=""
+                     srcset="/assets/images/card-big@2x.png 2x, /assets/images/card-big@3x.png 3x">
+                <div class="panel__text panel__text_main">Credit/Debit Card</div>
+                <div class="panel__text">Invest small amounts</div>
+            </a>
+            <a [routerLink]="['/banks', 'add', 'bank']" routerLinkActive="active" class="panel__banks-item">
+                <img src="/assets/images/bank.png" alt="">
+                <div class="panel__text panel__text_main">Bank Account</div>
+                <div class="panel__text">Invest Large Amounts</div>
+            </a>
+            <a href="javascript:void(0)" style="cursor: not-allowed;" routerLinkActive="active"
+               class="panel__banks-item panel__banks-item_big">
+                <div class="panel__text panel__text_main">View Connected Accounts</div>
+                <div class="panel__text">View all bank and credit/debit cards linked to your Skraps account.</div>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,3 @@
+<app-demographics [employmentOptList]="employmentOptList$ | async" [incomeOptList]="incomeOptList$ | async"
+                  (OnSkip)="OnCompleted.emit()"
+                  (OnSubmit)="onSubmit($event)"></app-demographics>

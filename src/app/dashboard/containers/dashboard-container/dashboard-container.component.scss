@@ -1,0 +1,56 @@
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.dashboard-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+
+.wrap_sm {
+  width: 1060px;
+}
+
+.dashboard-page {
+  padding-top: 37px;
+}
+
+:host {
+  padding-bottom: 130px;
+  display: block;
+  background-color: #f8fafb;
+}
+
+.to-right {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 991px) {
+  .dashboard-head {
+    flex-wrap: wrap;
+  }
+  .asset {
+    margin-left: 0;
+  }
+  app-period-filter {
+    align-self: flex-end;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .filters {
+    width: 100%;
+    overflow: visible;
+    position: relative;
+    margin-left: -6px;
+  }
+  .to-right {
+    padding-left: 15px;
+  }
+}

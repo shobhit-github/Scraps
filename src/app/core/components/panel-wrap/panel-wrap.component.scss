@@ -1,0 +1,32 @@
+:host {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+:host(.panel_tab) {
+  // transition: opacity 0.1s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+
+  &.active {
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .panel {
+    border-radius: 0 12px 12px;
+    margin-bottom: 0;
+    @media screen and (max-width: 767px) {
+      border-radius: 0 0 12px 12px;
+    }
+  }
+}
+
+:host(.panel_adapt) {
+  .panel {
+    height: 100%;
+  }
+}

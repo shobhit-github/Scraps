@@ -1,0 +1,8 @@
+<form [formGroup]="form" class="search" *ngIf="form">
+    <mat-form-field appearance="standard">
+        <button mat-button mat-icon-button aria-label="Submit" class="search__btn">
+            <mat-icon [color]="'accent'" fontSet="skraps-icons" [inline]="true" fontIcon="icon-search"></mat-icon>
+        </button>
+        <input type="text" placeholder="User or Text Message" matInput [formControlName]="'query'"/>
+    </mat-form-field>
+</form>

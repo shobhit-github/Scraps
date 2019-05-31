@@ -1,0 +1,21 @@
+<div class="panel">
+    <div class="panel__header">
+        <h2 class="panel__title">Phone Number</h2>
+    </div>
+    <form class="panel__body form" [formGroup]="form">
+        <div class="form__row form__row_sb">
+            <mat-form-field [appearance]="'standard'">
+                <mat-label>Mobile Number</mat-label>
+                <mat-icon matSuffix class="icon-small" [fontSet]="'skraps-icons'" [fontIcon]="'icon-lock'"></mat-icon>
+                <input autocomplete="off" matInput [formControlName]="'phone'">
+            </mat-form-field>
+        </div>
+        <div class="form__row form__row_fs form__row_mb-more">
+            <button type="button" (click)="OnChangePhone.emit()" mat-raised-button
+                    class="form__btn form__btn_multiple btn btn_gray mat-elevation-z0"
+            >Change Mobile Number
+            </button>
+        </div>
+    </form>
+</div>
+

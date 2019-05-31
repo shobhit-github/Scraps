@@ -1,0 +1,21 @@
+<div class="portfolio">
+    <div class="portfolio__avatar">
+        <app-avatar [user]="user" [biggest]="true"></app-avatar>
+        <div class="portfolio__status" [ngClass]="{ 'portfolio__status_active': user.is_online }"></div>
+    </div>
+    <div class="portfolio__title">{{ user.name }}</div>
+    <div class="portfolio__items">
+        <!-- <div class="portfolio__item">
+          <span class="portfolio__item_title">Followers</span>
+          <span class="portfolio__item_value">{{user.followers || 0}}</span>
+        </div> -->
+        <div class="portfolio__item">
+            <span class="portfolio__item_title">Portfolio users</span>
+            <span class="portfolio__item_value">{{user.portfolio_users || 0}}</span>
+        </div>
+        <div class="portfolio__item">
+            <span class="portfolio__item_title">Roi</span>
+            <span class="portfolio__item_value">{{user.roi || 0}}%</span>
+        </div>
+    </div>
+</div>

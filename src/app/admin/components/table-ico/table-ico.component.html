@@ -1,0 +1,116 @@
+<div [ngClass]="{'mat-elevation-z2': shadow, 'table': true, 'table_shadow': shadow}">
+    <mat-paginator (page)="OnPage.emit($event)" #paginator [length]="totalRows" [pageIndex]="0" [pageSize]="100"
+                   [pageSizeOptions]="[100]"></mat-paginator>
+
+    <mat-accordion displayMode="flat" multi class="mat-table mat-table_center">
+        <section matSort class="mat-elevation-z2 mat-header-row">
+            <span class="mat-header-cell" mat-sort-header="logo">Logo</span>
+            <span class="mat-header-cell" mat-sort-header="ico">Type</span>
+            <span class="mat-header-cell" mat-sort-header="project">Project</span>
+            <span class="mat-header-cell" mat-sort-header="pre_ico_start">Pre ICO Start</span>
+            <span class="mat-header-cell" mat-sort-header="pre_ico_end">Pre ICO End</span>
+            <span class="mat-header-cell" mat-sort-header="start_date">ICO Start</span>
+            <span class="mat-header-cell" mat-sort-header="end_date">ICO End</span>
+        </section>
+
+        <mat-expansion-panel *ngFor="let ico of list; trackBy: byId">
+            <mat-expansion-panel-header class="mat-row">
+        <span class="mat-cell">
+          <img [src]="ico.logo" class="ico-img" [default]="'/assets/images/mock-ico.png'" alt=""></span>
+                <span class="mat-cell" [title]="ico.ico">{{ico.ico}}</span>
+                <span class="mat-cell" [title]="ico.project">{{ico.project}}</span>
+                <span class="mat-cell"
+                      [title]="ico.pre_ico_start | displayDate">{{ico.pre_ico_start | displayDate}}</span>
+                <span class="mat-cell" [title]="ico.pre_ico_end | displayDate">{{ico.pre_ico_end | displayDate}}</span>
+                <span class="mat-cell" [title]="ico.start_date | displayDate">{{ico.start_date | displayDate}}</span>
+                <span class="mat-cell" [title]="ico.end_date | displayDate">{{ico.end_date | displayDate}}</span>
+            </mat-expansion-panel-header>
+            <div class="ico-data">
+                <form [formGroup]="forms[ico.id]" class="form" *ngIf="forms[ico.id]"
+                      (ngSubmit)="onSubmit(forms[ico.id], ico.id)">
+                    <div>
+                        <div class="form__row form__row_fs">
+                            <ng-container *ngFor="let field of fieldsConfig; trackBy: byName(ico)">
+                                <ng-container [ngSwitch]="field.type">
+                                    <ng-template
+                                            [ngSwitchCase]="field.type === 'text' || field.type === 'email' ? field.type : ''">
+                                        <mat-form-field [appearance]="'standard'" class="ico-field">
+                                            <mat-label>{{field.label}}</mat-label>
+                                            <input [required]="field.required" matInput [formControlName]="field.name"
+                                                   [type]="field.type"
+                                                   [placeholder]="field.placeholder">
+                                        </mat-form-field>
+                                    </ng-template>
+                                    <ng-template [ngSwitchCase]="'file'">
+                                        <div class="ico-field ico-field_col">
+                                            <mat-label>{{field.label}}</mat-label>
+                                            <div class="ico-cnt">
+                                                <img [src]="filePreviewList[ico.id] || ico.logo" class="ico-img"
+                                                     [default]="'/assets/images/mock-ico.png'"
+                                                     alt="">
+                                                <button mat-raised-button type="button" class="form__btn"
+                                                        [color]="'accent'" (click)="addFile(fileInput)">Upload
+                                                </button>
+                                                <input style="display: none" type="file"
+                                                       (change)="fileChange($event, ico.id)"
+                                                       accept=".bmp, .jpg, .jpeg, .png, .gif"
+                                                       #fileInput>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                    <ng-template [ngSwitchCase]="'checkbox'">
+                                        <div class="ico-field">
+                                            <mat-checkbox [required]="field.required"
+                                                          [formControlName]="field.name">{{field.label}}</mat-checkbox>
+                                        </div>
+                                    </ng-template>
+                                    <ng-template [ngSwitchCase]="'select'">
+                                        <mat-form-field [appearance]="'standard'" class="ico-field">
+                                            <mat-label>{{field.label}}</mat-label>
+                                            <mat-select [required]="field.required" [formControlName]="field.name"
+                                                        [value]="field.options[0]"
+                                                        [placeholder]="'timezone'">
+                                                <mat-option *ngFor="let opt of field.options"
+                                                            [value]="opt">{{opt}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </ng-template>
+                                    <ng-template [ngSwitchCase]="'date'">
+                                        <mat-form-field [appearance]="'standard'" class="ico-field">
+                                            <mat-label>{{field.label}}</mat-label>
+                                            <input matInput [required]="field.required" [formControlName]="field.name"
+                                                   [matDatepicker]="date">
+                                            <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+                                            <mat-datepicker #date></mat-datepicker>
+                                        </mat-form-field>
+                                    </ng-template>
+                                    <ng-template ngSwitchDefault>
+                                        <mat-form-field [appearance]="'standard'" class="ico-field">
+                                            <mat-label>{{field.label}}</mat-label>
+                                            <input matInput [required]="field.required" [formControlName]="field.name"
+                                                   type="text"
+                                                   [placeholder]="field.placeholder">
+                                        </mat-form-field>
+                                    </ng-template>
+                                </ng-container>
+                            </ng-container>
+                        </div>
+                        <div class="form__row form__row_fs">
+                            <button mat-raised-button type="submit" class="form__btn" [color]="'accent'"
+                                    [disabled]="forms[ico.id].invalid">Save
+                            </button>
+                            <button mat-raised-button (click)="OnDelete.emit(ico)" type="button" class="form__btn gray"
+                                    [color]="'warn'">Delete
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+    <div class="actions">
+        <button mat-raised-button type="button" (click)="OnAdd.emit()" class="form__btn" [color]="'accent'">Add ICO
+        </button>
+    </div>
+</div>

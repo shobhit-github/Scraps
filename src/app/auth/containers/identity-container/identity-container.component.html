@@ -1,0 +1,25 @@
+<ng-container *ngIf="!isPopup; else popup">
+    <app-identity [activeClass]="activeClass" [isPending]="isPending$ | async" [uploadSuccess]="uploadSuccess$ | async"
+                  [uploadFailed]="uploadFailed$ | async"
+                  [form]="photoGroup" [type]="type$ | async" (OnSkip)="onCompleted()" (OnCompleted)="onCompleted()"
+                  (OnBack)="onBack()" (OnTypeChange)="onTypeChange($event)"
+                  (OnSubmit)="onFileUpload($event)"></app-identity>
+</ng-container>
+<ng-template #popup>
+    <div class="panel">
+        <div class="panel__header panel__header_without">
+            <!-- <h2 class="panel__title">Verify your Identity</h2> -->
+            <a href="javascript:void(0)" (click)="dialogRef.close()" class="panel__close">
+                <mat-icon class="icon-small" [fontSet]="'skraps-icons'" [fontIcon]="'icon-cross'"></mat-icon>
+            </a>
+        </div>
+        <div class="panel__body panel__body_single panel__body_identity form">
+            <app-identity [dialogRef]="dialogRef" [activeClass]="activeClass" [isPopup]="isPopup"
+                          [isPending]="isPending$ | async" [uploadSuccess]="uploadSuccess$ | async"
+                          [uploadFailed]="uploadFailed$ | async" [form]="photoGroup" [type]="type$ | async"
+                          (OnSkip)="onCompleted()" (OnCompleted)="onCompleted()"
+                          (OnBack)="onBack()" (OnTypeChange)="onTypeChange($event)"
+                          (OnSubmit)="onFileUpload($event)"></app-identity>
+        </div>
+    </div>
+</ng-template>

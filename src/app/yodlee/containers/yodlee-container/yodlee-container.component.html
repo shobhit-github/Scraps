@@ -1,0 +1,7 @@
+<!-- <app-plaid-wrap *ngIf="!isRegister" [plaidStatus]="plaidStatus$ | async">
+  <app-plaid></app-plaid>
+</app-plaid-wrap> -->
+<!-- <app-plaid *ngIf="isRegister" [isRegister]="isRegister"></app-plaid> -->
+
+<app-yodlee [form]="form$ | async" [creds]="creds$ | async" (opened)="opened.emit()"
+            (connect)="connectYodlee($event)"></app-yodlee>

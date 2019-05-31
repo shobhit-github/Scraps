@@ -1,0 +1,39 @@
+<div class="ico" *ngFor="let ico of icoList; trackBy: trackByFn">
+    <div class="ico__content">
+        <div class="ico__img">
+            <img [src]="ico.logo" [default]="'/assets/images/mock-ico.png'" alt="">
+        </div>
+        <div class="ico__body">
+            <div class="ico__header">
+
+                <h3 class="ico__title">
+                    <ng-template [ngIf]="EIcoTypes['top'] === ico.ico" [ngIfElse]="simple">
+                        <a [routerLink]="['/ico', ico.slug]">{{ico.project}}</a>
+                    </ng-template>
+                    <ng-template #simple>
+            <span>
+              {{ico.project}}
+            </span>
+                    </ng-template>
+                </h3>
+                <div class="ico__date">PRE ICO END: {{ico.pre_ico_end | displayDate}}</div>
+            </div>
+            <div class="ico__text">{{ico.line_description}}</div>
+            <div class="ico__footer">
+                <!-- <a class="ico__badge"><mat-icon [inline]="true" fontSet="skraps-icons" fontIcon="icon-fire" [color]="'accent'"></mat-icon>
+                  Hot</a> -->
+                <!-- <a class="ico__badge">Pre ICO</a> -->
+                <div class="ico__follows">
+                    <app-ico-follow *ngFor="let soc of socialLinks[ico.id]" [soc]="soc"></app-ico-follow>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a target="_blank" [href]="ico.website" class="ico__link">
+        <mat-icon [color]="'accent'" [inline]="true" style="font-weight: 600" fontSet="skraps-icons"
+                  fontIcon="icon-link"></mat-icon>
+        ICO Website
+    </a>
+
+</div>

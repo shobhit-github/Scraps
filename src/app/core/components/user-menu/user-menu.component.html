@@ -1,0 +1,22 @@
+<a href="javascript:void(0)" class="menu-btn" [matMenuTriggerFor]="userMenu">
+    <app-avatar [user]="user"></app-avatar>
+</a>
+<mat-menu #userMenu="matMenu" [class]="'user-menu'" [xPosition]="'before'">
+    <div class="user-card">
+        <app-avatar [user]="user" [big]="true"></app-avatar>
+        <div class="user-card__name">{{user.name}}</div>
+        <div class="user-card__email">{{user.email}}</div>
+    </div>
+    <button mat-menu-item [routerLink]="['/settings', 'account']">
+        <mat-icon [inline]="true" fontSet="skraps-icons" fontIcon="icon-settings"></mat-icon>
+        <span>Account Settings</span>
+    </button>
+    <button mat-menu-item routerLink="/">
+        <mat-icon [inline]="true" fontSet="skraps-icons" fontIcon="icon-support"></mat-icon>
+        <span>Support</span>
+    </button>
+    <button mat-menu-item (click)="OnLogout.emit()">
+        <mat-icon [inline]="true" fontSet="skraps-icons" fontIcon="icon-arrow"></mat-icon>
+        <span>Logout</span>
+    </button>
+</mat-menu>

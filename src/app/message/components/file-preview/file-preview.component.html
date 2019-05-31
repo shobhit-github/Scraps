@@ -1,0 +1,12 @@
+<div class="preview"
+     [ngClass]="{'preview_file': preview.url === 'insert_drive_file', 'preview_error': fileStatusList && fileStatusList[index] === 'error', 'preview_pending': fileStatusList && fileStatusList[index] === 'pending'}">
+    <img *ngIf="preview.url !== 'insert_drive_file'" [src]="preview.url" [alt]="preview.name">
+    <mat-icon *ngIf="preview.url === 'insert_drive_file'" [inline]="false" [color]="'accent'">insert_drive_file
+    </mat-icon>
+    <mat-spinner class="preview__loader" [color]="'accent'" [diameter]="20"
+                 *ngIf="fileStatusList && fileStatusList[index] === 'pending'"></mat-spinner>
+    <div class="preview__name">{{preview.name}}</div>
+    <a class="preview__remove" href="javascript:void(0)" (click)="OnRemove.emit(index)">
+        <mat-icon class="mat-18" [inline]="true">close</mat-icon>
+    </a>
+</div>

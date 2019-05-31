@@ -1,0 +1,61 @@
+<ng-container *ngIf="(info$ | async) as info">
+    <app-panel-wrap title="Card Used for Round-Ups">
+        <app-payment
+                [isSettings]="true"
+                [payment]="info.tmpCard || info.usedCard"
+                [paymentList]="info.cardList"
+                (selectedPayment)="selectCard($event)"
+        ></app-payment>
+        <div class="btn-cnt" *ngIf="info.tmpCard || info.usedCard">
+            <button
+                    class="btn mat-elevation-z0"
+                    [disabled]="!info.tmpCard || info.pending.card"
+                    [color]="'accent'"
+                    mat-raised-button
+                    (click)="save(info.tmpCard)"
+            >
+                Use New Card
+            </button>
+        </div>
+    </app-panel-wrap>
+    <app-panel-wrap title="Pause Round-Ups">
+        <ng-container *ngIf="info.status === ERoundUpsStatus.started">
+            <p class="panel__text panel__text_round-ups panel__text_mb">
+                This will pause any round-ups for the time period you select.
+            </p>
+            <div class="btn-cnt">
+                <button
+                        class="btn btn_gray mat-elevation-z0"
+                        [color]="'warn'"
+                        mat-raised-button
+                        [disabled]="info.pending.status"
+                        (click)="pause()"
+                >
+                    <mat-icon [inline]="true" style="font-size: 26px;">pause</mat-icon>
+                    Pause Round-Ups
+                </button>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="info.status !== ERoundUpsStatus.started">
+            <p class="panel__text panel__text_round-ups panel__text_mb">
+                This will pause any round-ups for the time period you select.
+            </p>
+            <div class="btn-cnt">
+                <button
+                        class="btn btn_gray mat-elevation-z0"
+                        [color]="'warn'"
+                        mat-raised-button
+                        [disabled]="info.pending.status"
+                        (click)="start()"
+                >
+                    <mat-icon [inline]="true" style="font-size: 26px;"
+                    >play_arrow
+                    </mat-icon
+                    >
+
+                    Start Round-Ups
+                </button>
+            </div>
+        </ng-container>
+    </app-panel-wrap>
+</ng-container>

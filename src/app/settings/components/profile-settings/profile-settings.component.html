@@ -1,0 +1,37 @@
+<div class="panel">
+    <div class="panel__header">
+        <h2 class="panel__title">Profile Details</h2>
+    </div>
+    <form class="panel__body panel__body_fs form" (ngSubmit)="onSubmit(form)" [formGroup]="form">
+        <div class="panel__profile">
+            <div class="panel__profile-img">
+                <img *ngIf="data.avatar" [src]="data.avatar" alt="you">
+            </div>
+            <div class="panel__profile-content">
+                <div class="panel__profile-name">Update Profile Picture</div>
+                <div class="panel__profile-text">Max 20mb</div>
+            </div>
+            <div class="panel__profile-btn">
+                <input type="file" (change)="saveFile(($event.target || $event.srcElement).files[0])" hidden #fileDialog
+                       accept="image/x-png,image/gif,image/jpeg">
+                <button (click)="fileDialog.click()" type="button" mat-raised-button
+                        class="btn btn_gray mat-elevation-z0">Upload
+                </button>
+            </div>
+        </div>
+        <div class="form__row form__row_sb">
+            <mat-form-field [appearance]="'standard'">
+                <mat-label>Nickname</mat-label>
+                <input autocomplete="off" matInput [formControlName]="'nickname'" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="form.get('nickname').hasError('required')">
+                    Nickname is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form__row form__row_fs form__row_mb-more">
+            <button mat-raised-button [color]="'accent'" class="form__btn form__btn_multiple btn mat-elevation-z0"
+                    [disabled]="form.invalid">Save
+            </button>
+        </div>
+    </form>
+</div>

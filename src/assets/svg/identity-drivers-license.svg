@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="32"
+     viewBox="0 0 40 32">
+    <defs>
+        <path id="lmu1a" d="M566.84 487.92a.53.53 0 0 1-.53-.53c0-.28.24-.51.53-.51h5.23a.52.52 0 0 1 0 1.04z"/>
+        <path id="lmu1b" d="M566.84 483.59a.53.53 0 0 1-.53-.53c0-.28.24-.52.53-.52h10.46a.52.52 0 0 1 0 1.05z"/>
+        <path id="lmu1c" d="M566.84 479.26a.53.53 0 0 1-.53-.53c0-.28.24-.52.53-.52h10.46a.52.52 0 0 1 0 1.05z"/>
+        <path id="lmu1d"
+              d="M558.86 468.29a1.56 1.56 0 0 0-1.57 1.56v21.82c0 .43.18.82.46 1.11.29.29.69.45 1.1.45h32.44a1.55 1.55 0 0 0 1.57-1.56v-21.82a1.57 1.57 0 0 0-1.57-1.56z"/>
+        <path id="lmu1e"
+              d="M582.14 482.41c-.16 0-.31.1-.42.28-.1.18-.17.43-.17.7v13.81c0 .27.07.52.17.7.11.18.26.29.42.29h12.15c.16 0 .3-.1.41-.29.11-.17.18-.43.18-.7v-13.8c0-.28-.07-.53-.18-.7-.1-.18-.25-.29-.41-.29z"/>
+        <path id="lmu1f" d="M566.84 474.93a.53.53 0 0 1-.53-.53c0-.28.24-.52.53-.52h10.46a.52.52 0 0 1 0 1.05z"/>
+        <path id="lmu1g" d="M593.74 497.93a5.72 5.72 0 0 0-9.74-3.4c-.9.89-1.5 2.07-1.65 3.4z"/>
+        <path id="lmu1h"
+              d="M589.84 488a2.58 2.58 0 0 0-3.6 0 2.52 2.52 0 0 0-.04 3.55l.04.04a2.57 2.57 0 0 0 3.6 0 2.52 2.52 0 0 0 0-3.6"/>
+    </defs>
+    <g>
+        <g transform="translate(-556 -467)">
+            <g>
+                <use fill="#036da1" xlink:href="#lmu1a"/>
+            </g>
+            <g>
+                <use fill="#036da1" xlink:href="#lmu1b"/>
+            </g>
+            <g>
+                <use fill="#036da1" xlink:href="#lmu1c"/>
+            </g>
+            <g>
+                <use fill="#fff" fill-opacity="0" stroke="#adc9f0" stroke-miterlimit="50" stroke-width=".72"
+                     xlink:href="#lmu1d"/>
+            </g>
+            <g>
+                <use fill="#fff" xlink:href="#lmu1e"/>
+                <use fill="#fff" fill-opacity="0" stroke="#183e7a" stroke-miterlimit="50" stroke-width=".72"
+                     xlink:href="#lmu1e"/>
+            </g>
+            <g>
+                <use fill="#036da1" xlink:href="#lmu1f"/>
+            </g>
+            <g>
+                <use fill="#183e7a" xlink:href="#lmu1g"/>
+            </g>
+            <g>
+                <use fill="#183e7a" xlink:href="#lmu1h"/>
+            </g>
+        </g>
+    </g>
+</svg>

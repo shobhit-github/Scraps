@@ -1,0 +1,127 @@
+<div class="message">
+    <div
+            class="message__conversation"
+            [ngClass]="{ active: mobileMenuActive$ | async }"
+    >
+        <div class="message__conversation-head">
+            <app-dialog-jump
+                    (click)="openDialog({ isSearch: true })"
+            ></app-dialog-jump>
+            <app-dialog-search (OnSubmit)="search($event)"></app-dialog-search>
+        </div>
+        <div class="message__conversation-body">
+            <app-dialog-list *ngIf="(filterDialogList$ | async)?.length < 1">
+                <app-dialog-list-item
+                        [search]="searchQuery$ | async"
+                        (OnSelect)="selectDialog($event)"
+                        [item]="item"
+                        *ngFor="let item of (dialogList$ | async); trackBy: byId"
+                        [isActive]="
+            (selectedDialog$ | async)?.conversation_id === item.conversation_id
+          "
+                ></app-dialog-list-item>
+            </app-dialog-list>
+            <app-dialog-list *ngIf="(filterDialogList$ | async)?.length > 0">
+                <app-dialog-list-item
+                        [search]="searchQuery$ | async"
+                        (OnSelect)="selectDialog($event)"
+                        [item]="item"
+                        *ngFor="let item of (filterDialogList$ | async); trackBy: byId"
+                        [isActive]="
+            (selectedDialog$ | async)?.conversation_id === item.conversation_id
+          "
+                ></app-dialog-list-item>
+            </app-dialog-list>
+        </div>
+    </div>
+    <div class="message__chat">
+        <a href="javascript:void(0)" (click)="toggleMenu()" class="message__toggle">
+            <mat-icon [inline]="true">{{
+                (mobileMenuActive$ | async) ? 'arrow_downward' : 'assessment'
+                }}</mat-icon>
+        </a>
+        <app-chat
+                [searchQuery]="searchQuery$ | async"
+                (OnLoadMessages)="loadMessages($event)"
+                (OnOpenDialog)="openDialog($event)"
+                [messageList]="messageList$ | async"
+                [filterMessageList]="(selectedDialog$ | async)?.filterMessageList"
+                [user]="user$ | async"
+                [sender]="(selectedDialog$ | async)?.user || (currentUser$ | async)"
+                [isNew]="!!(currentUser$ | async)"
+        ></app-chat>
+        <div
+                class="message__type"
+                *ngIf="(selectedDialog$ | async) || (currentUser$ | async)"
+        >
+            <app-type
+                    (OnSend)="sendMessage($event)"
+                    [userId]="
+          (selectedDialog$ | async)?.user?.id || (currentUser$ | async)?.id
+        "
+                    [success]="successSend$ | async"
+                    [pending]="pending$ | async"
+            >
+                <app-add-file
+                        file-template
+                        [multiple]="true"
+                        (OnAddedFilePreview)="addFilePreview($event)"
+                        (OnFileListChanged)="loadFiles($event)"
+                ></app-add-file>
+                <app-voice-record
+                        (OnNoMicro)="onNoMicro()"
+                        (OnStart)="onStartRecord()"
+                        (OnRecord)="onRecord($event)"
+                        [inProgress]="inProgress$ | async"
+                        voice-template
+                ></app-voice-record>
+                <a
+                    #toggler
+                    href="javascript:void(0)"
+                    (click)="toggleEmoji()"
+                    emoji-template
+                    class="emoji"
+                >
+                    <img src="/assets/svg/emoji.svg" alt=""/>
+                </a>
+                <app-file-preview
+                        preview-template
+                        [preview]="preview"
+                        [index]="i"
+                        [fileStatusList]="fileStatusList$ | async"
+                        (OnRemove)="fileRemove($event)"
+                        *ngFor="let preview of (filePreviewList$ | async); let i = index"
+                ></app-file-preview>
+                <app-voice-preview
+                        preview-template
+                        [preview]="preview"
+                        [index]="i"
+                        (OnRemove)="voiceRemove($event)"
+                        *ngFor="let preview of (voicePreviewList$ | async); let i = index"
+                ></app-voice-preview>
+                <div preview-template #picker class="emoji-picker">
+                    <emoji-mart
+                            [showPreview]="false"
+                            color="#37bdf0"
+                            *ngIf="emojiPickerActive"
+                            set="emojione"
+                            (emojiClick)="addEmoji($event, typeRef.form)"
+                    ></emoji-mart>
+                </div>
+            </app-type>
+        </div>
+    </div>
+    <div
+            class="message__profile"
+            *ngIf="(selectedDialog$ | async)?.user || (currentUser$ | async)"
+    >
+        <app-portfolio-info
+                [user]="(selectedDialog$ | async)?.user || (currentUser$ | async)"
+        ></app-portfolio-info>
+        <app-portfolio-performance></app-portfolio-performance>
+        <app-portfolio-item></app-portfolio-item>
+
+        <!-- <app-portfolio-breakdown></app-portfolio-breakdown> -->
+        <!-- <img src="/assets/images/profile-mock.png" alt=""> -->
+    </div>
+</div>

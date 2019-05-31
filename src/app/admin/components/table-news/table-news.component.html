@@ -1,0 +1,50 @@
+<div [ngClass]="{'mat-elevation-z2': shadow, 'table': true, 'table_shadow': shadow}">
+    <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div>
+                    {{row.id}}
+                </div>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="slug">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Code</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div>
+                    {{row.slug}}
+                </div>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="image">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Image</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div class="table__col">
+                    <img [src]="row.image" alt="" *ngIf="row.image">
+                    <input type="file" (change)="onSubmit({event: $event, id: row.id, show: row.show})" hidden
+                           #fileDialog accept="image/x-png,image/gif,image/jpeg">
+                    <button mat-raised-button color="accent" class="table__btn"
+                            (click)="fileDialog.click()">{{row.image ? 'Change' : 'Set'}}</button>
+                </div>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="show">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                <div> Show</div>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div class="th-end">
+                    <mat-slide-toggle (change)="onSubmit({id: row.id, show: $event.checked})"
+                                      [checked]="!!row.show"></mat-slide-toggle>
+                </div>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [length]="(dataSource.data$ | async)?.length" [pageIndex]="0" [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions">
+    </mat-paginator>
+</div>

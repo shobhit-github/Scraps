@@ -1,0 +1,5 @@
+<div class="cnt">
+    <app-reset [isTokenValid]="isTokenValid$ | async" (OnSubmit)="onSubmit($event)" [pending]="pending$ | async"
+               [changePasswordSuccess]="changePasswordSuccess$ | async"
+               [changePasswordFailed]="changePasswordFailed$ | async"></app-reset>
+</div>

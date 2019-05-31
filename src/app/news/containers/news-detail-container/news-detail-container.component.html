@@ -1,0 +1,8 @@
+<app-news-detail [article]="(article$ | async)"></app-news-detail>
+<div class="cnt">
+    <div class="cnt__wrap">
+        <app-news-list [count]="limit" [activeCat]="activeCat$ | async" [subpage]="true" [list]="newsList$ | async"
+                       [title]="newsTitle"
+                       (OnScrollDown)="onScrollDown($event)" [root]="!(activeCat$ | async)"></app-news-list>
+    </div>
+</div>

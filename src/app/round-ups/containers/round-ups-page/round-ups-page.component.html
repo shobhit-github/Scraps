@@ -1,0 +1,27 @@
+<div class="cnt">
+    <div class="wrap">
+        <div class="round-ups">
+            <h2 class="title title_mb round-ups__title">Round-Ups</h2>
+            <div class="round-ups__col">
+                <app-round-ups-info
+                        class="round-ups__item"
+                        [info]="info$ | async"
+                ></app-round-ups-info>
+                <h2 class="title title_mb">Recurring Investment</h2>
+                <app-round-ups-recurring
+                        (OnSubmit)="setRecurring($event)"
+                        class="round-ups__item"
+                        [recurring]="recurring$ | async"
+                ></app-round-ups-recurring>
+            </div>
+            <div class="round-ups__col">
+                <app-round-ups-list
+                        (toPage)="toPage($event)"
+                        class="round-ups__item"
+                        [list]="list$ | async"
+                        [meta]="meta$ | async"
+                ></app-round-ups-list>
+            </div>
+        </div>
+    </div>
+</div>

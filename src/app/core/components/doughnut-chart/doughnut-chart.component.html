@@ -1,0 +1,54 @@
+<ngx-charts-pie-chart [animations]="animations" [arcWidth]="arcWidth" [ngClass]="{blur: isLock}" [scheme]="colorScheme"
+                      [results]="results" [legend]="showLegend" [labels]="showLabels" [tooltipDisabled]="true"
+                      [doughnut]="doughnut" [gradient]="gradient" (deactivate)="onDeactivate()"
+                      (activate)="onActivate($event)">
+</ngx-charts-pie-chart>
+<div class="logo" *ngIf="!isRoundUps">
+    <ng-container *ngTemplateOutlet="isLock ? lock : logo"></ng-container>
+</div>
+<ng-template #lock>
+    <svg width="38" height="38" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+            <path d="M296 1524c0-10.493 8.507-19 19-19s19 8.507 19 19-8.507 19-19 19-19-8.507-19-19z" id="a1"/>
+            <path
+                    d="M320.328 1522.289h-.536v-3.145c0-2.285-1.925-4.144-4.292-4.144s-4.292 1.859-4.292 4.144v3.145h-.537c-.923 0-1.671.722-1.671 1.613v7.485c0 .89.748 1.613 1.671 1.613h9.657c.923 0 1.672-.722 1.672-1.613v-7.485c0-.891-.749-1.613-1.672-1.613zm-7.618-3.145c0-1.486 1.251-2.694 2.79-2.694 1.539 0 2.79 1.208 2.79 2.694v3.145h-5.58z"
+                    id="b1"/>
+        </defs>
+        <g transform="translate(-296 -1505)">
+            <use xlink:href="#a1" fill="#1dc5bf"/>
+            <g>
+                <use xlink:href="#b1" fill="#183e7a"/>
+            </g>
+        </g>
+    </svg>
+</ng-template>
+<ng-template #logo>
+    <div class="skraps-icon">
+        <mat-icon inline="true" fontSet="skraps-icons" fontIcon="icon-diamond"></mat-icon>
+    </div>
+    <div class="skraps-icon skraps-icon__percent" [ngClass]="{'show': valueSelectItem}">
+        <div class="skraps-icon__percent-value">{{valueSelectItem}}%</div>
+    </div>
+</ng-template>
+<a href="javascript:void(0)" class="add" *ngIf="isAdd">
+    <svg width="29" height="29" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+            <path d="M1290 939.5c0-7.456 6.044-13.5 13.5-13.5s13.5 6.044 13.5 13.5-6.044 13.5-13.5 13.5-13.5-6.044-13.5-13.5z"
+                  id="a3"/>
+            <path
+                    d="M1308.64 939.476h-4.313v-4.312a.424.424 0 1 0-.848 0v4.312h-4.314a.424.424 0 1 0 0 .849h4.314v4.314a.424.424 0 0 0 .848 0v-4.314h4.312a.424.424 0 0 0 0-.849"
+                    id="b3"/>
+        </defs>
+        <g transform="translate(-1289 -925)">
+            <use xlink:href="#a3" fill="#fff"/>
+            <use xlink:href="#a3" fill-opacity="0" fill="#fff" stroke-opacity=".3" stroke="#c2c2c2"
+                 stroke-miterlimit="50"
+                 stroke-width="1.6"/>
+            <g>
+                <use xlink:href="#b3" fill="#eb003e"/>
+                <use xlink:href="#b3" fill-opacity="0" fill="#fff" stroke="#eb003e" stroke-miterlimit="50"
+                     stroke-width=".8"/>
+            </g>
+        </g>
+    </svg>
+</a>

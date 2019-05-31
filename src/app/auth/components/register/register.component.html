@@ -1,0 +1,155 @@
+<!-- *ngIf="!isAuth && !registerSuccess" -->
+<div class="form">
+    <form class="form__cnt" (ngSubmit)="onSubmit()" [formGroup]="register">
+        <h1 class="form__title">Sign up to Skraps</h1>
+        <h2 class="form__subtitle">Invest your spare change in cryptocurrency</h2>
+
+        <mat-form-field>
+            <input
+                    type="text"
+                    name="your-first-name"
+                    value=""
+                    size="40"
+                    autocomplete="off"
+                    matInput
+                    placeholder="First Name"
+                    [formControlName]="'first_name'"
+                    [errorStateMatcher]="matcher"
+                    maxlength="255"
+            />
+            <mat-error *ngIf="register.controls['first_name'].hasError('required')">
+                First Name is required
+            </mat-error>
+        </mat-form-field>
+        <!--
+          <mat-form-field>
+            <input type="text" name="your-middle-name" value="" size="40" autocomplete="off" matInput placeholder="Middle Name" [formControlName]="'middle_name'" [errorStateMatcher]="matcher">
+          </mat-form-field>
+        -->
+        <mat-form-field>
+            <input
+                    type="text"
+                    name="your-last-name"
+                    value=""
+                    size="40"
+                    autocomplete="off"
+                    matInput
+                    placeholder="Last Name"
+                    [formControlName]="'last_name'"
+                    [errorStateMatcher]="matcher"
+                    maxlength="255"
+            />
+            <mat-error *ngIf="register.controls['last_name'].hasError('required')">
+                Last Name is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input
+                    type="text"
+                    name="your-email"
+                    value=""
+                    size="40"
+                    autocomplete="off"
+                    matInput
+                    placeholder="Your Email"
+                    [formControlName]="'email'"
+                    [errorStateMatcher]="matcher"
+                    maxlength="255"
+            />
+            <mat-error
+                    *ngIf="
+          register.controls['email'].hasError('email') &&
+          !register.controls['email'].hasError('required')
+        "
+            >
+                Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="register.controls['email'].hasError('required')">
+                Email is required
+            </mat-error>
+            <mat-error *ngIf="register.controls['email'].hasError('exist')">
+                Email is already in use, try
+                <a class="form__ref form__ref_accent" [routerLink]="['/auth', 'login']"
+                >Signing In</a
+                >
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input
+                    autocomplete="off"
+                    type="password"
+                    matInput
+                    placeholder="Password"
+                    [formControlName]="'password'"
+                    [errorStateMatcher]="matcher"
+                    maxlength="255"
+            />
+            <mat-error
+                    *ngIf="
+          (register.controls['password'].hasError('pattern') ||
+            register.controls['password'].hasError('minlength')) &&
+          !register.controls['password'].hasError('required')
+        "
+            >
+                Minimum 8 characters, at least one small and large letters, a digit and
+                one of the characters ($, @, #, !, %, *, ?, &)
+            </mat-error>
+            <!--
+              <mat-hint>Minimum eight characters, at least one letter and one number</mat-hint>
+            -->
+            <mat-error *ngIf="register.controls['password'].hasError('required')">
+                Password is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Confirm Password</mat-label>
+            <input
+                    type="password"
+                    autocomplete="off"
+                    matInput
+                    [formControlName]="'password_confirmation'"
+                    [errorStateMatcher]="matcher"
+                    maxlength="255"
+            />
+            <mat-error
+                    *ngIf="register.get('password_confirmation').hasError('notEqual')"
+            >
+                Passwords do not match
+            </mat-error>
+        </mat-form-field>
+        <div class="form__row form__row_mb-more">
+            <!--
+              <button type="submit" mat-raised-button [color]="'accent'" class="form__btn btn btn_full mat-elevation-z0" [disabled]="register.invalid" value="Create Account">Create Account</button>
+            -->
+            <input
+                    type="submit"
+                    class="mat-raised-button mat-accent form__btn btn btn_full mat-elevation-z0"
+                    [disabled]="register.invalid || pending"
+                    value="Create Account"
+            />
+        </div>
+        <div class="form__row form__row_mb-big">
+            <mat-checkbox [required]="true" [formControlName]="'agreement'"
+            >I certify that I am 18 years of age or older, and I agree to the
+                <a class="form__ref" [routerLink]="['/user-agreement']"
+                >User Agreement</a
+                >
+                and
+                <a
+                        class="form__ref"
+                        target="_blank"
+                        href="https://skraps.io/privacy-policy/"
+                >Privacy Policy.</a
+                >
+            </mat-checkbox>
+        </div>
+        <div class="form__row">
+            <span class="form__text"> Already have an account? </span>
+            <a
+                    class="form__ref form__ref_big form__ref_accent form__ref_ml"
+                    [routerLink]="['/auth', 'login']"
+            >Sign In</a
+            >
+        </div>
+    </form>
+</div>

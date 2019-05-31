@@ -1,0 +1,12 @@
+<div class="cnt">
+    <div class="cnt__wrap" [ngClass]="{'cnt__wrap_small-mb': (activeCat$ | async)}">
+        <app-cat-logo [activeCat]="activeCat$ | async"></app-cat-logo>
+    </div>
+    <div class="cnt__wrap">
+        <app-news-list [activeCat]="activeCat$ | async" [list]="newsList$ | async" [title]="newsTitle"
+                       (OnScrollDown)="onScrollDown($event)" [root]="!(activeCat$ | async)"></app-news-list>
+    </div>
+    <div class="cnt__wrap" *ngIf="!(activeCat$ | async)">
+        <app-cat-list [list]="catList$ | async" [title]="catTitle"></app-cat-list>
+    </div>
+</div>

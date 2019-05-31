@@ -1,0 +1,93 @@
+<a class="back" href="javascript:void(0)" (click)="onBack({logout: true})" [ngClass]="activeClass">
+    <img src="/assets/svg/icon-back.svg" alt="go back">
+</a>
+<form [formGroup]="controlForm" class="form" *ngIf="step === 1" class="verify" (ngSubmit)="onSendPhone()">
+    <div class="form__cnt">
+        <h1 class="form__title">Verify Mobile Number</h1>
+        <mat-form-field>
+            <input type="text" matInput placeholder="Country" [formControlName]="'countryControl'"
+                   [value]="controlForm.get('countryControl').value.name || ''"
+                   [matAutocomplete]="auto"/>
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let country of countryList$ | async" [value]="country">
+                    {{ country.name }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <div class="form__row form__row_sb">
+            <mat-form-field class="phone phone_code">
+                <mat-select [formControlName]="'countryControl'" [value]="controlForm.get('countryControl').value || ''"
+                            required>
+                    <mat-option *ngFor="let country of countryList" [value]="country">+{{country.dialCode}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="phone phone_number">
+                <input matInput placeholder="Mobile Number" type="tel" formControlName="number"
+                       [errorStateMatcher]="matcher"
+                       [textMask]="decimalMask">
+                <mat-error *ngIf="controlForm.controls['number'].hasError('exist')">
+                    Phone number is exist
+                </mat-error>
+                <mat-error *ngIf="controlForm.controls['number'].hasError('required')">
+                    Phone number is required
+                </mat-error>
+                <mat-error
+                        *ngIf="controlForm.controls['number'].hasError('pattern') || controlForm.controls['number'].hasError('minlength')">
+                    Phone number is invalid
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form__row">
+            <button *ngIf="!isPending" mat-raised-button [color]="'accent'"
+                    class="form__btn btn btn_full mat-elevation-z0"
+                    [disabled]="controlForm.invalid || isPending">Send Code
+            </button>
+            <button *ngIf="isPending" mat-raised-button [color]="'accent'"
+                    class="form__btn btn btn_full mat-elevation-z0"
+                    [disabled]="true">Loading...
+            </button>
+        </div>
+    </div>
+</form>
+<form [formGroup]="controlCode" class="form" *ngIf="step === 2" class="verify" (ngSubmit)="onSendCode()">
+    <div class="form__cnt">
+        <h1 class="form__title">Verify E-Mail</h1>
+        <h2 class="form__subtitle form__subtitle_small">We have sent you a code via E-Mail <br>
+            to verify your E-Mail address</h2>
+        <div class="form__row form__row_sb form__row_small" [ngStyle]="{marginBottom: '10px'}">
+            <mat-form-field [floatLabel]="'never'" class="rich-input">
+                <input type="text" matInput placeholder="0" [textMask]="oneDecimalMask"
+                       (keyup)="keytab($event, focusControl1, 'num1')"
+                       [formControlName]="'num1'" maxlength="1" minlength="1"/>
+            </mat-form-field>
+            <mat-form-field [floatLabel]="'never'" class="rich-input">
+                <input type="text" matInput placeholder="0" [textMask]="oneDecimalMask" #focusControl1
+                       (keyup)="keytab($event, focusControl2, 'num2')"
+                       [formControlName]="'num2'" maxlength="1" minlength="1"/>
+            </mat-form-field>
+            <mat-form-field [floatLabel]="'never'" class="rich-input">
+                <input type="text" matInput placeholder="0" [textMask]="oneDecimalMask" #focusControl2
+                       (keyup)="keytab($event, focusControl3, 'num3')"
+                       [formControlName]="'num3'" maxlength="1" minlength="1"/>
+            </mat-form-field>
+            <mat-form-field [floatLabel]="'never'" class="rich-input">
+                <input type="text" matInput placeholder="0" [textMask]="oneDecimalMask" #focusControl3
+                       (keyup)="keytab($event, undefined, 'num4')"
+                       [formControlName]="'num4'" maxlength="1" minlength="1"/>
+            </mat-form-field>
+            <mat-error *ngIf="controlCode.hasError('invalid')">
+                Invalid code
+            </mat-error>
+        </div>
+        <div class="form__row form__row_fe form__row_small">
+            <a class="form__ref form__ref_gray form__ref_medium" href="javascript:void(0)"
+               [ngStyle]="{cursor: timer ? 'not-allowed' : 'pointer'}"
+               (click)="!timer ? onResendCode() : false">{{timer ? timer : ''}} Re-send Code</a>
+        </div>
+        <div class="form__row">
+            <button mat-raised-button [color]="'accent'" class="form__btn btn btn_full mat-elevation-z0"
+                    [disabled]="controlCode.invalid || isPending">Continue
+            </button>
+        </div>
+    </div>
+</form>

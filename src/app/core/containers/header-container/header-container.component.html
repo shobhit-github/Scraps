@@ -1,0 +1,18 @@
+<ng-template [ngIf]="(user$ | async).name">
+    <app-toolbar>
+        <app-mobile-menu [links]="menuLinks"></app-mobile-menu>
+        <app-logo></app-logo>
+        <app-user-menu [user]="user$ | async" (OnLogout)="onLogout()"></app-user-menu>
+    </app-toolbar>
+    <app-menu [links]="menuLinks" [activeUrl]="activeUrl$ | async"></app-menu>
+    <!-- <div class="alert-message" style="
+      position:  absolute;
+      top: 0;
+      text-align: center;
+      display:  block;
+      left: 0;
+      right:  0;
+      color:  #fff;
+      background-color: #eb123e;
+  ">Your account bla bla bla</div> -->
+</ng-template>

@@ -1,0 +1,40 @@
+.performance {
+  display: flex;
+  padding: 21px 31px;
+}
+
+.performance__name {
+  font-size: 14px;
+  color: #4c4b61;
+  line-height: 20px;
+}
+
+.performance__item {
+  text-align: center;
+}
+
+.performance__value {
+  font-size: 14px;
+  color: #183e7a;
+  line-height: 19px;
+}
+
+.performance__percent {
+  font-size: 14px;
+  // color: #eb0000;
+  line-height: 19px;
+}
+
+@media screen and (max-width: 991px) {
+  .performance__item {
+    width: 20%;
+    margin-bottom: 7.5px;
+    margin-top: 7.5px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .performance__item {
+    width: 50%;
+  }
+}

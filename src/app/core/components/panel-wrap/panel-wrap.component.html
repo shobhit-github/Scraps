@@ -1,0 +1,10 @@
+<div [ngClass]="classes.main">
+    <div *ngIf="title" [ngClass]="classes.header">
+        <h2 [ngClass]="classes.title">
+            {{title}}
+        </h2>
+    </div>
+    <div [ngClass]="classes.body">
+        <ng-content></ng-content>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+<div [ngClass]="{'mat-elevation-z2': shadow, 'table': true, 'table_shadow': shadow}">
+    <!--<mat-chip-list class="export-list">-->
+    <!--<mat-chip (click)="downloadFile('csv')">csv</mat-chip>-->
+    <!--<mat-chip (click)="downloadFile('xlsx')">xlsx</mat-chip>-->
+    <!--</mat-chip-list>-->
+    <form class="search-users">
+        <mat-form-field class="search-users__input">
+            <input
+                    matInput
+                    placeholder="Search Users"
+                    [formControl]="searchFormControl"
+                    [errorStateMatcher]="matcher"
+            >
+            <mat-error *ngIf="searchFormControl.hasError('minlength')">
+                Enter 3 characters or more!
+            </mat-error>
+        </mat-form-field>
+        <div class="search-users__btn">
+            <button mat-raised-button [color]="'accent'" class="form__btn_multiple btn mat-elevation-z0"
+                    [disabled]="searchFormControl.invalid || searchFormControl.value < 3" (click)="searchUsers()">Search
+            </button>
+        </div>
+        <div class="search-users__btn">
+            <button mat-raised-button [color]="'accent'" class="form__btn_multiple btn mat-elevation-z0"
+                    [disabled]="!isSearch" (click)="resetUsers('asc')">Reset
+            </button>
+        </div>
+    </form>
+    <mat-table [dataSource]="dataSource" matSort aria-label="Elements">
+        <ng-container matColumnDef="dateCreated">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Date Created</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div class="nowrap" [matTooltip]="row.dateCreated | displayDate:'LLLL'" [matTooltipPosition]="'right'">
+                    {{row.dateCreated | displayDate}}
+                </div>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div class="ove" [matTooltip]="row.email" [matTooltipPosition]="'right'">
+                    {{row.email}}
+                </div>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="legalName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Legal Name</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div [matTooltip]="row.legalName" [matTooltipPosition]="'right'">
+                    {{row.legalName}}
+                </div>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="referral_link">
+            <mat-header-cell *matHeaderCellDef>
+                <div style="width: 100%; text-align: center;">Referrals</div>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div style="width: 100%; text-align: center;">
+                    {{row.referral_link.point}}
+                </div>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="attachedDocs">
+            <mat-header-cell *matHeaderCellDef>Attached Docs</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <app-lightbox-container
+                        [disabled]="row.status === EStatusesSource.NotUploaded || !row.attachedDocs || (row.attachedDocs && row.attachedDocs.length === 0)"
+                        [attachedDocs]="row.attachedDocs" [userId]="row.id"></app-lightbox-container>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{EStatuses[row.status]}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>
+                <div class="th-end">Actions</div>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div class="actions">
+                    <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu" xPosition="before">
+                        <button mat-menu-item (click)="setUserStatus(EStatusesSource.Active, row.id)">Accept</button>
+                        <button mat-menu-item (click)="setUserStatus(EStatusesSource.Declined, row.id)">Decline</button>
+                        <button mat-menu-item (click)="setUserStatus(EStatusesSource.Deleted, row.id)">Delete</button>
+                    </mat-menu>
+                </div>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator (page)="changePage($event)" [length]="(dataSource.meta$ | async)?.total" [pageIndex]="pageIndex"
+                   [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions">
+    </mat-paginator>
+</div>

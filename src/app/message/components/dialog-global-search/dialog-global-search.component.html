@@ -1,0 +1,35 @@
+<div class="panel">
+    <div class="panel__header">
+        <h2 class="panel__title">Jump to...</h2>
+        <a href="javascript:void(0)" (click)="dialogRef.close()" class="panel__close">
+            <mat-icon class="icon-small" [fontSet]="'skraps-icons'" [fontIcon]="'icon-cross'"></mat-icon>
+        </a>
+    </div>
+    <form class="panel__body panel__body_single panel__body_search form " [formGroup]="form">
+        <div class="form__row">
+            <mat-form-field appearance="standard">
+                <button mat-button matPrefix mat-icon-button aria-label="Submit">
+                    <mat-icon matPrefix [color]="'accent'">search</mat-icon>
+                </button>
+                <input type="text" cdkFocusInitial matInput placeholder="Search…" [formControlName]="'q'"
+                       [value]="form.get('q').value.name || ''" [matAutocomplete]="auto"
+                       (input)="onSubmit()" [errorStateMatcher]="matcher"/>
+                <mat-label>User Search</mat-label>
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
+                                  (optionSelected)="onUserChange($event)">
+                    <mat-option *ngFor="let user of userList" [value]="user">
+                        <div class="dialog">
+                            <div class="dialog__avatar">
+                                <div class="dialog__status" [ngClass]="{'dialog__status_active': user.is_online}"></div>
+                                <app-avatar [big]="true" [user]="user"></app-avatar>
+                            </div>
+                            <div class="dialog__content">
+                                <div class="dialog__name">{{user.name}}</div>
+                            </div>
+                        </div>
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+    </form>
+</div>

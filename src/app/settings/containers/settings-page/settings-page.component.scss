@@ -1,0 +1,35 @@
+@import '../../../../assets/styles/variables';
+
+html,
+body {
+  height: 100%;
+}
+
+:host {
+  background: #f8fafb;
+  display: block;
+  flex-grow: 1;
+}
+
+.wrap {
+  padding-top: 57px;
+
+  &_flex {
+    display: flex;
+    padding-top: 0;
+  }
+
+  &_mobile {
+    padding-top: 28px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .wrap {
+    &_mobile {
+      display: block;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+}

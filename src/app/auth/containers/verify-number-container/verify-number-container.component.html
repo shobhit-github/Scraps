@@ -1,0 +1,8 @@
+<app-verify-number [activeClass]="activeClass" [phoneSuccess]="phoneSuccess$ | async"
+                   [phoneFailed]="phoneFailed$ | async" [codeSuccess]="codeSuccess$ | async"
+                   [codeFailed]="codeFailed$ | async" [isPending]="isPending$ | async" [defultCountry]="defultCountry"
+                   [controlForm]="controlForm"
+                   [step]="step$ | async" [controlCode]="controlCode" [countryList]="countryList"
+                   [countryList$]="countryList$" (OnCompleted)="onCompleted()"
+                   (OnBack)="onBack($event)" (OnSendPhone)="onSendPhone()" (OnSendCode)="onSendCode()"
+                   [timer]="timer$ | async" (OnResend)="onResend()"></app-verify-number>

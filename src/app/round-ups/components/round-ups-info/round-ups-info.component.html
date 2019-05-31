@@ -1,0 +1,40 @@
+<div class="panel panel_withblocks" *ngIf="info; else empty">
+    <div class="panel__row">
+        <div class="panel__block block_big block">
+            <div class="block__chart">
+                <app-doughnut-chart [arcWidth]="arcWidth" [animations]="animations" [ngClass]="{'is-round-ups': true}"
+                                    [isRoundUps]="true" [isAdd]="false" [isLock]="false" [results]="results"
+                                    [colorScheme]="colorScheme"></app-doughnut-chart>
+                <div class="block__value block__value_center">${{(info.currentSum || 0)}}</div>
+            </div>
+            <h4 class="block__title block__title_icon">NEXT ROUND-UP</h4>
+            <div class="block__value">${{sumNextRoundUp}} until ${{info.maxSum || 0}}</div>
+        </div>
+    </div>
+    <div class="panel__row">
+        <div class="panel__block block">
+            <h4 class="block__title">Total ROUND-UPS</h4>
+            <div class="block__value">{{info.totalCount || 0}}</div>
+        </div>
+        <div class="panel__block block">
+            <h4 class="block__title">Total Dollar Amount</h4>
+            <div class="block__value">${{info.totalAmount || 0}}</div>
+        </div>
+    </div>
+</div>
+<ng-template #empty>
+    <div class="panel">
+        <div class="panel__body panel__body_round-ups empty-round-ups">
+            <img class="card-img" src="/assets/images/card-big.png"
+                 srcset="/assets/images/card-big@2x.png 2x, /assets/images/card-big@3x.png 3x">
+            <div class="panel__text panel__text_center panel__text_round-ups">
+                Connect your Account Bank below to start rounding up your spare change into Skraps!
+            </div>
+            <div class="btn-cnt">
+                <a [routerLink]="['/banks', 'add', 'bank']" mat-raised-button [color]="'accent'"
+                   class="btn form__btn btn_full">Connect
+                    Bank</a>
+            </div>
+        </div>
+    </div>
+</ng-template>

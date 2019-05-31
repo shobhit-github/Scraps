@@ -1,0 +1,59 @@
+<div class="quiz">
+    <form [formGroup]="form" class="quiz__body" *ngIf="form" (ngSubmit)="onSave(form)">
+        <div class="quiz__cnt">
+            <mat-card class="quiz__item" *ngFor="let question of questionList; let i = index; trackBy: byId">
+                <a class="quiz__remove" (click)="OnRemoveQuestion.emit(question)" mat-icon-button
+                   href="javascript:void(0)">
+                    <mat-icon class="mat-18">close</mat-icon>
+                </a>
+                <h2 class="quiz__title mat-title">Question #{{i + 1}}</h2>
+                <mat-form-field floatPlaceholder="auto" [appearance]="'standard'">
+                    <mat-label>Question Text</mat-label>
+                    <textarea matInput matTextareaAutosize [formControlName]="'text_' + question.id" required
+                              placeholder="Question text"></textarea>
+                </mat-form-field>
+                <mat-divider mat-inset></mat-divider>
+                <div class="quiz__options">
+                    <h3 class="quiz__title mat-title">Options:</h3>
+                    <div class="quiz__option" *ngFor="let option of question.options; trackBy: byId">
+                        <a (click)="OnRemoveOption.emit({questionId: question.id, id: option.id})"
+                           class="quiz__remove quiz__remove_opt" mat-icon-button
+                           href="javascript:void(0)">
+                            <mat-icon class="mat-18">close</mat-icon>
+                        </a>
+                        <mat-form-field [appearance]="'standard'">
+                            <mat-label>Option Text</mat-label>
+                            <input matInput [formControlName]="'opt-text_' + question.id + '_' + option.id" type="text"
+                                   required placeholder="Option text">
+                        </mat-form-field>
+                        <mat-form-field [appearance]="'standard'">
+                            <mat-label>Option Score</mat-label>
+                            <input matInput [formControlName]="'opt-score_' + question.id + '_' + option.id"
+                                   type="number" required placeholder="Option score">
+                        </mat-form-field>
+                    </div>
+                    <button type="button" (click)="OnAddOption.emit(question.id)" mat-raised-button color="primary"
+                            style="color: #fff">
+                        <mat-icon
+                                matPrefix>add_circle
+                        </mat-icon>
+                        Add Option
+                    </button>
+
+                </div>
+            </mat-card>
+        </div>
+        <div class="quiz__btn-cnt">
+            <button mat-raised-button type="submit" color="accent" style="height: 44px; margin-right: 30px"
+                    [disabled]="form.invalid">Save
+            </button>
+            <button type="button" (click)="OnAddQuestion.emit()" style="height: 44px; color: #fff" mat-raised-button
+                    color="primary">
+                <mat-icon
+                        matPrefix>add_circle
+                </mat-icon>
+                Add Question
+            </button>
+        </div>
+    </form>
+</div>

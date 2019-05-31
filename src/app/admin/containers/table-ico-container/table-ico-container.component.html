@@ -1,0 +1,3 @@
+<app-table-ico (OnPage)="getPage($event)" [list]="icoList$ | async" [totalRows]="totalRows$ | async"
+               (OnAdd)="addLocalIco()"
+               (OnSubmit)="saveIco($event)" (OnDelete)="deleteIco($event)"></app-table-ico>

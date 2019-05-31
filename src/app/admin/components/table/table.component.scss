@@ -1,0 +1,76 @@
+.table {
+  &_shadow {
+    margin: 20px;
+  }
+
+  .mat-table {
+    // min-width: 994px;
+    overflow: auto;
+
+    mat-footer-row,
+    mat-header-row,
+    mat-row {
+      min-width: 994px;
+    }
+
+    .cdk-column-dateCreated.mat-column-dateCreated {
+      max-width: 144px;
+    }
+
+    .cdk-column-email.mat-column-email {
+      min-width: 280px;
+    }
+
+    .cdk-column-legalName.mat-column-legalName {
+      min-width: 280px;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
+    .cdk-column-referral_link.mat-column-referral_link {
+      text-align: center;
+      max-width: 100px;
+    }
+
+    .cdk-column-id.mat-column-id {
+      text-align: center;
+      max-width: 100px;
+    }
+  }
+
+  .mat-chip-list {
+    display: flex;
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+
+  .mat-chip {
+    cursor: pointer;
+  }
+}
+
+.actions,
+.th-end {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.ove {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.search-users {
+  display: flex;
+  width: 50%;
+  margin-left: 20px;
+  margin-top: 30px;
+  padding-top: 30px;
+
+  &__btn {
+    margin-left: 20px;
+    margin-top: 18px;
+  }
+}

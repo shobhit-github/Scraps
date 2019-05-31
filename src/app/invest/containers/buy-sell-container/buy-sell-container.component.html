@@ -1,0 +1,136 @@
+<div class="cnt">
+    <div class="wrap">
+        <div class="tabs-page">
+            <h1 class="title title_mb">Buy/Sell</h1>
+            <div class="tabs tabs-page__item">
+                <div class="tabs__header">
+                    <a
+                            href="javascript:void(0)"
+                            [ngClass]="{ active: activeIndex === 0 }"
+                            (click)="setActiveIndex(0)"
+                            class="tabs__item"
+                    >Buy</a
+                    >
+                    <a
+                            href="javascript:void(0)"
+                            [ngClass]="{ active: activeIndex === 1 }"
+                            (click)="setActiveIndex(1)"
+                            class="tabs__item"
+                    >Sell</a
+                    >
+                </div>
+                <div class="tabs__body">
+                    <!-- buy -->
+                    <app-panel-wrap
+                            class="panel_tab"
+                            [ngClass]="{ active: activeIndex === 0 }"
+                    >
+                        <!-- Amount -->
+                        <h3 class="panel__label">Amount</h3>
+                        <app-amount
+                                [amount]="amountBuy$ | async"
+                                (settedAmount)="setAmount($event, 'buy')"
+                        ></app-amount>
+                        <!-- Period -->
+                        <form
+                                [formGroup]="form"
+                                class="form form_buy form_autoh verify"
+                                (ngSubmit)="onSubmit()"
+                        >
+                            <div class="form__cnt form__cnt_recurring">
+                                <div class="form__row form__row_ac form__row_sb">
+                                    <mat-checkbox [formControlName]="'isRecurring'"
+                                    >Set up Recurring Investment
+                                    </mat-checkbox>
+                                    <!-- color="'accent'" -->
+
+                                    <mat-form-field
+                                            [floatLabel]="'never'"
+                                            class="rich-input rich-input_small"
+                                    >
+                                        <mat-select [formControlName]="'period'" required>
+                                            <mat-option
+                                                    *ngFor="let period of periodList"
+                                                    [value]="period"
+                                            >{{ period | uppercase }}</mat-option
+                                            >
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form__row form__row_ac form__row_sb">
+                                    <div class="hr"></div>
+                                    <!-- Payment Method -->
+                                    <h3 class="panel__label">Payment Method</h3>
+                                    <app-payment
+                                            (selectedPayment)="setPayment($event)"
+                                            [payment]="payment$ | async"
+                                            [paymentList]="paymentList$ | async"
+                                    ></app-payment>
+                                    <button
+                                            mat-raised-button
+                                            [color]="'accent'"
+                                            class="form__btn btn btn_full mat-elevation-z0"
+                                    >
+                                        <!-- [disabled]="isErrBuy" -->
+                                        Invest Now
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </app-panel-wrap>
+                    <!-- /buy -->
+                    <!-- sell -->
+                    <app-panel-wrap
+                            class="panel_tab"
+                            [ngClass]="{ active: activeIndex === 1 }"
+                    >
+                        <!-- Amount -->
+                        <h3 class="panel__label">Amount</h3>
+                        <app-amount
+                                [amount]="amountSell$ | async"
+                                (settedAmount)="setAmount($event, 'sell')"
+                                [size]="'small'"
+                        ></app-amount>
+                        <div class="hr hr_sell"></div>
+                        <!-- Sell From -->
+                        <h3 class="panel__label">Sell From</h3>
+                        <app-choose
+                                (selectedPortfolio)="setPortfolio($event)"
+                                [portfolio]="portfolio$ | async"
+                                [portfolioList]="portfolioList$ | async"
+                                [size]="'small'"
+                        ></app-choose>
+                        <!-- Deposit To -->
+                        <h3 class="panel__label">Deposit To</h3>
+                        <app-payment
+                                (selectedPayment)="setPayment($event)"
+                                [payment]="payment$ | async"
+                                [paymentList]="paymentList$ | async"
+                                [size]="'small'"
+                        ></app-payment>
+                        <button
+                                mat-raised-button
+                                [color]="'accent'"
+                                class="form__btn btn btn_full mat-elevation-z0"
+                        >
+                            <!-- [disabled]="isErrSell" -->
+                            Sell Now
+                        </button>
+                    </app-panel-wrap>
+                    <!-- /sell -->
+                </div>
+            </div>
+
+            <app-panel-wrap
+                    class="tabs-page__item panel_adapt"
+                    [classes]="{ body: 'panel__body panel__body_stats' }"
+            >
+                <app-statistic-portfolio
+                        [currency]="currency$ | async"
+                        [total]="total$ | async"
+                        [content]="content"
+                ></app-statistic-portfolio>
+            </app-panel-wrap>
+        </div>
+    </div>
+</div>

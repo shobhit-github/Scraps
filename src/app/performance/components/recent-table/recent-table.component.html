@@ -1,0 +1,61 @@
+<div class="mat-elevation-z88">
+    <table mat-table class="full-width-table recent-table" id="recent-table"
+           [dataSource]="recentActivity" matSort aria-label="Elements">
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="icon">
+            <th class="recent-table__th recent-table__th_icon" mat-header-cell *matHeaderCellDef></th>
+            <!--<td class="recent-table__td recent-table__td_icon"-->
+            <!--mat-cell *matCellDef="let row"><span class="recent-table__icon" [ngClass]="row.icon"></span></td>-->
+            <td class="recent-table__td recent-table__td_icon"
+                mat-cell *matCellDef="let row">
+                <div class="skraps-icon invest-icon recent-table__icon">
+                    <mat-icon inline="true" fontSet="skraps-icons" fontIcon="icon-diamond"></mat-icon>
+                </div>
+            </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="type">
+            <th class="recent-table__th" mat-header-cell *matHeaderCellDef>type</th>
+            <td class="recent-table__td recent-table__td_type" mat-cell *matCellDef="let row">
+                <span class="recent-table__name-mob">Type:</span>{{row.type}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="date">
+            <th class="recent-table__th" mat-header-cell *matHeaderCellDef>date</th>
+            <td class="recent-table__td recent-table__td_date"
+                mat-cell *matCellDef="let row"><span class="recent-table__name-mob">Date:</span>{{row.time}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="description">
+            <th class="recent-table__th" mat-header-cell *matHeaderCellDef>description</th>
+            <td class="recent-table__td recent-table__td_desc"
+                mat-cell *matCellDef="let row"><span class="recent-table__name-mob">Description:</span>{{row.title}}
+            </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="amount">
+            <th class="recent-table__th" mat-header-cell *matHeaderCellDef>amount</th>
+            <td class="recent-table__td recent-table__td_amount"
+                mat-cell *matCellDef="let row"><span
+                    class="recent-table__name-mob">Amount:</span>{{row.hint ? '$' + row.hint : '- - - - -'}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="amount_$">
+            <!--<th class="recent-table__th" mat-header-cell *matHeaderCellDef mat-sort-header>amount ($)</th>-->
+            <th class="recent-table__th" mat-header-cell *matHeaderCellDef>amount ($)</th>
+            <td class="recent-table__td recent-table__td_amount-count"
+                mat-cell *matCellDef="let row"><span class="recent-table__name-mob">Amount ($):</span>+${{row.value}}
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>

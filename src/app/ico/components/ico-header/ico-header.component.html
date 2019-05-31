@@ -1,0 +1,64 @@
+<div class="ico ico_detail">
+    <div class="ico__content">
+        <div class="ico__img">
+            <img [src]="ico.logo" [default]="'/assets/images/mock-ico.png'" alt="">
+        </div>
+        <div class="ico__body">
+            <div class="ico__header">
+                <h3 class="ico__title"><span>{{ico.project}}</span></h3>
+                <div class="ico__date">PRE ICO END: {{ico.pre_ico_end | displayDate}}</div>
+            </div>
+            <div class="ico__text">{{ico.line_description}}</div>
+            <div class="ico__footer">
+                <!-- <a class="ico__badge"><mat-icon [inline]="true" fontSet="skraps-icons" fontIcon="icon-fire" [color]="'accent'"></mat-icon>
+                  Hot</a> -->
+                <!-- <a class="ico__badge">Pre ICO</a> -->
+                <div class="ico__follows">
+                    <app-ico-follow *ngFor="let soc of socialLinks" [soc]="soc"></app-ico-follow>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ico__actions">
+        <div class="ico__btns">
+            <!-- <button mat-raised-button type="button" [color]="'warn'" class="btn btn_gray form__btn_multiple mat-elevation-z0">Review
+              & Analysis</button> -->
+            <a target="_blank" [href]="ico.whitepaper" mat-raised-button type="button" [color]="'warn'"
+               class="btn btn_gray form__btn_multiple mat-elevation-z0">Whitepaper</a>
+        </div>
+        <div class="ico__links">
+            <a #toggler href="javascript:void(0)" (click)="toggleShare()" class="ico__link">
+                <mat-icon [color]="'accent'" [inline]="true" style="font-weight: 600" fontSet="skraps-icons"
+                          fontIcon="icon-share"></mat-icon>
+                Share
+            </a>
+            <a [href]="ico.website" class="ico__link">
+                <mat-icon [color]="'accent'" [inline]="true" style="font-weight: 600" fontSet="skraps-icons"
+                          fontIcon="icon-link"></mat-icon>
+                ICO Website
+            </a>
+            <div #share class="ico__share" *ngIf="shareActive" [@fadeAnimation]>
+                <share-button button="facebook" theme="material-dark"></share-button>
+                <share-button button="twitter" theme="material-dark"></share-button>
+                <share-button button="telegram" theme="material-dark"></share-button>
+                <share-button button="reddit" theme="material-dark"></share-button>
+                <!-- <share-button button="messenger" theme="material-dark"></share-button> -->
+                <share-button button="linkedin" theme="material-dark"></share-button>
+                <!-- <share-button button="google" theme="material-dark"></share-button> -->
+                <!-- <share-button button="pinterest" theme="material-dark"></share-button>
+                <share-button button="tumblr" theme="material-dark"></share-button>
+                <share-button button="whatsapp" theme="material-dark"></share-button>
+                <share-button button="vk" theme="material-dark"></share-button>
+                <share-button button="stumble" theme="material-dark"></share-button>
+                <share-button button="xing" theme="material-dark"></share-button>
+                <share-button button="sms" theme="material-dark"></share-button>
+                <share-button button="email" theme="material-dark"></share-button>
+                <share-button button="copy" theme="material-dark"></share-button>
+                <share-button button="print" theme="material-dark"></share-button> -->
+            </div>
+            <!-- <a target="_blank" [href]="ico.website" mat-raised-button type="button" [color]="'warn'" class="btn btn_gray form__btn_multiple-m mat-elevation-z0">ICO
+              Website</a>
+            <a target="_blank" [href]="ico.whitepaper" mat-raised-button type="button" [color]="'warn'" class="btn btn_gray form__btn_multiple-m mat-elevation-z0">Whitepaper</a> -->
+        </div>
+    </div>
+</div>

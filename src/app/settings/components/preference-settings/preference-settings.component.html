@@ -1,0 +1,28 @@
+<div class="panel">
+    <div class="panel__header">
+        <h2 class="panel__title">Preferences</h2>
+    </div>
+    <form class="panel__body form" (ngSubmit)="onSubmit(form)" [formGroup]="form">
+        <div class="form__row form__row_fs">
+            <mat-form-field [appearance]="'standard'" class="">
+                <mat-label>Timezone</mat-label>
+                <mat-select [formControlName]="'timezone'" [value]="form.get('timezone').value"
+                            [placeholder]="'timezone'">
+                    <mat-option *ngFor="let timezone of timezoneList" [value]="timezone">{{timezone}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field [appearance]="'standard'" class="form__select form__select_big">
+                <mat-label>Local Currency</mat-label>
+                <mat-select [formControlName]="'currency'" [value]="form.get('currency').value"
+                            [placeholder]="'currency'">
+                    <mat-option *ngFor="let currency of currencyList" [value]="currency">{{currency}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form__row form__row_fs form__row_mb-more">
+            <button mat-raised-button [color]="'accent'" class="form__btn form__btn_multiple btn mat-elevation-z0"
+                    [disabled]="form.invalid">Save
+            </button>
+        </div>
+    </form>
+</div>

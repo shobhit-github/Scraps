@@ -1,0 +1,3 @@
+<app-quiz (OnRemoveQuestion)="removeQuestion($event)" (OnRemoveOption)="removeOption($event)"
+          (OnAddQuestion)="addQuestion()"
+          (OnAddOption)="addOption($event)" [questionList]="questionList$ | async" (OnSave)="save($event)"></app-quiz>

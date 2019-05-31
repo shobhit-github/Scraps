@@ -1,0 +1,220 @@
+// .portfolio-field {
+//   width: calc(33% - 10px);
+// }
+@import '../../../../assets/styles/variables.scss';
+
+.mat-accordion .mat-header-row {
+  padding-left: 1.5rem;
+  padding-right: 2rem;
+  border-bottom: none;
+}
+
+.mat-expansion-panel-header.mat-row {
+  border-bottom: 1px $gray-light solid;
+}
+
+//copied from https://github.com/angular/material2/blob/master/src/lib/table/table.scss
+$mat-header-row-height: 56px;
+$mat-row-height: 48px;
+$mat-row-horizontal-padding: 24px;
+
+.mat-table {
+  display: block;
+}
+
+.mat-header-row {
+  min-height: $mat-header-row-height;
+}
+
+.mat-row {
+  min-height: $mat-row-height;
+}
+
+.mat-row,
+.mat-header-row {
+  display: flex;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  align-items: center;
+  padding: 0 $mat-row-horizontal-padding;
+  box-sizing: border-box;
+  // margin-left: -10px;
+  // margin-right: -10px;
+  // Workaround for https://goo.gl/pFmjJD in IE 11. Adds a pseudo
+  // element that will stretch the row the correct height. See:
+  // https://connect.microsoft.com/IE/feedback/details/802625
+  &::after {
+    display: inline-block;
+    min-height: inherit;
+    content: '';
+  }
+}
+
+.mat-cell,
+.mat-header-cell {
+  flex: 1;
+  overflow: hidden;
+  // word-wrap: break-word;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.mat-cell_color {
+  display: block;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.portfolio-img {
+  width: 40px;
+  height: 40px;
+  display: block;
+  object-fit: contain;
+}
+
+.portfolio-data__cnt {
+  width: 100%;
+}
+
+.portfolio-cnt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.portfolio-field {
+  // width: 33%;
+  flex-basis: 33%;
+  // min-width: 360px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+
+  &_sb {
+    justify-content: space-between;
+  }
+
+  &_col {
+    flex-wrap: wrap;
+  }
+}
+
+.table {
+  &_shadow {
+    margin: 20px;
+  }
+
+  .mat-table {
+    // min-width: 994px;
+    overflow: auto;
+
+    mat-footer-row,
+    mat-header-row,
+    mat-row {
+      min-width: 994px;
+    }
+
+    .cdk-column-dateCreated.mat-column-dateCreated {
+      max-width: 144px;
+    }
+
+    .cdk-column-email.mat-column-email {
+      min-width: 280px;
+    }
+  }
+
+  .mat-chip-list {
+    display: flex;
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+
+  .mat-chip {
+    cursor: pointer;
+  }
+}
+
+.actions,
+.th-end {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.ove {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// .nowrap {
+//   white-space: nowrap;
+// }
+.gray {
+  color: #fff;
+  margin-left: 20px;
+}
+
+.actions {
+  padding: 0 24px 24px;
+}
+
+.coins-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.coins {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  max-width: 100%;
+}
+
+.coins__item {
+  // width: 48%;
+  flex-basis: calc(50% - 10px);
+  display: flex;
+  margin-top: 20px;
+  position: relative;
+}
+
+.coins__col {
+  width: 50%;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  align-items: center;
+  // justify-content: space-between;
+}
+
+.coins__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 5px;
+}
+
+.portfolio__remove {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  z-index: 9;
+
+  &_opt {
+    right: 0;
+    top: 0;
+  }
+}
+
+.title-option-form {
+  font-weight: bold;
+  font-size: 24px;
+  margin: 10px 0;
+}

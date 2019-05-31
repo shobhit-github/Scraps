@@ -1,0 +1,16 @@
+<app-banks
+        [bank]="bank$ | async"
+        [step]="step$ | async"
+        [pending]="pending$ | async"
+        [success]="success$ | async"
+        [fail]="fail$ | async"
+        [form]="form"
+        [formBank]="formBank"
+        [activeClass]="activeClass"
+        [bankList]="bankList$ | async"
+        (OnSubmit)="onSubmit()"
+        (OnConnect)="onConnect($event)"
+        (OnBankChange)="onBankChange($event)"
+        (OnBack)="onBack()"
+        (OnSkip)="onSkip()"
+        [isReady]="isReady"></app-banks>

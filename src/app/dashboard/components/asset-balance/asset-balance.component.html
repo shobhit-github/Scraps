@@ -1,0 +1,53 @@
+<div class="panel__wrap">
+    <div class="panel asset">
+        <div class="panel__header" [ngClass]="{'justify-between': assetBalance}">
+            <h2 class="panel__title">
+                {{assetBalance ? 'Asset Balance' : 'Link Debit/Credit Card'}}
+            </h2>
+            <a href="https://www.coinpayments.net" class="wallet-link" *ngIf="assetBalance">
+                <i class="icon-wallet" *ngIf="innerWidth > 575"></i>
+                <span class="wallet-link__text" *ngIf="innerWidth > 575">Wallet</span>
+                <i class="icon-link-icon"></i>
+            </a>
+
+        </div>
+        <div class="panel__body" [ngClass]="{'asset__cnt': assetBalance}">
+            <app-portfolio-item
+                    [isAdd]="false"
+                    [isLock]="false"
+                    [isMainPortfolio]="true"
+                    [portfolio]="assetBalance"
+                    [isCurrent]="true"
+                    *ngIf="assetBalance; else: empty"
+            ></app-portfolio-item>
+        </div>
+    </div>
+</div>
+
+<ng-template #empty>
+    <div class="link-card">
+        <div class="link-card__img">
+            <img
+                    src="/assets/images/card-big.png"
+                    alt=""
+                    srcset="
+          /assets/images/card-big@2x.png 2x,
+          /assets/images/card-big@3x.png 3x
+        "
+            />
+        </div>
+        <div class="link-card__text">
+            Add your Credit/Debit card to start adding your Skraps today
+        </div>
+        <div class="btn-cnt">
+            <button
+                    mat-raised-button
+                    [color]="'accent'"
+                    class="form__btn btn link-card__btn mat-elevation-z0"
+                    [routerLink]="['/banks', 'add', 'card']"
+            >
+                Link Card
+            </button>
+        </div>
+    </div>
+</ng-template>

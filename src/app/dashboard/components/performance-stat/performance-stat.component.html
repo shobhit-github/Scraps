@@ -1,0 +1,16 @@
+<div class="panel">
+    <div class="panel__body performance">
+        <div class="performance__item" *ngFor="let performance of performanceList | keyvalue">
+            <div class="performance__name">{{ performance.value.symbol }}</div>
+            <div class="performance__value">
+                ${{ performance.value.quote.USD.price | number: '0.0-2' }}
+            </div>
+            <app-up-or-down
+                    class="performance__percent small"
+                    [value]="performance.value.quote.USD.percent_change_1h"
+            >
+                <div>{{ performance.value.quote.USD.percent_change_1h | number: '0.0-2' }}$</div>
+            </app-up-or-down>
+        </div>
+    </div>
+</div>

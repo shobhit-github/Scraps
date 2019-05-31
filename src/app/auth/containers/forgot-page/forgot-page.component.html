@@ -1,0 +1,6 @@
+<div class="cnt">
+    <app-forgot [pending]="pending$ | async" [forgotSuccess]="forgotSuccess$ | async"
+                [forgotFailed]="forgotFailed$ | async"
+                (OnForgot)="onForgot($event)" (OnNext)="onNext()" [step]="step$ | async"
+                [email]="email$ | async"></app-forgot>
+</div>

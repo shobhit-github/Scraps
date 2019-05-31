@@ -1,0 +1,66 @@
+<div class="chat" *ngIf="messageList; else noSelected">
+    <div class="chat__title">Conversation with {{sender.name}} <a href="javascript:void(0)"
+                                                                  (click)="jump(filterMessageList[filterMessageList.length - activeIndex - 1])"
+                                                                  class="chat__search-btn"
+                                                                  *ngIf="filterMessageList && filterMessageList.length > 1 && moreDisplay">See
+        previous
+        results</a>
+    </div>
+    <div class="chat__body">
+        <ng-scrollbar (scrollState)="onScrollTop($event)" [autoHide]="true">
+            <div class="chat__message-list">
+                <div class="chat__message" *ngFor="let message of messageList; let i = index; trackBy: domOpt"
+                     [ngClass]="{'chat__message_me': message.user_id === user.user_id}">
+                    <div class="chat__user"
+                         *ngIf="(messageList[i - 1] && messageList[i - 1].user_id !== message.user_id) || !messageList[i - 1]">
+                        <app-avatar [bigger]="true"
+                                    [user]="message.user_id === user.user_id ? user : sender"></app-avatar>
+                        <div class="chat__status"
+                             [ngClass]="{'chat__status_active': message.user_id !== user.user_id && sender.is_online}"></div>
+                    </div>
+                    <div class="chat__message-body">
+                        <div class="chat__text" *ngIf="message.message && searchQuery"
+                             [innerHTML]="message.message | highlight : searchQuery : message.id"></div>
+                        <div class="chat__text" *ngIf="message.message && !searchQuery">{{message.message}}</div>
+                        <ng-template [ngForOf]="message.files" ngFor let-file>
+                            <div class="chat__file" *ngIf="isType('document')(file)">
+                                <a [download]="file.name" [href]="file.url" class="chat__file-ext"
+                                   [ngClass]="'chat__file-ext_' + getFileExt(file)">
+                                    <!-- <mat-icon fontSet="skraps-icons" fontIcon="icon-file"></mat-icon> -->
+                                    <mat-icon [inline]="true">insert_drive_file</mat-icon>
+                                    {{file.name}}
+                                </a>
+                            </div>
+                            <div class="chat__file" *ngIf="isType('image')(file)">
+                                <a href="javascript:void(0)" (click)="OnOpenDialog.emit({image: file})"
+                                   class="chat__image">
+                                    <img [src]="file.url" alt="file.name">
+                                </a>
+                            </div>
+                            <div class="chat__video" *ngIf="isType('video')(file)">
+                                <video [src]="file.url" controls="controls"></video>
+                            </div>
+                            <div class="chat__voice" *ngIf="isType('audio')(file)">
+                                <audio [src]="file.url" controls="controls"></audio>
+                            </div>
+                        </ng-template>
+                        <div class="chat__date" *ngIf="isDisplayDate(messageList, message, i)">{{message.updated_at |
+                            timeFrom:true}}</div>
+                    </div>
+                </div>
+            </div>
+        </ng-scrollbar>
+    </div>
+</div>
+
+<ng-template #noSelected>
+    <div class="chat">
+        <div *ngIf="!isNew" class="chat__body chat__body_noselect">
+            Select a Dialog...
+        </div>
+        <div *ngIf="isNew" class="chat__title">Conversation with {{sender.name}}</div>
+        <div *ngIf="isNew" class="chat__body chat__body_new">
+            Start a Dialog...
+        </div>
+    </div>
+</ng-template>

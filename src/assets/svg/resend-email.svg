@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="149" height="120"
+     viewBox="0 0 149 120">
+    <defs>
+        <path id="k3nnd" d="M701.13 374.18l-52.42 31.47"/>
+        <path id="k3nne" d="M716.52 374.22l52.21 32.33"/>
+        <path id="k3nnf"
+              d="M650 324.97h117c1.28 0 1.9 1.58.95 2.46l-57.88 53.56c-.97.9-2.48.9-3.46 0l-57.65-53.35a1.54 1.54 0 0 1 1.04-2.67"/>
+        <path id="k3nng"
+              d="M765.6 407.2H651.07a5.02 5.02 0 0 1-5.01-5.01v-73.11a5.02 5.02 0 0 1 5.01-5.02H765.6a5.02 5.02 0 0 1 5.02 5.02v73.1a5.02 5.02 0 0 1-5.02 5.03z"/>
+        <path id="k3nna" d="M690.22 318.96a18.05 18.05 0 0 0 36.1 0 18.05 18.05 0 0 0-36.1 0z"/>
+        <path id="k3nni" d="M685.71 341.54h45.12v-45.15h-45.12z"/>
+        <path id="k3nnb"
+              d="M702.91 318.27l4.14 8.36-8.65-8.36zm10.14 0l-.25.49-4.37 8.85-.03-.06-4.58-9.28zm5.42 0l-8.63 8.36 4.12-8.36zm-10.04-5.43l1.98 2.13 2.36 2.54h-8.68l1.35-1.45zm-.9-.2l-.43.45-4.12 4.4h-4.64l4.58-4.85zm6.42 0l4.58 4.86h-4.64l-4.54-4.86z"/>
+        <path id="k3nnk" d="M693.83 332.13h29.21v-24h-29.21z"/>
+        <path id="k3nnl"
+              d="M755.3 371.38h28.37c3.54 0 4.82.37 6.12 1.06 1.3.7 2.3 1.7 3 3 .7 1.3 1.06 2.58 1.06 6.13v28.38c0 3.55-.37 4.83-1.06 6.13a7.22 7.22 0 0 1-3 3c-1.3.7-2.58 1.06-6.12 1.06H755.3c-3.54 0-4.82-.37-6.12-1.06a7.2 7.2 0 0 1-3-3c-.7-1.3-1.06-2.58-1.06-6.13v-28.38c0-3.55.37-4.83 1.06-6.13.7-1.3 1.7-2.3 3-3 1.3-.7 2.58-1.06 6.12-1.06"/>
+        <path id="k3nnc"
+              d="M755.3 371.38c-3.54 0-4.82.37-6.12 1.06-1.3.7-2.3 1.71-3 3-.7 1.3-1.06 2.58-1.06 6.13v28.38c0 3.55.37 4.83 1.06 6.13a7.2 7.2 0 0 0 3 3c1.3.7 2.58 1.06 6.12 1.06h28.37c3.54 0 4.82-.37 6.12-1.06 1.3-.7 2.3-1.7 3-3 .7-1.3 1.06-2.58 1.06-6.13v-28.38c0-3.55-.37-4.83-1.06-6.12a7.22 7.22 0 0 0-3-3c-1.3-.7-2.58-1.07-6.12-1.07z"/>
+        <path id="k3nnn" d="M206.37 792.18h1299.51V-5.16H206.37z"/>
+        <path id="k3nno"
+              d="M755.3 371.38h28.37c3.54 0 4.82.37 6.12 1.06 1.3.7 2.3 1.7 3 3 .7 1.3 1.06 2.58 1.06 6.13v28.38c0 3.55-.37 4.83-1.06 6.13a7.22 7.22 0 0 1-3 3c-1.3.7-2.58 1.06-6.12 1.06H755.3c-3.54 0-4.82-.37-6.12-1.06a7.2 7.2 0 0 1-3-3c-.7-1.3-1.06-2.58-1.06-6.13v-28.38c0-3.55.37-4.83 1.06-6.13.7-1.3 1.7-2.3 3-3 1.3-.7 2.58-1.06 6.12-1.06z"/>
+        <path id="k3nnp"
+              d="M768.38 407.46a10.29 10.29 0 0 1 1.06-20.51v-2.77c0-.16.18-.24.3-.13l5.7 4.2c.1.07.1.2 0 .28l-5.7 4.14c-.12.1-.3 0-.3-.13v-2.77a7.47 7.47 0 0 0-7.33 7.95 7.53 7.53 0 0 0 6.94 6.95 7.46 7.46 0 0 0 7.84-6.25 1.42 1.42 0 0 1 2.8.41 10.3 10.3 0 0 1-11.31 8.63"/>
+        <clipPath id="k3nnh">
+            <use xlink:href="#k3nna"/>
+        </clipPath>
+        <clipPath id="k3nnj">
+            <use xlink:href="#k3nnb"/>
+        </clipPath>
+        <clipPath id="k3nnm">
+            <use xlink:href="#k3nnc"/>
+        </clipPath>
+    </defs>
+    <g>
+        <g transform="translate(-645 -301)">
+            <g>
+                <use fill="#fff" fill-opacity="0" stroke="#adc9ef" stroke-miterlimit="50" stroke-width="1.8"
+                     xlink:href="#k3nnd"/>
+            </g>
+            <g>
+                <use fill="#fff" fill-opacity="0" stroke="#adc9ef" stroke-miterlimit="50" stroke-width="1.8"
+                     xlink:href="#k3nne"/>
+            </g>
+            <g>
+                <g>
+                    <use fill="#183e7a" xlink:href="#k3nnf"/>
+                </g>
+                <g>
+                    <use fill="#fff" fill-opacity="0" stroke="#adc9ef" stroke-miterlimit="50" stroke-width="1.8"
+                         xlink:href="#k3nng"/>
+                </g>
+            </g>
+            <g>
+                <g/>
+                <g clip-path="url(#k3nnh)">
+                    <use fill="#1dc5bf" xlink:href="#k3nni"/>
+                </g>
+            </g>
+            <g>
+                <g/>
+                <g clip-path="url(#k3nnj)">
+                    <use fill="#183e7a" xlink:href="#k3nnk"/>
+                </g>
+            </g>
+            <g>
+                <use fill="#fff" xlink:href="#k3nnl"/>
+            </g>
+            <g>
+                <g/>
+                <g clip-path="url(#k3nnm)">
+                    <use fill="#fff" xlink:href="#k3nnn"/>
+                </g>
+                <g clip-path="url(#k3nnm)">
+                    <use fill="#fff" xlink:href="#k3nnl"/>
+                </g>
+                <g clip-path="url(#k3nnm)">
+                    <use fill="#fff" fill-opacity="0" stroke="#1dc5bf" stroke-miterlimit="50" stroke-width="2.88"
+                         xlink:href="#k3nno"/>
+                </g>
+            </g>
+            <g>
+                <use fill="#eb003e" xlink:href="#k3nnp"/>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,11 @@
+:host() {
+  display: flex;
+  min-height: calc(100vh - 245px);
+  align-items: center;
+  justify-content: center;
+}
+
+.form__title {
+  text-align: center;
+  line-height: 1.3;
+}

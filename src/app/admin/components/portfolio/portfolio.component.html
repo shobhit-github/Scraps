@@ -1,0 +1,126 @@
+<div [ngClass]="{'mat-elevation-z2': shadow, 'table': true, 'table_shadow': shadow}">
+    <mat-paginator (page)="OnPage.emit($event)" #paginator [length]="totalRows" [pageIndex]="0" [pageSize]="100"
+                   [pageSizeOptions]="[100]"></mat-paginator>
+
+    <mat-accordion displayMode="flat" multi class="mat-table mat-table_center">
+        <section matSort class="mat-elevation-z2 mat-header-row">
+            <span class="mat-header-cell" [mat-sort-header]="field.name"
+                  *ngFor="let field of fieldsConfig">{{field.label}}</span>
+        </section>
+
+        <mat-expansion-panel *ngFor="let portfolio of list; trackBy: byId">
+            <mat-expansion-panel-header class="mat-row">
+        <span class="mat-cell" *ngFor="let field of fieldsConfig"
+              [title]="portfolio[field.name]">{{portfolio[field.name]
+            | maybeOpt}}</span>
+            </mat-expansion-panel-header>
+            <div class="portfolio-data">
+                <form [formGroup]="forms[portfolio.id]" class="form" *ngIf="forms[portfolio.id]"
+                      (ngSubmit)="onSubmit(removeNewOptIds(forms[portfolio.id]), portfolio.id)">
+                    <div class="form__row form__row_fs">
+                        <ng-container *ngFor="let field of fieldsConfig; trackBy: byName(portfolio)">
+                            <ng-container [ngSwitch]="field.type">
+                                <ng-template
+                                        [ngSwitchCase]="field.type === 'text' || field.type === 'email' ? field.type : ''">
+                                    <mat-form-field [appearance]="'standard'" class="portfolio-field">
+                                        <mat-label>{{field.label}}</mat-label>
+                                        <input [required]="field.required" matInput [formControlName]="field.name"
+                                               [type]="field.type"
+                                               [placeholder]="field.placeholder">
+                                    </mat-form-field>
+                                </ng-template>
+                                <ng-template [ngSwitchCase]="'checkbox'">
+                                    <div class="portfolio-field">
+                                        <mat-checkbox [required]="field.required"
+                                                      [formControlName]="field.name">{{field.label}}</mat-checkbox>
+                                    </div>
+                                </ng-template>
+                                <ng-template [ngSwitchCase]="'select'">
+                                    <mat-form-field [appearance]="'standard'" class="portfolio-field">
+                                        <mat-label>{{field.label}}</mat-label>
+                                        <mat-select [required]="field.required" [formControlName]="field.name"
+                                                    [value]="field.options[0]">
+                                            <mat-option *ngFor="let opt of field.options"
+                                                        [value]="opt">{{opt}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </ng-template>
+                                <ng-template [ngSwitchCase]="'coins'">
+                                    <div class="coins-block">
+                                        <mat-label class="title-option-form">{{field.label}} (the amount should be
+                                            100%)
+                                        </mat-label>
+                                        <div class="coins" formArrayName="options">
+                                            <div class="coins__item mat-elevation-z1"
+                                                 *ngFor="let opt of forms[portfolio.id].get('options').controls; let i = index"
+                                                 [formGroup]="opt">
+                                                <a (click)="removeOpt.emit({portfolio: portfolio, optId: opt.value.option_id})"
+                                                   class="portfolio__remove portfolio__remove_opt"
+                                                   mat-icon-button href="javascript:void(0)">
+                                                    <mat-icon class="mat-18">close</mat-icon>
+                                                </a>
+                                                <div class="coins__col">
+                                                    <mat-form-field [appearance]="'standard'" class="portfolio-field">
+                                                        <mat-select [required]="field.required"
+                                                                    [formControlName]="'coin_id'">
+                                                            <mat-option *ngFor="let optCoin of coinList; trackBy: byId"
+                                                                        [value]="optCoin.id">
+                                                                <img [src]="optCoin?.icon" alt="">
+                                                                {{optCoin.name}}</mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="coins__col">
+                                                    <mat-form-field [appearance]="'standard'" class="portfolio-field">
+                                                        <mat-label>Percent(%)</mat-label>
+                                                        <input (input)="checkSum(forms[portfolio.id].get('options'), portfolio.id)"
+                                                               matInput
+                                                               [required]="field.required"
+                                                               [formControlName]="'value'" type="number" type="number"
+                                                               min="0" max="100" step="1"
+                                                               [placeholder]="field.placeholder">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="coins__item">
+                                                <button type="button" (click)="addOpt.emit(portfolio.id)"
+                                                        mat-raised-button color="primary"
+                                                        [disabled]="validSums[portfolio.id]"
+                                                        style="color: #fff; height: 36px">
+                                                    <mat-icon matPrefix>add_circle</mat-icon>
+                                                    Add Option
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template ngSwitchDefault>
+                                    <mat-form-field [appearance]="'standard'" class="portfolio-field">
+                                        <mat-label>{{field.label}}</mat-label>
+                                        <input matInput [required]="field.required" [formControlName]="field.name"
+                                               type="text"
+                                               [placeholder]="field.placeholder">
+                                    </mat-form-field>
+                                </ng-template>
+                            </ng-container>
+                        </ng-container>
+                        <div class="form__row form__row_fs">
+                            <button mat-raised-button type="submit" class="form__btn" [color]="'accent'"
+                                    [disabled]="forms[portfolio.id].invalid || !validSums[portfolio.id]">Save
+                            </button>
+                            <button mat-raised-button (click)="OnDelete.emit(portfolio)" type="button"
+                                    class="form__btn gray" [color]="'warn'">Delete
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+    <div class="actions">
+        <button mat-raised-button type="button" (click)="OnAdd.emit()" class="form__btn" [color]="'accent'">Add
+            portfolio
+        </button>
+    </div>
+</div>

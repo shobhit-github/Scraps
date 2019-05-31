@@ -1,0 +1,75 @@
+<div class="info">
+    <div class="info__body">
+        <div class="info__block">
+            <h4 class="info__title">Pre ICO</h4>
+            <div class="info__row">
+                <div class="info__col">Pre-ICO Start:</div>
+                <div class="info__col">{{ico.pre_ico_start | displayDate: 'LL'}}</div>
+            </div>
+            <div class="info__row">
+                <div class="info__col">Pre-ICO End:</div>
+                <div class="info__col">{{ico.pre_ico_end | displayDate: 'LL'}}</div>
+            </div>
+        </div>
+        <div class="info__block">
+            <h4 class="info__title">ICO Main Sale</h4>
+            <div class="info__row">
+                <div class="info__col">ICO Start:</div>
+                <div class="info__col">{{ico.start_date | displayDate: 'LL'}}</div>
+            </div>
+            <div class="info__row">
+                <div class="info__col">ICO End:</div>
+                <div class="info__col">{{ico.end_date | displayDate: 'LL'}}</div>
+            </div>
+        </div>
+        <div class="info__block">
+            <h4 class="info__title">Information</h4>
+            <div class="info__row">
+                <div class="info__col">Token:</div>
+                <div class="info__col">{{ico.token_symbol | noData}}</div>
+            </div>
+            <div class="info__row">
+                <div class="info__col">Platform:</div>
+                <div class="info__col">{{ico.token_type | noData}}</div>
+            </div>
+            <div class="info__row">
+                <div class="info__col">Buy With:</div>
+                <div class="info__col">{{ico.accept_currencies | noData}}</div>
+            </div>
+            <div class="info__row">
+                <div class="info__col">ICO Location:</div>
+                <div class="info__col">{{ico.ico_location | noData}}</div>
+            </div>
+            <div class="info__row">
+                <div class="info__col">Price:</div>
+                <div class="info__col">{{ico.token_prices | noData}}</div>
+                <!-- <div class="info__col">1 {{ico.token_symbol}} = {{ico.token_prices}}</div> -->
+            </div>
+            <!-- <div class="info__row">
+              <div class="info__col">Soft Cap:</div>
+              <div class="info__col">{{ico.ico_soft_cap | noData}}</div>
+            </div>
+            <div class="info__row">
+              <div class="info__col">Hard Cap:</div>
+              <div class="info__col">{{ico.ico_hard_cap | noData}}</div>
+            </div> -->
+        </div>
+        <div class="info__block">
+            <h4 class="info__title">Restrictions</h4>
+            <div class="info__row">
+                <div class="info__col">KYC:</div>
+                <div class="info__col">{{!!ico.customer ? 'KYC Required' : 'KYC Optional'}}</div>
+            </div>
+            <div class="info__row">
+                <div class="info__col">Restricted Countries:</div>
+                <div class="info__col">{{ico.restricted_countries | noData}}</div>
+            </div>
+        </div>
+        <!-- <div class="info__block">
+          <h4 class="info__title">Follow Us:</h4>
+          <div class="info__follows">
+            <app-ico-follow *ngFor="let soc of socialLinks" [soc]="soc"></app-ico-follow>
+          </div>
+        </div> -->
+    </div>
+</div>

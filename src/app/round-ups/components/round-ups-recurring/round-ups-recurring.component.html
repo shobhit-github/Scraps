@@ -1,0 +1,33 @@
+<div class="panel">
+    <div class="panel__body panel__body_recurring">
+        <div class="recurring">
+            <p class="recurring__text">Set a Recurring Investment to automatically invest your desired amount every day,
+                week
+                or year!</p>
+            <form class="recurring__form" [formGroup]="form" class="form form_autoh verify" (ngSubmit)="onSubmit(form)">
+                <div class="form__cnt form__cnt_recurring">
+                    <div class="form__row form__row_mb">
+                        <mat-form-field [floatLabel]="'never'" class="rich-input rich-input_recurring">
+                            <input autocomplete="off" matInput (focus)="removeZeroSum()" placeholder="Enter Amount"
+                                   [textMask]="numberMask"
+                                   [formControlName]="'sum'" [errorStateMatcher]="matcher">
+                            <span class="rich-input__suffix" matSuffix>USD</span>
+                        </mat-form-field>
+                    </div>
+                    <div class="form__row form__row_fe">
+                        <mat-form-field [floatLabel]="'never'" class="rich-input rich-input_small">
+                            <mat-select [formControlName]="'period'" required>
+                                <mat-option *ngFor="let period of periodList"
+                                            [value]="period">{{period | uppercase}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <button *ngIf="!form.hasError('invalid')" mat-raised-button [color]="'accent'"
+                            class="form__btn btn btn_full mat-elevation-z0"
+                            [disabled]="form.invalid">Set Recurring Investment
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

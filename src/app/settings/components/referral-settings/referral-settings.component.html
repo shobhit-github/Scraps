@@ -1,0 +1,19 @@
+<div class="panel">
+    <div class="panel__header">
+        <h2 class="panel__title">Referral System</h2>
+    </div>
+    <form class="panel__body panel__body_single panel__body_fs form" [formGroup]="form">
+        <div class="form__row form__row_sb">
+            <mat-form-field [appearance]="'standard'">
+                <mat-label>Referral Link</mat-label>
+                <input readonly #forCopy autocomplete="off" matInput [formControlName]="'link'">
+            </mat-form-field>
+        </div>
+        <div class="form__row form__row_fs form__row_mb-more">
+            <button type="button" (click)="copy(forCopy)" mat-raised-button [color]="'accent'"
+                    class="form__btn form__btn_multiple btn mat-elevation-z0">{{copied ? 'Copied' : 'Copy'}}
+                <mat-icon>{{copied ? 'done' : 'file_copy'}}</mat-icon>
+            </button>
+        </div>
+    </form>
+</div>

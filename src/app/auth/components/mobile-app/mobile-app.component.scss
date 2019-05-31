@@ -1,0 +1,82 @@
+:host() {
+  display: block;
+  max-width: 100%;
+  background-image: url('/assets/images/signup-bg.png');
+  background-repeat: no-repeat;
+  // background-size: 100%;
+  // background-position: left top 44px;
+  // height: 100%;
+  background-size: contain;
+  background-position: center;
+  height: 81%;
+  position: relative;
+  width: 100%;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.mobile-app {
+  max-width: 100%;
+  // padding-bottom: 230px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  left: 50%;
+  bottom: 19%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%);
+
+  &__img {
+    width: 100%;
+    box-shadow: 0 5px 12px rgba(217, 226, 233, 0.5);
+    border: 1px solid rgba(220, 230, 243, 0.31);
+    background-color: #ffffff;
+    margin-bottom: 36px;
+
+    img {
+      width: 200%;
+      height: 200%;
+      object-fit: contain;
+    }
+  }
+
+  &__btn-cnt {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  &__btn {
+    display: block;
+    margin-left: 23px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  // .mobile-app {
+  //   padding-bottom: 252px;
+  // }
+}
+
+@media screen and (max-width: 767px) {
+  :host() {
+    background-image: none;
+  }
+  .mobile-app {
+    padding-bottom: 0;
+
+    &__img {
+      display: none;
+    }
+  }
+  // :host() {
+  //   background-size: contain;
+  //   background-position: center;
+  // }
+}

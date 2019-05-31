@@ -1,0 +1,17 @@
+<div class="panel panel_bank">
+    <div class="panel__header">
+        <h2 class="panel__title">Connect Your Bank</h2>
+    </div>
+    <div class="panel__body form">
+        <div class="form__row form__row_mb-more">
+            <button mat-raised-button [color]="'accent'" [routerLink]="['/settings', 'security']" *ngIf="plaidStatus"
+                    class="form__btn btn_full btn btn_gray mat-elevation-z0">Go Back
+            </button>
+            <ng-content></ng-content>
+        </div>
+        <div class="panel__footer form__row">
+            <p class="form__message">Skraps doesn’t save your bank login.
+                <br> We use 256 bit encryption.</p>
+        </div>
+    </div>
+</div>

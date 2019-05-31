@@ -1,0 +1,7 @@
+<a class="voice-icon" href="javascript:void(0)" (click)="startAudio()">
+    <mat-icon *ngIf="!inProgress" [inline]="true">mic</mat-icon>
+    <mat-icon *ngIf="inProgress" [inline]="true">stop</mat-icon>
+</a>
+<span class="error" *ngIf="err">
+  No micro
+</span>

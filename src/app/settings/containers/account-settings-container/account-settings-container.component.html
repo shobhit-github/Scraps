@@ -1,0 +1,8 @@
+<app-personal-settings [employmentOptList]="employmentOptList$ | async" [incomeOptList]="incomeOptList$ | async"
+                       (OnUpdatePassword)="openPasswordDialog($event)"
+                       [failed]="failed$ | async" [personal]="personal$ | async" (OnSubmit)="updatePersonal($event)"
+                       [isTFA]="isTFA$ | async"></app-personal-settings>
+<app-address-settings [data]="address$ | async" [failed]="failed$ | async"
+                      (OnSubmit)="updateAddress($event)"></app-address-settings>
+<app-preference-settings [data]="preference$ | async" [subData]="address$ | async"
+                         (OnSubmit)="updatePreference($event)"></app-preference-settings>

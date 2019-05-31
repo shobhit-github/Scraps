@@ -1,0 +1,32 @@
+<div #jsScrollWrap class="legend" [ngClass]="{'is-rich': isRich}">
+    <div class="legend__title" *ngIf="!isRich">RISK SCORE: {{risk}}</div>
+    <div #jsScroll class="legend__list" [ngClass]="{'contains-active': activeIndex >= 0 && innerWidth > 767}">
+        <div class="legend__item" *ngFor="let item of results; let i = index"
+             [ngClass]="{active: i === activeIndex && innerWidth > 767}"
+             (mouseover)="activeHover(i)" (mouseout)="notActiveHover()">
+            <div class="legend__col">
+                <div class="legend__col">
+                    <div class="legend__icon">
+                        <img [src]="item.icon" width="20" height="20" alt="">
+                    </div>
+                    <div class="legend__name">{{item.name}}</div>
+                </div>
+                <div class="legend__value legend__value-percent" *ngIf="innerWidth < 768">{{item.value}}%</div>
+            </div>
+            <div class="legend__col" *ngIf="!isRich">
+                <div class="legend__value">
+                    {{item.value || 0}}%
+                </div>
+            </div>
+            <div class="legend__col legend__col_rich" *ngIf="isRich">
+                <div class="legend__value">
+                    0.00000001 {{item.name.slice(0, 3)}}
+                </div>
+                <div class="legend__value legend__value_currency-real">$1000000.55</div>
+                <!--<div class="legend__value">-->
+                <!--{{item.value || 0}}%-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</div>

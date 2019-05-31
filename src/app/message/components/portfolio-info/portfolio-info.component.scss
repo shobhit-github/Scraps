@@ -1,0 +1,83 @@
+@import '../../../../assets/styles/variables';
+
+.portfolio {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding-top: 82px;
+  margin-bottom: 50px;
+
+  &__avatar {
+    position: relative;
+  }
+
+  &__title {
+    display: block;
+    color: $primary;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 21px;
+  }
+
+  &__items {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    border-top: 1px solid #f2f2f2;
+  }
+
+  &__item {
+    flex: 1 50%;
+    display: flex;
+    flex-flow: column wrap;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    text-align: center;
+    border-bottom: 1px solid #f2f2f2;
+    border-right: 1px solid #f2f2f2;
+    margin-right: -1px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    &_title {
+      color: $gray-medium;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      white-space: nowrap;
+    }
+
+    &_value {
+      color: #036da1;
+      font-size: 22px;
+      font-weight: 300;
+      padding: {
+        top: 5px;
+        bottom: 5px;
+      }
+    }
+  }
+
+  &__item:nth-of-type(3) {
+    flex: 2 50%;
+  }
+
+  .portfolio__status {
+    width: 16px;
+    height: 16px;
+    background-color: $active;
+    position: absolute;
+    display: none;
+    border-radius: 50%;
+    right: 6px;
+    top: -1px;
+
+    &_active {
+      display: block;
+    }
+  }
+
+}

@@ -1,0 +1,65 @@
+@import '../../../../assets/styles/variables';
+
+.progress {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.progress__status {
+  position: absolute;
+  left: -46px;
+  right: -46px;
+  top: -30px;
+  background-color: $active;
+  height: 7px;
+  transition: width 0.3s ease-in-out;
+  width: 1px;
+}
+
+.progress__text {
+  max-width: 100%;
+  width: 560px;
+  color: $gray;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.progress__question {
+  width: 520px;
+  max-width: 100%;
+}
+
+.progress__variants {
+  margin-bottom: 30px;
+}
+
+.progress__variant {
+  margin-bottom: 10px;
+}
+
+.progress__variant-radio {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 15px;
+  box-shadow: 0 5px 12px rgba(217, 226, 233, 0.5);
+  border-radius: 7px;
+  border: 1px solid rgba(220, 230, 243, 0.31);
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: $primary;
+  font-size: 16px;
+  font-weight: 600;
+
+  &.active {
+    color: #fff;
+    background-color: $active;
+  }
+}

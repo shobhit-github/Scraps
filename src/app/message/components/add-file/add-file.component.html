@@ -1,0 +1,6 @@
+<a class="attach" href="javascript:void(0)" (click)="addFile(fileInput)">
+    <mat-icon [inline]="true">attach_file</mat-icon>
+</a>
+<input style="display: none;" type="file" [multiple]="multiple" (change)="fileListChange($event)"
+       accept=".mp3, .wav, .acc, .ogg, .bmp, .jpg, .jpeg, .png, .gif, .webp, .mp4, .webm, .doc, .docx, .xls, .xlsx"
+       #fileInput>

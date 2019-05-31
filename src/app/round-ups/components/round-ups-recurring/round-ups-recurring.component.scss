@@ -1,0 +1,29 @@
+@import '../../../../assets/styles/variables';
+
+.recurring {
+  width: 340px;
+  margin: auto;
+  max-width: 100%;
+}
+
+.recurring__text {
+  color: $gray;
+  font-size: 18px;
+  font-weight: 400;
+  width: 100%;
+  margin-bottom: 30px;
+  text-align: center;
+  line-height: 1.35;
+}
+
+.recurring__form {
+  padding-left: 33px;
+  padding-right: 33px;
+  width: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  .panel__body_recurring {
+    padding: 32px;
+  }
+}

@@ -1,0 +1,44 @@
+<div class="stepper">
+    <div class="stepper__wrap">
+        <mat-horizontal-stepper [linear]="true" #stepper [selectedIndex]="step"
+                                (selectionChange)="onStepChanged($event.selectedIndex)"
+                                (animationDone)="onAnimationDone()">
+            <ng-template matStepperIcon="number" let-index="index">
+                <div class="stepper__circle"></div>
+            </ng-template>
+            <ng-template matStepperIcon="done">
+                <div class="stepper__circle stepper__circle_revert">
+                    <mat-icon class="mat-12">done</mat-icon>
+                </div>
+            </ng-template>
+            <mat-step [completed]="true" [editable]="false">
+                <ng-template matStepLabel>
+                    <span [routerLink]="['/auth', 'register']">Details</span>
+                </ng-template>
+            </mat-step>
+            <mat-step [stepControl]="verifyNumber.controlCode" [completed]="step > 1" [editable]="false">
+                <ng-template matStepLabel>
+                    <div>E-Mail</div>
+                </ng-template>
+                <app-verify-number-container #verifyNumber (OnCompleted)="onNext(stepper)"
+                                             [activeClass]="activeClass$ | async"></app-verify-number-container>
+            </mat-step>
+            <!-- [stepControl]="identity.photoGroup" [editable]="false" [completed]="step > 2" -->
+            <mat-step [editable]="false" [completed]="step > 2">
+                <ng-template matStepLabel>Demographics</ng-template>
+                <app-demographics-container #demographics
+                                            (OnCompleted)="onNext(stepper, true)"></app-demographics-container>
+            </mat-step>
+            <mat-step [editable]="false" [completed]="step > 3">
+                <ng-template matStepLabel>Identity</ng-template>
+                <app-identity-container #identity (OnCompleted)="onNext(stepper, true)"
+                                        [activeClass]="activeClass$ | async"></app-identity-container>
+            </mat-step>
+            <mat-step [stepControl]="banks.form" [editable]="false">
+                <ng-template matStepLabel>Bank</ng-template>
+                <app-banks-container #banks (OnCompleted)="onNext(stepper)" [isReady]="step === 4"
+                                     [activeClass]="activeClass$ | async"></app-banks-container>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</div>

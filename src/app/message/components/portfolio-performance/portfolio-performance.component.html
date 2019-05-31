@@ -1,0 +1,8 @@
+<h4 class="title-aside title-aside_mb" *ngIf="!isFull">Portfolio Performance</h4>
+<!-- TODO: results && results.length > 0  -->
+<app-line-chart [curve]="curve" [yAxisTicks]="yAxisTicks" [results]="results[filterName]"
+                [ngClass]="{'blur-small': false, full: isFull, 'full_max': isMax}"></app-line-chart>
+<!-- *ngIf="true"  -->
+<!-- <div class="no-data">
+  No Data
+</div> -->

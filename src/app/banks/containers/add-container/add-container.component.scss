@@ -1,0 +1,16 @@
+.cnt {
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 47px;
+    padding-bottom: 100px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .cnt {
+    &__wrap {
+      flex-wrap: wrap;
+    }
+  }
+}

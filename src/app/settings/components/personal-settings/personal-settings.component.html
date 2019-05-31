@@ -1,0 +1,83 @@
+<div class="panel">
+    <div class="panel__header">
+        <h2 class="panel__title">Personal Details</h2>
+    </div>
+    <form class="panel__body form" (ngSubmit)="onSubmit(form)" [formGroup]="form">
+        <div class="form__row form__row_sb">
+            <mat-form-field [appearance]="'standard'">
+                <mat-label>Legal Name</mat-label>
+                <mat-icon matSuffix class="icon-small" [fontSet]="'skraps-icons'" [fontIcon]="'icon-lock'"></mat-icon>
+                <input autocomplete="off" matInput [formControlName]="'name'" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="form.get('name').hasError('required')">
+                    Legal Name is required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field [appearance]="'standard'">
+                <mat-label>Your Email</mat-label>
+                <input autocomplete="off" matInput [formControlName]="'email'" [errorStateMatcher]="matcher"
+                       type="email">
+                <mat-error *ngIf="form.get('email').hasError('email') && !form.get('email').hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="form.get('email').hasError('required')">
+                    Email is required
+                </mat-error>
+                <mat-error *ngIf="form.get('email').hasError('exist')">
+                    Email is exist
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form__row form__row_sb">
+            <mat-form-field [appearance]="'standard'" class="">
+                <mat-label>Employment</mat-label>
+                <mat-select [formControlName]="'employment_id'" [value]="form.get('employment_id').value"
+                            [placeholder]="'employment'">
+                    <mat-option [title]="employment" *ngFor="let employment of employmentOptList"
+                                [value]="employment.id">{{employment.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field [appearance]="'standard'" class="">
+                <mat-label>Income</mat-label>
+                <mat-select [formControlName]="'income_id'" [value]="form.get('income_id').value"
+                            [placeholder]="'income'">
+                    <mat-option [title]="income" *ngFor="let income of incomeOptList"
+                                [value]="income.id">{{income.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form__row form__row_sb">
+            <mat-label>Date of Birth</mat-label>
+        </div>
+        <div class="form__row form__row_fs">
+            <mat-form-field [appearance]="'standard'" class="form__select form__select_big">
+                <mat-select [formControlName]="'month'" (valueChange)="setBirthday($event, 'month')"
+                            [value]="form.get('month').value" [placeholder]="'Month'">
+                    <mat-option *ngFor="let month of monthList"
+                                [value]="month | displayDate: 'MM': 'MMMM'">{{month}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field [appearance]="'standard'" class="form__select">
+                <mat-select [formControlName]="'year'" (valueChange)="setBirthday($event, 'year')"
+                            [value]="form.get('year').value" [placeholder]="'Year'">
+                    <mat-option *ngFor="let year of yearList" [value]="year">{{year}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field [appearance]="'standard'" class="form__select">
+                <mat-select [formControlName]="'day'" (valueChange)="setBirthday($event, 'day')"
+                            [value]="form.get('day').value" [placeholder]="'Day'">
+                    <mat-option *ngFor="let day of dayList" [value]="day">{{day}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="form__row form__row_fs form__row_mb-more">
+            <button mat-raised-button [color]="'accent'" class="form__btn form__btn_multiple btn mat-elevation-z0"
+                    [disabled]="form.invalid">Save
+            </button>
+            <button type="button" (click)="onUpdatePassword(isTFA)" mat-raised-button
+                    class="form__btn form__btn_multiple btn btn_gray mat-elevation-z0"
+                    [disabled]="form.invalid">Update Password
+            </button>
+        </div>
+    </form>
+</div>

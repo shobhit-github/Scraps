@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119550978-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-119550978-2');
+    </script>
+
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push(
+            {'gtm.start': new Date().getTime(), event: 'gtm.js'}
+        );
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-MVNN7P4');</script>
+    <!-- End Google Tag Manager -->
+    <script type="text/javascript">if (window.location.hostname !== 'localhost') {
+        (function (o) {
+            var b = "https://api.autopilothq.com/anywhere/",
+                t = "473b59552c6d4d06a0df87e8c2b773bb1df39f25f6384ca68874540df9811714", a = window.AutopilotAnywhere = {
+                    _runQueue: [], run: function () {
+                        this._runQueue.push(arguments);
+                    }
+                }, c = encodeURIComponent, s = "SCRIPT", d = document, l = d.getElementsByTagName(s)[0],
+                p = "t=" + c(d.title || "") + "&u=" + c(d.location.href || "") + "&r=" + c(d.referrer || ""),
+                j = "text/javascript", z, y;
+            if (!window.Autopilot) window.Autopilot = a;
+            if (o.app) p = "devmode=true&" + p;
+            z = function (src, asy) {
+                var e = d.createElement(s);
+                e.src = src;
+                e.type = j;
+                e.async = asy;
+                l.parentNode.insertBefore(e, l);
+            };
+            y = function () {
+                z(b + t + '?' + p, true);
+            };
+            if (window.attachEvent) {
+                window.attachEvent("onload", y);
+            } else {
+                window.addEventListener("load", y, false);
+            }
+        })({"app": true});
+    }</script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Skraps</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MVNN7P4" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<form>
+    <input type="text" style="display:none" name="name" value="" id="legal_name">
+    <input type="text" style="display:none" name="email" value="" id="your_email">
+</form>
+
+<app-root></app-root>
+
+</body>
+
+</html>

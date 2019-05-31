@@ -1,0 +1,92 @@
+<!-- *ngIf="!isAuth && !loginSuccess" -->
+<div class="form">
+    <form class="form__cnt" (ngSubmit)="onSubmit()" [formGroup]="login" *ngIf="!isTFA">
+        <h1 class="form__title">Sign in to Skraps</h1>
+        <mat-form-field>
+            <input autocomplete="off" matInput placeholder="Your Email" [formControlName]="'email'"
+                   [errorStateMatcher]="matcher" maxlength="255">
+            <mat-error
+                    *ngIf="login.controls['email'].hasError('email') && !login.controls['email'].hasError('required')">
+                Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="login.controls['email'].hasError('required')">
+                Email is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input autocomplete="off" type="password" matInput placeholder="Password" [formControlName]="'password'"
+                   [errorStateMatcher]="matcher" maxlength="255">
+            <!-- <mat-error *ngIf="(login.controls['password'].hasError('pattern') || login.controls['password'].hasError('minlength')) && !login.controls['password'].hasError('required')">
+              Minimum 8 characters, at least one small and large letters, a digit and one of the characters ($, @, #, !, %, *, ?, &)
+            </mat-error> -->
+            <!-- <mat-hint>Minimum eight characters, at least one letter and one number</mat-hint> -->
+            <mat-error *ngIf="login.controls['password'].hasError('required')">
+                Password is required
+            </mat-error>
+        </mat-form-field>
+        <div class="form__row form__row_fe">
+            <a class="form__ref form__ref_gray form__ref_medium" [routerLink]="['/auth', 'forgot']">Forgot Password?</a>
+        </div>
+        <div class="form__row form__row_mb-more">
+            <button *ngIf="!login.hasError('invalid')" mat-raised-button [color]="'accent'"
+                    class="form__btn btn btn_full mat-elevation-z0"
+                    [disabled]="login.invalid">Sign In
+            </button>
+            <button *ngIf="login.hasError('invalid')" mat-raised-button [color]="'accent'"
+                    class="form__btn btn btn_full mat-elevation-z0"
+                    [disabled]="login.invalid">Email or password invalid
+            </button>
+        </div>
+        <div class="form__row">
+      <span class="form__text">
+        No account yet?
+      </span>
+            <a class="form__ref form__ref_big form__ref_accent form__ref_ml" [routerLink]="['/auth', 'register']">Sign
+                Up</a>
+        </div>
+    </form>
+</div>
+<!--
+<div class="form" *ngIf="isAuth && (loginSuccess === false)">
+  <form class="form__cnt" (ngSubmit)="onLogout()">
+    <h1 class="form__title">You are already logined</h1>
+    <div class="form__row form__row_mb-more">
+      <button mat-raised-button [color]="'accent'" class="form__btn btn btn_full mat-elevation-z0">Logout</button>
+    </div>
+  </form>
+</div>
+-->
+<div class="form" *ngIf="isAuth && loginSuccess && isTFA">
+    <form class="form__cnt" (ngSubmit)="onSubmitCode()" [formGroup]="code">
+        <h1 class="form__title">Enter the SMS Code sent to your registered mobile.</h1>
+        <mat-form-field>
+            <input autocomplete="off" matInput placeholder="Enter Code" [formControlName]="'code'"
+                   [errorStateMatcher]="matcher">
+            <mat-error *ngIf="code.get('code').hasError('required')">
+                Code is required
+            </mat-error>
+            <mat-error *ngIf="code.get('code').hasError('invalid')">
+                Code is invalid
+            </mat-error>
+        </mat-form-field>
+        <div class="form__row form__row_fe">
+            <a class="form__ref form__ref_gray form__ref_medium" href="javascript:void(0)"
+               [ngStyle]="{cursor: timer ? 'not-allowed' : 'pointer'}"
+               (click)="!timer ? OnResend.emit() : false">{{timer ? timer : ''}} Re-send Code</a>
+        </div>
+        <div class="form__row form__row_mb-more">
+            <button mat-raised-button [color]="'accent'" class="form__btn btn btn_full mat-elevation-z0"
+                    [disabled]="code.invalid">Verify
+            </button>
+        </div>
+    </form>
+</div>
+<!-- <div class="form" *ngIf="isAuth && loginSuccess">
+  <form class="form__cnt" (ngSubmit)="onReset()">
+    <h1 class="form__title">Do you want to change the data?</h1>
+    <div class="form__row form__row_mb-more">
+      <button mat-raised-button [color]="'primary'" class="form__btn btn btn_full mat-elevation-z0" >Change</button>
+      <button mat-raised-button (click)="onNext()" [color]="'accent'" class="form__btn btn btn_full mat-elevation-z0" >Process</button>
+    </div>
+  </form>
+</div> -->

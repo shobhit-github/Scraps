@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="44" height="44"
+     viewBox="0 0 44 44">
+    <defs>
+        <path id="ppm5a" d="M86 81a21 21 0 1 1 42 0 21 21 0 0 1-42 0z"/>
+        <path id="ppm5b"
+              d="M109.01 81.21l-6.08 6.22a.98.98 0 0 1-1.4 0 1.03 1.03 0 0 1 0-1.43l5.38-5.5-5.38-5.5a1.03 1.03 0 0 1 0-1.43.98.98 0 0 1 1.4 0l6.08 6.21a1.02 1.02 0 0 1 0 1.43z"
+        />
+    </defs>
+    <g>
+        <g transform="translate(-85 -59)">
+            <g>
+                <use fill="#f7faff" xlink:href="#ppm5a"/>
+                <use fill="#fff" fill-opacity="0" stroke="#e1e1e1" stroke-miterlimit="50" xlink:href="#ppm5a"/>
+            </g>
+            <g transform="rotate(-180 106.5 81.5) translate(2, 2)">
+                <g>
+                    <g>
+                        <use fill="#eb003e" xlink:href="#ppm5b"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,99 @@
+<a class="back" href="javascript:void(0)" *ngIf="type" (click)="onBack()" [ngClass]="activeClass">
+    <img src="/assets/svg/icon-back.svg" alt="go back">
+</a>
+<div class="form" *ngIf="type === undefined">
+    <div class="form__cnt">
+        <h1 class="form__title">Verify your Identity</h1>
+        <h2 class="form__subtitle form__subtitle_small">Choose the document of your choice below to verify your
+            identity. </h2>
+        <div class="form__row">
+            <a class="identity" mat-raised-button (click)="onTypeChange(EIdentity.identityCard)">
+                <div class="identity__cnt">
+                    <div class="identity__img">
+                        <img src="/assets/svg/identity-card.svg" alt="">
+                    </div>
+                    <div class="identity__text">
+                        Identity Card
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="form__row">
+            <a class="identity" mat-raised-button (click)="onTypeChange(EIdentity.driversLicense)">
+                <div class="identity__cnt">
+                    <div class="identity__img">
+                        <img src="/assets/svg/identity-drivers-license.svg" alt="">
+                    </div>
+                    <div class="identity__text">
+                        Drivers License
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="form__row">
+            <a class="identity" mat-raised-button (click)="onTypeChange(EIdentity.passport)">
+                <div class="identity__cnt">
+                    <div class="identity__img">
+                        <img src="/assets/svg/passport.svg" alt="">
+                    </div>
+                    <div class="identity__text">
+                        Passport
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="form__row" *ngIf="!isPopup">
+            <button mat-raised-button type="button" (click)="OnSkip.emit()" [color]="'warn'"
+                    class="form__btn btn btn_gray btn_full mat-elevation-z0">Skip Identity
+            </button>
+        </div>
+    </div>
+</div>
+<div class="form" *ngIf="type >= 0 && !uploadSuccess">
+    <form class="form__cnt form__cnt_forgot" [formGroup]="form">
+        <h1 class="form__title">Upload a picture</h1>
+        <h2 class="form__subtitle form__subtitle_small">To verify your identity upload a picture of your Identity Card
+            below.</h2>
+        <input type="file" (change)="onSubmit($event)" hidden #fileDialog accept="image/x-png,image/jpeg,image/bmp"
+               multiple>
+        <div class="form__row form__row_mih-sm form__row_mb-more">
+            <img *ngIf="type === EIdentity.identityCard" src="/assets/images/identity-card.png" alt="">
+            <img *ngIf="type === EIdentity.driversLicense" src="/assets/images/identity-drivers-license.png" alt="">
+            <img *ngIf="type === EIdentity.passport" src="/assets/images/identity-passport.png" alt="">
+        </div>
+        <div class="form__row">
+            <p class="form__desc">
+                Document must be under 25Mb <br> and jpg, jpeg, png, bmp
+            </p>
+        </div>
+        <div class="form__row">
+            <button *ngIf="!isPending" mat-raised-button class="form__btn btn btn_full mat-elevation-z0"
+                    [color]="'accent'" (click)="openFileDialog()">Upload
+            </button>
+            <button *ngIf="isPending" mat-raised-button class="form__btn btn btn_full mat-elevation-z0"
+                    [disabled]="true" (click)="openFileDialog()">Uploading...
+            </button>
+        </div>
+    </form>
+</div>
+<div class="form" *ngIf="uploadSuccess">
+    <form class="form__cnt form__cnt_forgot" [formGroup]="form">
+        <h1 class="form__title">We are verifying your Identity!</h1>
+        <h2 class="form__subtitle form__subtitle_small">This might take up to 24 hours to verify your Identity. Please
+            continue with signing up below.</h2>
+        <input type="hidden" hidden [formControlName]="'photo'" value="success">
+        <div class="form__row form__row_mb-big form__row_mih-sm">
+            <img src="/assets/images/identity-success.png" alt="">
+        </div>
+        <div class="form__row" *ngIf="!isPopup">
+            <button mat-raised-button class="form__btn btn btn_full mat-elevation-z0" [color]="'accent'" type="button"
+                    (click)="onCompleted()">Continue
+            </button>
+        </div>
+        <div class="form__row" *ngIf="isPopup">
+            <button mat-raised-button class="form__btn btn btn_full mat-elevation-z0" [color]="'accent'" type="button"
+                    (click)="closePopup()">Done
+            </button>
+        </div>
+    </form>
+</div>

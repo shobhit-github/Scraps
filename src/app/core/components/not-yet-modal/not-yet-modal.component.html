@@ -1,0 +1,18 @@
+<div class="panel">
+    <div class="panel__header">
+        <h2 class="panel__title">Your account is not yet activated!</h2>
+    </div>
+    <div class="panel__body panel__body_not-yet">
+        Wait for activation or upload additional documents
+        <div class="form__row form__row_fs form__row_mb-more">
+            <!-- <button *ngIf="(userStatus$ | async) === EStatusesSource['NotUploaded']" mat-raised-button mat-dialog-close class="form__btn form__btn_multiple btn btn_gray mat-elevation-z0"
+              [routerLink]="['/settings', 'identity']">Upload
+              Documents
+            </button> -->
+            <button type="button" mat-dialog-close [routerLink]="['/news']" [color]="'accent'" mat-raised-button
+                    class="form__btn form__btn_multiple btn  mat-elevation-z0">Go
+                to News
+            </button>
+        </div>
+    </div>
+</div>

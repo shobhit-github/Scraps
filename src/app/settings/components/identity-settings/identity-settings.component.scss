@@ -1,0 +1,21 @@
+.identity-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  max-height: 47vh;
+  overflow: hidden;
+
+  &__item {
+    // width: calc(50% - 10px);
+    &:only-child {
+      width: 100%;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.menu-toggler {
+  color: #fff;
+  min-width: 0;
+  padding: 0px 6px;
+}
+
+@media screen and (min-width: 991px) {
+  .menu-toggler, :host() {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  :host(.xs) {
+    display: none;
+
+    .menu-toggler {
+      display: none;
+    }
+  }
+}

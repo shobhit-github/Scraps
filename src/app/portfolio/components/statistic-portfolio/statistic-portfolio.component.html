@@ -1,0 +1,38 @@
+<div class="total">
+    <div class="total__head">
+        <div class="total__text total__text_blue">{{ content.introTitle }}</div>
+        <div class="total__text total__text_primary total__text_big">
+            {{ currency?.symbol }}{{ total?.value | number: '3.2-2' }}
+        </div>
+        <div class="total__text">{{ content.outroTitle }}</div>
+    </div>
+    <div class="total__body">
+        <div class="total__row">
+            <span class="total__name">Amount</span>
+            <span class="total__value"
+            >{{ currency?.symbol }}{{ total.amount | number: '3.2-2' }}</span
+            >
+        </div>
+        <div class="total__row">
+            <span class="total__name">Skraps Fee</span>
+            <span class="total__value"
+            >{{ currency?.symbol }}{{ total.fee | number: '3.2-2' }}</span
+            >
+        </div>
+        <div class="total__row" *ngIf="total.paymentFee || total.paymentFee === 0">
+            <span class="total__name">Payment Method Fee</span>
+            <span class="total__value"
+            >{{ currency?.symbol }}{{ total.paymentFee | number: '3.2-2' }}</span
+            >
+        </div>
+        <div class="total__row total__row_primary">
+            <span class="total__name">Total</span>
+            <span class="total__value"
+            >{{ currency?.symbol }}{{ total.value | number: '3.2-2' }}</span
+            >
+        </div>
+    </div>
+    <div class="total__footer">
+        Learn more about our fees <a [routerLink]="['/']">here</a>.
+    </div>
+</div>

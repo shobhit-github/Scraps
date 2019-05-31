@@ -1,0 +1,19 @@
+<div class="form">
+    <div class="form__cnt form__cnt_forgot">
+        <div class="form__row form__row_mb-big">
+            <h1 class="form__title form__title_without" *ngIf="pending">Please wait a moment</h1>
+            <h1 class="form__title form__title_without" *ngIf="!pending && !isError">Email Confirmed!</h1>
+            <h1 class="form__title form__title_without" *ngIf="!pending && isError">Email is NOT Confirmed! <br> Please
+                try again later.</h1>
+        </div>
+        <div class="form__row form__row_mb-more form__row_mih">
+            <img [src]="'/assets/svg/email.svg'" alt="">
+        </div>
+        <!-- <h2 class="form__subtitle form__subtitle_small">For security, we’ve sent an email to {{email}}. Click the link in the email to reset your password.</h2> -->
+        <div class="form__row">
+            <button [routerLink]="['/auth', 'login']" mat-raised-button [color]="'accent'"
+                    class="form__btn btn btn_full mat-elevation-z0">Go to Skraps
+            </button>
+        </div>
+    </div>
+</div>

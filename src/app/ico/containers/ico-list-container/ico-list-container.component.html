@@ -1,0 +1,27 @@
+<div class="cnt">
+    <div class="wrap">
+        <div class="ico-page">
+            <h1 class="ico-page__title">ICO List</h1>
+            <div class="panel">
+                <div class="panel__header panel__header_ico">
+                    <app-ico-tabs [activeCat]="activeCat"></app-ico-tabs>
+                </div>
+                <div class="panel__body panel__body_ico">
+                    <h2 class="ico-page__subtitle">Skraps Top ICO Picks</h2>
+                    <p class="ico-page__text">
+                        Skraps ICO List is curated by ICO analysts to bring you the best new ICO projects. Skrapsurges
+                        all
+                        investors to do their own research when investing in all Initial Coin Offerings.
+                    </p>
+                    <div class="ico-page__list">
+                        <app-ico-list [icoList]="icoList$ | async"></app-ico-list>
+                    </div>
+                    <div class="ico-page__pager">
+                        <app-pager [type]="activeCat" [activePage]="activePage$ | async"
+                                   [count]="count$ | async"></app-pager>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

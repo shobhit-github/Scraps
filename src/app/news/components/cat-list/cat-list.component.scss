@@ -1,0 +1,88 @@
+@import '../../../../assets/styles/variables';
+
+.cat {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__maintitle {
+    color: $primary;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &__item {
+    overflow: hidden;
+    width: calc(25% - 15px);
+    height: 120px;
+    padding: 20px 35px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.03);
+    border-radius: 12px;
+    border: 1px solid #e1e1e1;
+    background-color: #ffffff;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .cat {
+    &__item {
+      width: calc(33.3% - 15px);
+
+      &:nth-child(4n) {
+        margin-right: 20px;
+      }
+
+      &:nth-child(3n) {
+        margin-right: 0px;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .cat {
+    &__list {
+      justify-content: space-between;
+    }
+
+    &__item {
+      width: calc(50% - 10px);
+      margin-right: 0;
+      height: 58px;
+      padding: 10px 15px;
+      margin-bottom: 15px;
+
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+
+      &:nth-child(2n) {
+        margin-right: 0px;
+      }
+    }
+  }
+}
+
